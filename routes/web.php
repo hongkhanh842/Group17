@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminPanel\HomeController as AdminHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,10 +13,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [HomeController::class,'index'])->name('home');
+
+// Administrator Panel routes
+Route::get('/admin', [AdminHomeController::class,'index'])->name('admin');
+
+
+
+
+
+
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',
