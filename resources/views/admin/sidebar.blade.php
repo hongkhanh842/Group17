@@ -26,9 +26,12 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i> Dashboard </a>
+                </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-box-open text-blue"></i>
                         <p>
                             Order
                             <i class="right fas fa-angle-left"></i>
@@ -62,28 +65,31 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="admin/category" class="nav-link"><i class="nav-icon fas fa-th"></i> Categories </a>
+                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i> Categories </a>
                 </li>
                 <li class="nav-item">
-                    <a href="admin/category" class="nav-link"><i class="nav-icon fas fa-th"></i> Categories </a>
+                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i> Products </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i> Comment </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/faq" class="nav-link"><i class="nav-icon fas fa-question"></i> FAQ </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/messages" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i> Messages </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> Users </a>
+                </li>
+                <li class="nav-item">
+                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> Social </a>
                 </li>
                 <li class="nav-header">LABELS</li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-danger"></i>
-                        <p class="text">Important</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-warning"></i>
-                        <p>Warning</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-circle text-info"></i>
-                        <p>Informational</p>
+                    <a href="/admin/setting" class="nav-link">
+                        <i class="nav-icon fas fa-tools "></i>
+                        <p class="text">Settings</p>
                     </a>
                 </li>
             </ul>

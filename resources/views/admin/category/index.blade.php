@@ -10,7 +10,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Category List</h1>
+                        <a href="/admin/category/create" class="btn btn-block bg-gradient-info" style="width: 200px">Add Category</a>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
