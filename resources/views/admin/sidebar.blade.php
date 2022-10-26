@@ -27,7 +27,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i> Dashboard </a>
+                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i> <p>Dashboard</p> </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -65,27 +65,27 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i> Categories </a>
+                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i> <p>Categories</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i> Products </a>
+                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i> <p>Products</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i> Comment </a>
+                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i> <p>Comment</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/faq" class="nav-link"><i class="nav-icon fas fa-question"></i> FAQ </a>
+                    <a href="/admin/faq" class="nav-link"><i class="nav-icon fas fa-question"></i> <p>FAQ</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/messages" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i> Messages </a>
+                    <a href="/admin/messages" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i> <p>Messages</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> Users </a>
+                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> <p>Users</p> </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> Social </a>
+                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> <p>Social</p> </a>
                 </li>
-                <li class="nav-header">LABELS</li>
+                {{--<li class="nav-header">LABELS</li>--}}
                 <li class="nav-item">
                     <a href="/admin/setting" class="nav-link">
                         <i class="nav-icon fas fa-tools "></i>
