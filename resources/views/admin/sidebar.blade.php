@@ -70,7 +70,7 @@
                     <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i>
                         <p>Categories</p></a>
                 </li>
-                <li class="nav-item">
+                   <li class="nav-item">
                     <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i>
                         <p>Products</p></a>
                 </li>
