@@ -10,11 +10,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <a href="/admin/category/create" class="btn btn-block bg-gradient-info" style="width: 200px">Add Category</a>
+                        <a href="{{route('admin.category.create')}}" class="btn btn-block bg-gradient-info" style="width: 200px">Add
+                            Category</a>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
                             <li class="breadcrumb-item active">Category List</li>
                         </ol>
                     </div>
@@ -41,24 +42,26 @@
                             <th>Image</th>
                             <th>Status</th>
                             <th style="width: 40px">Edit</th>
-                            <th style="width: 40px">Delete </th>
-                            <th style="width: 40px">Show </th>
+                            <th style="width: 40px">Delete</th>
+                            <th style="width: 40px">Show</th>
                         </tr>
                         </thead>
                         <tbody>
                         @foreach($data as $rs)
-                        <tr>
-                            <td>{{$rs->id}}</td>
-                            <td>{{$rs->title}}</td>
-                            <td>{{$rs->keywords}}</td>
-                            <td>{{$rs->description}}</td>
-                            <td>{{$rs->image}}</td>
-                            <td>{{$rs->status}}</td>
-                            <td><a href="/admin/category/edit/{{$rs->id}}" class="btn btn-block btn-success btn-sm">Edit</a></td>
-                            <td><a href="/admin/category/delete/{{$rs->id}}" class="btn btn-block btn-danger btn-sm"
-                                onclick="return confirm('Deleting !! Are you sure ?')">Delete</a></td>
-                            <td><a href="/admin/category/show/{{$rs->id}}" class="btn btn-block btn-info btn-sm">Show</a></td>
-                        </tr>
+                            <tr>
+                                <td>{{$rs->id}}</td>
+                                <td>{{$rs->title}}</td>
+                                <td>{{$rs->keywords}}</td>
+                                <td>{{$rs->description}}</td>
+                                <td>{{$rs->image}}</td>
+                                <td>{{$rs->status}}</td>
+                                <td><a href="{{route('admin.category.edit',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Edit</a>
+                                </td>
+                                <td><a href="{{route('admin.category.destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
+                                       onclick="return confirm('Deleting !! Are you sure ?')">Delete</a></td>
+                                <td><a href="{{route('admin.category.show',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">Show</a>
+                                </td>
+                            </tr>
                         @endforeach
                         </tbody>
                     </table>

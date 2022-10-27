@@ -16,9 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         $data = Category::all();
-        return view('admin.category.index',[
+        return view('admin.category.index', [
             'data' => $data
-            ]);
+        ]);
     }
 
     /**
@@ -58,7 +58,7 @@ class CategoryController extends Controller
     public function show(Category $category, $id)
     {
         $data = Category::find($id);
-        return view('admin.category.show',[
+        return view('admin.category.show', [
             'data' => $data
         ]);
     }
@@ -72,7 +72,7 @@ class CategoryController extends Controller
     public function edit(Category $category, $id)
     {
         $data = Category::find($id);
-        return view('admin.category.edit',[
+        return view('admin.category.edit', [
             'data' => $data
         ]);
     }
