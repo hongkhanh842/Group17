@@ -10,7 +10,8 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <a href="{{route('admin.category.create')}}" class="btn btn-block bg-gradient-info" style="width: 200px">Add
+                        <a href="{{route('admin.category.create')}}" class="btn btn-block bg-gradient-info"
+                           style="width: 200px">Add
                             Category</a>
                     </div>
                     <div class="col-sm-6">
@@ -53,13 +54,20 @@
                                 <td>{{$rs->title}}</td>
                                 <td>{{$rs->keywords}}</td>
                                 <td>{{$rs->description}}</td>
-                                <td>{{$rs->image}}</td>
-                                <td>{{$rs->status}}</td>
-                                <td><a href="{{route('admin.category.edit',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Edit</a>
+                                <td>
+                                    @if ($rs->image)
+                                        <img src="{{Storage::url($rs->image)}}" style="height: 40px">
+                                    @endif
                                 </td>
-                                <td><a href="{{route('admin.category.destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
+                                <td>{{$rs->status}}</td>
+                                <td><a href="{{route('admin.category.edit',['id'=>$rs->id])}}"
+                                       class="btn btn-block btn-success btn-sm">Edit</a>
+                                </td>
+                                <td><a href="{{route('admin.category.destroy',['id'=>$rs->id])}}"
+                                       class="btn btn-block btn-danger btn-sm"
                                        onclick="return confirm('Deleting !! Are you sure ?')">Delete</a></td>
-                                <td><a href="{{route('admin.category.show',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">Show</a>
+                                <td><a href="{{route('admin.category.show',['id'=>$rs->id])}}"
+                                       class="btn btn-block btn-info btn-sm">Show</a>
                                 </td>
                             </tr>
                         @endforeach
