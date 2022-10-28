@@ -2,6 +2,12 @@
 
 @section('title', 'Edit Product: '.$data->title)
 
+@section('head')
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+@endsection
+
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -77,7 +83,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Detail</label>
-                            <textarea class="form-control" name="detail">
+                            <textarea class="textarea" id="detail" name="detail">
                                 {{$data->detail}}
                             </textarea>
                         </div>
@@ -110,4 +116,15 @@
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+@endsection
+
+@section('foot')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+    <script>
+        $(function () {
+            // Summernote
+            $('.textarea').summernote()
+        })
+    </script>
 @endsection
