@@ -17,4 +17,9 @@ class Category extends Model
         'status',
         'image',
     ];*/
+    #one to many
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
