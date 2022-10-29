@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public static function maincategorylist()
+    {
+        return Category::where('parent_id', '=', 0)->with('children')->get();
+    }
+
     public function index()
     {
         $page='home';
@@ -29,4 +35,16 @@ class HomeController extends Controller
             'images' => $images,
         ]);
     }
+
+    public function categoryproducts($id)
+    {
+        $data = Product::find($id);
+        $images = DB::table('images')->where('product_id', $id)->get();
+        return view('home.product',[
+            'data' => $data,
+            'images' => $images,
+        ]);
+    }
+
+
 }
