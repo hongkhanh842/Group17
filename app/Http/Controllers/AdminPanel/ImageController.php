@@ -48,7 +48,7 @@ class ImageController extends Controller
     {
         //
         $data = new Image();
-        $data->product_id =$pid;
+        $data->product_id = $pid;
         $data->title = $request->title;
         if ($request->file('image')){
             $data->image = $request->file('image')->store('images');

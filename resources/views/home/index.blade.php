@@ -100,7 +100,7 @@
                                         <li><span>00 M</span></li>
                                         <li><span>00 S</span></li>
                                     </ul>
-                                    <button class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</button>
+                                    <a href="{{route('product',['id'=>$rs->id])}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                     <img src="{{Storage::url($rs->image)}}" style="width:270px; height:360px">
                                 </div>
                                 <div class="product-body">

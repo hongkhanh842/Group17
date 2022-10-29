@@ -23,6 +23,9 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+Route::get('/product/{id}',[HomeController::class, 'product'])->name('product');
+
+
 
 Route::prefix('admin')->controller(AdminHomeController::class)->name('admin.')->group(function () {
 // Administrator routes

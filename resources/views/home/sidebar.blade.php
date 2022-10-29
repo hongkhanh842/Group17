@@ -5,7 +5,7 @@
         <div id="responsive-nav">
 
             <!-- category nav -->
-            <div class="category-nav">
+            <div class="category-nav" @if (!@isset($page)) show-on-click  @endif>
                 <span class="category-header">Categories <i class="fa fa-list"></i></span>
                 <ul class="category-list">
 
