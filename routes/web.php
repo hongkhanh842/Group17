@@ -31,6 +31,10 @@ Route::get('/categoryproducts/{id}/{slug}',[HomeController::class, 'categoryprod
 Route::prefix('admin')->controller(AdminHomeController::class)->name('admin.')->group(function () {
 // Administrator routes
     Route::get('/', 'index')->name('index');
+// Admin general routes
+    Route::get('/setting', 'setting')->name('setting');
+    Route::post('/setting', 'settingUpdate')->name('setting.update');
+
 // Admin category routes
     Route::prefix('category')->controller(AdminCategoryController::class)->name('category.')
         ->group(function () {

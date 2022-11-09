@@ -8,6 +8,10 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>@yield('title')</title>
+    <meta name="description" content="@yield('description')">
+   {{-- <meta name="description" content="@yield('title')">
+    <meta name="description" content="@yield('title')">--}}
+    <link rel="icon" type="image/x-icon" href="@yield('icon')">
 
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">

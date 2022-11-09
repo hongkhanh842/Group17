@@ -1,6 +1,8 @@
 @extends('layouts.frontbase')
 
-@section('title', 'Group17 Project')
+@section('title', $setting->title)
+@section('description', $setting->description)
+@section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))
 
 @section('slider')
     @include('home.slider')
