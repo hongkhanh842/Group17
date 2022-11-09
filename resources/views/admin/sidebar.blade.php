@@ -83,7 +83,7 @@
                         <p>FAQ</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/messages" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>
+                    <a href="{{route('admin.message.index')}}" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>
                         <p>Messages</p></a>
                 </li>
                 <li class="nav-item">
