@@ -21,7 +21,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Home Page routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/references', [HomeController::class, 'references'])->name('references');
+
 
 Route::get('/product/{id}',[HomeController::class, 'product'])->name('product');
 Route::get('/categoryproducts/{id}/{slug}',[HomeController::class, 'categoryproducts'])->name('categoryproducts');

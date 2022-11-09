@@ -31,7 +31,9 @@
             <div class="menu-nav">
                 <span class="menu-header">Menu <i class="fa fa-bars"></i></span>
                 <ul class="menu-list">
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{{route('home')}}">Home</a></li>
+                    <li><a href="{{route('about')}}">About Us</a></li>
+                    <li><a href="{{route('references')}}">References</a></li>
                     <li><a href="#">Shop</a></li>
                     <li class="dropdown mega-dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">Women <i class="fa fa-caret-down"></i></a>
                         <div class="custom-menu">
@@ -181,6 +183,7 @@
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
                     </li>
+                    <li><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
             <!-- menu nav -->
