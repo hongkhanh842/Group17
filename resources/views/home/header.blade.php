@@ -1,6 +1,6 @@
 <!-- HEADER -->
 <header>
-    <!-- top Header -->
+{{--    <!-- top Header -->
     <div id="top-header">
         <div class="container">
             <div class="pull-left">
@@ -30,7 +30,7 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>--}}
     <!-- /top Header -->
 
     <!-- header -->

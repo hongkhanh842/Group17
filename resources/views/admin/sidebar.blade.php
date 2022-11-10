@@ -79,7 +79,7 @@
                         <p>Comment</p></a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/faq" class="nav-link"><i class="nav-icon fas fa-question"></i>
+                    <a href="{{route('admin.faq.index')}}" class="nav-link"><i class="nav-icon fas fa-question"></i>
                         <p>FAQ</p></a>
                 </li>
                 <li class="nav-item">

@@ -183,6 +183,7 @@
                             <li><a href="checkout.html">Checkout</a></li>
                         </ul>
                     </li>
+                    <li><a href="{{route('faq')}}">FAQ</a></li>
                     <li><a href="{{route('contact')}}">Contact</a></li>
                 </ul>
             </div>
