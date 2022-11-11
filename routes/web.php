@@ -45,10 +45,12 @@ Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categorypro
 //User Auth
 Route::middleware('auth')->group(function () {
 
-//User Route
+//User Panel Route
     Route::prefix('userpanel')->prefix('userpanel')->controller(UserController::class)->name('userpanel.')->group(function (
     ) {
         Route::get('/', 'index')->name('index');
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');
     });
 //Admin route
     Route::middleware('admin')->prefix('admin')->controller(AdminHomeController::class)->name('admin.')->group(function (
