@@ -91,7 +91,7 @@
                             </div>
 
                             <div class="product-btns">
-                                {{--<form action="{{route('shopcart.store')}}" method="post">--}}
+                                <form action="{{route('shopcart.store')}}" method="post">
                                     @csrf
                                     <div class="qty-input">
                                         <span class="text-uppercase">QTY: </span>
