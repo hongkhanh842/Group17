@@ -50,7 +50,7 @@
                         <td>{{$data->status}}</td>
                     </tr>
                     <tr>
-                        <th >Cerated Date</th>
+                        <th >Created Date</th>
                         <td>{{$data->created_at}}</td>
                     </tr>
                     <tr>

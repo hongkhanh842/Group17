@@ -51,7 +51,7 @@ class CommentController extends Controller
     public function show($id)
     {
         $data = Comment::find($id);
-        return view('admin.comments.show', [
+        return view('admin.comment.show', [
            'data' => $data,
         ]);
     }
@@ -78,7 +78,7 @@ class CommentController extends Controller
     {
         $data = Comment::find($id);
         $data->status = $request->status;
-        $data->save;
+        $data->save();
         return redirect(route('admin.comment.show',['id' => $id]));
     }
 
