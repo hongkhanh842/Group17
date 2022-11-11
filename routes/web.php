@@ -33,8 +33,8 @@ Route::get('/references', [HomeController::class, 'references'])->name('referenc
 Route::post('/storemessage', [HomeController::class, 'storemessage'])->name('storemessage');
 Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
 Route::post('/storecomment', [HomeController::class, 'storecomment'])->name('storecomment');
-Route::view('/loginuser', 'home.login');
-Route::view('/registeruser', 'home.register');
+Route::view('/loginuser', 'home.login')->name('loginuser');
+Route::view('/registeruser', 'home.register')->name('registeruser');
 Route::get('/logoutuser', [HomeController::class, 'logout'])->name('logoutuser');
 
 
@@ -42,7 +42,7 @@ Route::get('/product/{id}', [HomeController::class, 'product'])->name('product')
 Route::get('/categoryproducts/{id}/{slug}', [HomeController::class, 'categoryproducts'])->name('categoryproducts');
 
 
-Route::prefix('admin')->controller(AdminHomeController::class)->name('admin.')->group(function () {
+Route::middleware('admin')->prefix('admin')->controller(AdminHomeController::class)->name('admin.')->group(function () {
 // Administrator routes
     Route::get('/', 'index')->name('index');
 // Admin general routes
