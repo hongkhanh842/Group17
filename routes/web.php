@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminPanel\CommentController;
 use App\Http\Controllers\AdminPanel\FaqController;
 use App\Http\Controllers\AdminPanel\ImageController;
 use App\Http\Controllers\AdminPanel\MessageController;
+use App\Http\Controllers\AdminPanel\OrderController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ShopCartController;
 use App\Http\Controllers\UserController;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');
         Route::get('/orders', 'orders')->name('orders');
         Route::get('/orderdetail/{id}', 'orderdetail')->name('orderdetail');
+        Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');
     });
 
     // ShopCart routes
@@ -148,6 +150,20 @@ Route::middleware('auth')->group(function () {
                 Route::get('/destroy/{id}', 'destroy')->name('destroy');
                 Route::post('/addrole/{id}', 'addrole')->name('addrole');
                 Route::get('/destroyrole/{uid}/{rid}', 'destroyrole')->name('destroyrole');
+            });
+//Admin Management order
+        Route::prefix('order')->controller(OrderController::class)->name('order.')
+            ->group(function () {
+                Route::get('/{slug}', 'index')->name('index');
+                Route::get('/create', 'create')->name('create');
+                Route::post('/store', 'store')->name('store');
+                Route::get('/edit/{id}', 'edit')->name('edit');
+                Route::post('/update/{id}', 'update')->name('update');
+                Route::get('/destroy/{id}', 'destroy')->name('destroy');
+                Route::get('/show/{id}', 'show')->name('show');
+                Route::get('/cancelorder/{id}', 'cancelorder')->name('cancelorder');
+                Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');
+                Route::get('/acceptproduct/{id}', 'acceptproduct')->name('acceptproduct');
             });
     });
 });
