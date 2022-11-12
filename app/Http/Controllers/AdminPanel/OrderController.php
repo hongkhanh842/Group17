@@ -1,48 +1,24 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminPanel;
 
-use App\Models\Comment;
+use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($slug)
     {
-        return view('home.user.index');
-    }
-
-    public function reviews()
-    {
-        $comments = Comment::where('user_id', '=', Auth::id())->get();
-        return view('home.user.comments',[
-           'comments' => $comments,
-        ]);
-    }
-
-    public function orderdetail($id)
-    {
-        $order = Order::find($id);
-        $orderproducts = OrderProduct::where('order_id', '=', $id)->get();
-        return view('home.user.orderdetail',[
-           'order' => $order,
-           'orderproducts' => $orderproducts,
-        ]);
-    }
-
-    public function orders()
-    {
-        $data = Order::where('user_id', '=', Auth::id())->get();
-        return view('home.user.orders',[
-           'data' => $data,
+        $data = Order::where('status', $slug)->get();
+        return view('admin.order.index',[
+            'data' => $data,
         ]);
     }
 
@@ -75,7 +51,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = Order::find($id);
+        $datalist = OrderProduct::where('order_id', $id)->get();
+        return view('admin.order.show',[
+            'data' => $data,
+            'datalist' => $datalist,
+            ]);
     }
 
     /**
@@ -98,7 +79,43 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Order::find($id);
+        $data->status = $request->status;
+        $data->note = $request->note;
+        $data->save();
+
+        return redirect()->route('admin.order.show',['id' => $id]);
+
+    }
+
+    public function cancelorder($id)
+    {
+        $data = Order::find($id);
+        $data->status = 'Cancelled';
+        $data->save();
+
+        return redirect()->back();
+
+    }
+
+    public function cancelproduct($id)
+    {
+        $data = OrderProduct::find($id);
+        $data->status = 'Cancelled';
+        $data->save();
+
+        return redirect()->back();
+
+    }
+
+    public function acceptproduct($id)
+    {
+        $data = OrderProduct::find($id);
+        $data->status = 'Accepted';
+        $data->save();
+
+        return redirect()->back();
+
     }
 
     /**
@@ -110,22 +127,5 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function reviewdestroy($id)
-    {
-        $data = Comment::find($id);
-        $data->delete();
-        return redirect(route('userpanel.reviews'));
-    }
-
-    public function cancelproduct($id)
-    {
-        $data = OrderProduct::find($id);
-        $data->status = 'Cancelled';
-        $data->save();
-
-        return redirect()->back();
-
     }
 }
