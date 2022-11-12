@@ -66,8 +66,10 @@ class CategoryController extends Controller
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }
+/*        dd($request->except('_token'));
+        $data->fill = $request->except('_token');*/
         $data->save();
-        return redirect('admin/category');
+        return redirect()->route('admin.category.index');
     }
 
     /**
@@ -131,8 +133,11 @@ class CategoryController extends Controller
     public function destroy(Category $category, $id)
     {
         $data = Category::find($id);
-        Storage::delete($data->image);
+        if ($data->image && Storage::disk('public')->exists($data->image)) {
+            Storage::delete($data->image);
+        }
         $data->delete();
+        /*$category->delete();*/
         return redirect('admin/category');
     }
 }

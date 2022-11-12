@@ -6,7 +6,7 @@
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <span class="brand-text font-weight-light">My Admin Panel</span>
     </a>
 
     <!-- Sidebar -->
@@ -14,11 +14,11 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('assets')}}/admin/img/user2-160x160.jpg" class="img-circle elevation-2"
-                     alt="User Image">
+                <img src="{{asset('assets')}}/admin/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">{{ Auth::user()->name }} </a>
+                <a href="/logoutuser" class="text-uppercase">Logout</a>
             </div>
         </div>
 
@@ -28,79 +28,81 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i>
-                        <p>Dashboard</p></a>
+                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i> Dashboard</a>
                 </li>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-box-open text-blue"></i>
                         <p>
-                            Order
+                            Orders
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="../../index.html" class="nav-link">
+                            <a href="/admin/order/New" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>New</p>
+                                <p>New Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../index2.html" class="nav-link">
+                            <a href="/admin/order/Accepted" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Accepted</p>
+                                <p>Accepted Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../index3.html" class="nav-link">
+                            <a href="/admin/order/Shipped" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Shipping</p>
+                                <p>Shipped Orders</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../index3.html" class="nav-link">
+                            <a href="/admin/order/Cancelled" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Completed</p>
+                                <p>Cancelled Orders</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/admin/order/Completed" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Completed Orders</p>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i>
-                        <p>Categories</p></a>
+                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i> Categories</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i>
-                        <p>Products</p></a>
+                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i> Products</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i>
-                        <p>Comment</p></a>
+                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i> Comments</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/faq" class="nav-link"><i class="nav-icon fas fa-question"></i>
-                        <p>FAQ</p></a>
+                    <a href="{{route('admin.faq.index')}}" class="nav-link"><i class="nav-icon fas fa-question"></i> FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/messages" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>
-                        <p>Messages</p></a>
+                    <a href="{{route('admin.message.index')}}" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i> Messages</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i>
-                        <p>Users</p></a>
+                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> Users</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i>
-                        <p>Social</p></a>
+                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> Social</a>
                 </li>
-                {{--<li class="nav-header">LABELS</li>--}}
+
+                <li class="nav-header">LABELS</li>
                 <li class="nav-item">
                     <a href="/admin/setting" class="nav-link">
-                        <i class="nav-icon fas fa-tools "></i>
+                        <i class="nav-icon fas fa-tools"></i>
                         <p class="text">Settings</p>
                     </a>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
