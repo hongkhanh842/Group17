@@ -52,6 +52,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/reviews', 'reviews')->name('reviews');
         Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');
+        Route::get('/orders', 'orders')->name('orders');
+        Route::get('/orderdetail/{id}', 'orderdetail')->name('orderdetail');
     });
 
     // ShopCart routes
@@ -60,10 +62,13 @@ Route::middleware('auth')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/create', 'create')->name('create');
             Route::post('/store', 'store')->name('store');
-            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::get('/add/{id}', 'add')->name('add');
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/destroy/{id}', 'destroy')->name('destroy');
             Route::get('/show/{id}', 'show')->name('show');
+            Route::post('/order', 'order')->name('order');
+            Route::post('/storeorder', 'storeorder')->name('storeorder');
+            Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');
         });
 
 //Admin route
