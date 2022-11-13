@@ -3,7 +3,7 @@
     <!-- container -->
     <div class="container">
         <!-- row -->
-        <div class="row">
+        {{--<div class="row">
             <!-- footer widget -->
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <div class="footer">
@@ -75,9 +75,9 @@
                 </div>
             </div>
             <!-- /footer subscribe -->
-        </div>
+        </div>--}}
         <!-- /row -->
-        <hr>
+       {{-- <hr>--}}
         <!-- row -->
         <div class="row">
             <div class="col-md-8 col-md-offset-2 text-center">
