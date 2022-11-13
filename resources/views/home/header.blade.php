@@ -1,37 +1,5 @@
 <!-- HEADER -->
 <header>
-    <!-- top Header -->
-    <div id="top-header">
-        <div class="container">
-            <div class="pull-left">
-                <span>Welcome to E-shop!</span>
-            </div>
-            <div class="pull-right">
-                <ul class="header-top-links">
-                    <li><a href="#">Store</a></li>
-                    <li><a href="#">Newsletter</a></li>
-                    <li><a href="#">FAQ</a></li>
-                    <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">ENG <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="#">English (ENG)</a></li>
-                            <li><a href="#">Russian (Ru)</a></li>
-                            <li><a href="#">French (FR)</a></li>
-                            <li><a href="#">Spanish (Es)</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown default-dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">USD <i class="fa fa-caret-down"></i></a>
-                        <ul class="custom-menu">
-                            <li><a href="#">USD ($)</a></li>
-                            <li><a href="#">EUR (€)</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- /top Header -->
 
     <!-- header -->
     <div id="header">
@@ -45,19 +13,7 @@
                 </div>
                 <!-- /Logo -->
 
-                <!-- Search -->
-                <div class="header-search">
-                    <form>
-                        <input class="input search-input" type="text" placeholder="Enter your keyword">
-                        <select class="input search-categories">
-                            <option value="0">All Categories</option>
-                            <option value="1">Category 01</option>
-                            <option value="1">Category 02</option>
-                        </select>
-                        <button class="search-btn"><i class="fa fa-search"></i></button>
-                    </form>
-                </div>
-                <!-- /Search -->
+
             </div>
             <div class="pull-right">
                 <ul class="header-btns">
@@ -77,10 +33,8 @@
                         @endguest
                         <ul class="custom-menu">
                             <li><a href="{{route('userpanel.index')}}"><i class="fa fa-user-o"></i> My Profile</a></li>
-                            <li><a href="#"><i class="fa fa-heart-o"></i> My Orders</a></li>
+                            <li><a href="{{route('userpanel.orders')}}"><i class="fa fa-heart-o"></i> My Orders</a></li>
                             <li><a href="{{route('userpanel.reviews')}}"><i class="fa fa-exchange"></i> My Reviews</a></li>
-                            <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-unlock-alt"></i> My Products</a></li>
                             <li><a href="/logout"><i class="fa fa-user-plus"></i> Logout</a></li>
                         </ul>
                     </li>
