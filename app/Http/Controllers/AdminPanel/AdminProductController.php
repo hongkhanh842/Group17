@@ -17,7 +17,7 @@ class AdminProductController extends Controller
      */
     public function index()
     {
-        $data = Product::all()->toQuery()->paginate(1);
+        $data = Product::all();
         return view('admin.product.index', [
             'data' => $data
         ]);

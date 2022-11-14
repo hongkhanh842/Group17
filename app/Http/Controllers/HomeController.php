@@ -111,11 +111,12 @@ class HomeController extends Controller
 
     public function categoryproducts($id)
     {
-        $data = Product::find($id);
-        $images = DB::table('images')->where('product_id', $id)->get();
-        return view('home.product',[
-            'data' => $data,
-            'images' => $images,
+        $category = Category::find($id);
+        $products = DB::table('products')->where('category_id', $id)->get();
+        /*dd($category);*/
+        return view('home.categoryproducts',[
+            'category' => $category,
+            'products' => $products,
         ]);
     }
 

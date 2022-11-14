@@ -56,5 +56,7 @@
 
 <@include("home.footer")
 @yield('foot')
+
+@stack('js')
 </body>
 </html>

@@ -10,8 +10,8 @@
             <ul class="breadcrumb">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Product</a></li>
-                <li><a href="#">{{$data->category->title}}</a></li>
-                <li class="active">{{$data->title}}</li>
+                <li><a href="#" >{{$data->category->title}}</a></li>
+                <li class="active" id="abc">{{--{{$data->title}}--}}</li>
             </ul>
         </div>
     </div>
@@ -208,3 +208,13 @@
 
 
 @endsection
+
+@push('js')
+    <script>
+        $.get('http://group17.love/api/product/{id}', function(res){
+            console.log(res);
+            let data = res.data;
+            $('#abc').html(data.title);
+        });
+    </script>
+@endpush
