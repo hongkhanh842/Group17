@@ -106,13 +106,15 @@
                 success: function (response) {
                     response.data.data.forEach(function (each) {
 
+
+
                         let image = '<img src="'+'/storage/' + each.image +'" style="height: 40px" ></img>' ;
 
                         let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
                         edit = edit.replace('id',each.id);
                         let del  = '<a href="{{route('admin.category.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
                         del = del.replace('id',each.id);
-                        let show = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-info btn-sm">Edit</a>';
+                        let show = '<a href="{{route('admin.category.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
                         show = show.replace('id',each.id);
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))

@@ -89,9 +89,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category, $id)
     {
-        $data = Category::find($id);
         return view('admin.category.show', [
-            'data' => $data
+            'id' => $id,
         ]);
     }
 

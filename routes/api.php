@@ -24,3 +24,4 @@ Route::get('/product/{id}', [ApiController::class, 'product'])->name('api.produc
 
 
 Route::get('/category', [ApiController::class, 'category'])->name('api.category');
+
