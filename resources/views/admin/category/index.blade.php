@@ -49,9 +49,9 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($data as $rs)
+                        {{--@foreach($data as $rs)
                             <tr>
-                               {{-- <td>{{$rs->id}}</td>
+                                <td>{{$rs->id}}</td>
                                 <td>
                                     {{ CategoryController::getParentsTree($rs, $rs->title) }}
                                 </td>
@@ -61,8 +61,8 @@
                                         <img src="{{Storage::url($rs->image)}}" style="height: 40px">
                                     @endif
                                 </td>
-                                <td>{{$rs->status}}</td>--}}
-                                {{--<td>
+                                <td>{{$rs->status}}</td>
+                                <td>
                                     <a href="{{route('admin.category.edit',['id'=>$rs->id])}}"
                                        class="btn btn-block btn-success btn-sm">Edit</a>
                                 </td>
@@ -73,9 +73,9 @@
                                 <td>
                                     <a href="{{route('admin.category.show',['id'=>$rs->id])}}"
                                        class="btn btn-block btn-info btn-sm">Show</a>
-                                </td>--}}
+                                </td>
                             </tr>
-                        @endforeach
+                        @endforeach--}}
                         </tbody>
                     </table>
                 </div>
@@ -108,9 +108,12 @@
 
                         let image = '<img src="'+'/storage/' + each.image +'" style="height: 40px" ></img>' ;
 
-                        let edit = '<a href="{{route('admin.category.edit',['id'=>$rs->id])}}"class="btn btn-block btn-success btn-sm">Edit</a>' ;
-                        let del = '<a href="{{route('admin.category.destroy',['id'=>$rs->id])}}"class="btn btn-block btn-danger btn-sm">Delete</a>';
-                        let show = '<a href="{{route('admin.category.edit',['id'=>$rs->id])}}"class="btn btn-block btn-info btn-sm">Edit</a>' ;
+                        let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
+                        edit = edit.replace('id',each.id);
+                        let del  = '<a href="{{route('admin.category.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        del = del.replace('id',each.id);
+                        let show = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-info btn-sm">Edit</a>';
+                        show = show.replace('id',each.id);
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
                             .append($('<td>').append(each.parent))
