@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminPanel\Category\StoreRequest;
+use App\Http\Requests\AdminPanel\Category\UpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
@@ -30,6 +33,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        /*$data = Http::acceptJson()->get('http://group17.love/api/category');*/
+      /*  axios.get('http://group17.love/api/category')
+        .then(response => {
+        console.log(response.data);
+    });*/
+
         $data = Category::all();
         return view('admin.category.index', [
             'data' => $data
@@ -55,11 +64,11 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = new Category();
         $data->parent_id = $request->parent_id;
-        $data->title = $request->title;
+        $data->title = $request->title->validated();
         $data->keywords = $request->keywords;
         $data->description = $request->description;
         $data->status = $request->status;
@@ -109,7 +118,7 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category, $id)
+    public function update(UpdateRequest $request, Category $category, $id)
     {
         $data = Category::find($id);
         $data->parent_id = $request->parent_id;

@@ -29,6 +29,7 @@
                     <h3 class="card-title">Category Elements</h3>
                 </div>
                 <!-- /.card-header -->
+
                 <!-- form start -->
                 <form role="form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -49,8 +50,13 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Title">
+                            <input type="text" class="form-control" name="title" placeholder="Title" value="{{old('title')}}">
                         </div>
+                        @if ($errors->has('title'))
+                            <span class="alert alert-danger">
+                                {{ $errors->first('title') }}
+                            </span>
+                        @endif
                         <div class="form-group">
                             <label for="exampleInputEmail1">Keywords</label>
                             <input type="text" class="form-control" name="keywords" placeholder="Keywords">

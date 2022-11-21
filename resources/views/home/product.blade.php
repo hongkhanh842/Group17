@@ -211,10 +211,10 @@
 
 @push('js')
     <script>
-        $.get('http://group17.love/api/product/{id}', function(res){
+       /* $.get('http://group17.love/api/product/{id}', function(res){
             console.log(res);
             let data = res.data;
             $('#abc').html(data.title);
-        });
+        });*/
     </script>
 @endpush

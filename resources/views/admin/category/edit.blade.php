@@ -52,6 +52,11 @@
                             <label for="exampleInputEmail1">Title</label>
                             <input type="text" class="form-control" name="title" value="{{$data->title}}">
                         </div>
+                        @if ($errors->has('title'))
+                            <span class="alert alert-danger">
+                                {{ $errors->first('title') }}
+                            </span>
+                        @endif
                         <div class="form-group">
                             <label for="exampleInputEmail1">Keywords</label>
                             <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
