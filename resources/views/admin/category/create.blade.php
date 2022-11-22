@@ -128,11 +128,6 @@
                 }
 
             })
-
-            $('#form-add').on('submit', function (event) {
-                event.preventDefault();
-                let form = $(this).serialize();
-            })
         })
     </script>
 @endpush

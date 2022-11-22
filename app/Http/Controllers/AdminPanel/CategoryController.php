@@ -46,11 +46,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category, $id)
     {
-        $data = Category::find($id);
-        $datalist = Category::all();
         return view('admin.category.edit', [
-            'data' => $data,
-            'datalist' => $datalist,
             'id' => $id
         ]);
     }

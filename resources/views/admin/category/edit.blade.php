@@ -30,29 +30,22 @@
                         <div class="form-group">
                             <label >Parent Category</label>
                             <select class="form-control select2" name="parent_id" style="width: 100%;" id="select-data">
-                                {{--@foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}"  @if ($rs->id == $data->parent_id)  selected="selected"  @endif>
-                                        {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}
-                                    </option>
-                                @endforeach--}}
+                                {{--@if ($rs->id == $data->parent_id)  selected="selected"  @endif--}}
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{$data->title}}">
                         </div>
                         @if ($errors->has('title'))
                             <span class="alert alert-danger">
                                 {{ $errors->first('title') }}
                             </span>
                         @endif
-                        <div class="form-group">
+                        <div class="form-group" id="keywords">
                             <label for="exampleInputEmail1">Keywords</label>
-                            <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="description">
                             <label for="exampleInputEmail1">Description</label>
-                            <input type="text" class="form-control" name="description" value="{{$data->description}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
@@ -65,8 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control" name="status">
-                                <option selected>{{$data->status}}</option>
+                            <select class="form-control" name="status" id="status">
                                 <option>True</option>
                                 <option>False</option>
                             </select>
@@ -112,6 +104,7 @@
                 url: '{{ route('api.category') }}',
                 dataType: 'json',
                 success: function (response) {
+
                     $('#select-data').html('<option value="0" selected="selected">Main Category</option>');
                     response.data.data.forEach(function (each) {
 
@@ -120,9 +113,23 @@
                         html =html.replace('id',each.id);
                         let option = getParentsTree(each, each.title, response.data.data);
 
+                        let status = '<option selected>'+'each.status'+'</option>'
+                        status = status.replace('each.status',each.status);
+
+                        let title1 ='<input type="text" class="form-control" name="title" value="each.title">'
+                        title1 = title1.replace('each.title',each.title);
+                        let keywords ='<input type="text" class="form-control" name="keywords" value="each.keywords">'
+                        keywords = keywords.replace('each.keywords',each.keywords);
+                        let description ='<input type="text" class="form-control" name="description" value="each.description">'
+                        description = description.replace('each.description',each.description);
+
                         $('#select-data').append(html + option + '</option>' )
                             if (each.id === {{$id}}) {
                                 $('#title').html('Edit Category: ').append(each.title);
+                                $('#title1').append(title1);
+                                $('#keywords').append(keywords);
+                                $('#description').append(description);
+                                $('#status').append(status);
                             }
 
                     });
@@ -130,11 +137,6 @@
                 error: function (response) {
                 }
 
-            })
-
-            $('#form-add').on('submit', function (event) {
-                event.preventDefault();
-                let form = $(this).serialize();
             })
         })
     </script>

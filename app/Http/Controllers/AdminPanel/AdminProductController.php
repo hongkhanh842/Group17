@@ -10,11 +10,6 @@ use Illuminate\Support\Facades\Storage;
 
 class AdminProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $data = Product::all();
@@ -23,11 +18,6 @@ class AdminProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $data = Category::all();
@@ -36,12 +26,6 @@ class AdminProductController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = new Product();
@@ -65,12 +49,6 @@ class AdminProductController extends Controller
         return redirect()->route('admin.product.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function show(Product $product, $id)
     {
         $data = Product::find($id);
@@ -79,12 +57,6 @@ class AdminProductController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Product $product, $id)
     {
         $data = Product::find($id);
@@ -95,13 +67,7 @@ class AdminProductController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Product $product, $id)
     {
         $data = Product::find($id);
@@ -123,12 +89,7 @@ class AdminProductController extends Controller
         return redirect('admin/product');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Product $product, $id)
     {
         $data = Product::find($id);

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Comment;
+use App\Models\Faq;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,6 +35,15 @@ class ApiController extends Controller
     public function product(): JsonResponse
     {
         $data = Product::query()->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+    public function faq(): JsonResponse
+    {
+        $data = Faq::query()->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
