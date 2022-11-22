@@ -23,5 +23,8 @@ Route::get('/product/', [ApiController::class, 'product'])->name('api.product');
 Route::get('/category', [ApiController::class, 'category'])->name('api.category');
 Route::get('/comment', [ApiController::class, 'comment'])->name('api.comment');
 Route::get('/faq', [ApiController::class, 'faq'])->name('api.faq');
+Route::get('/message', [ApiController::class, 'message'])->name('api.message');
+Route::get('/order', [ApiController::class, 'order'])->name('api.order');
+Route::get('/orderproduct', [ApiController::class, 'orderproduct'])->name('api.orderproduct');
 /*Route::get('/image', [ApiController::class, 'image'])->name('api.image');*/
 

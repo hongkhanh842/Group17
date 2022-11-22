@@ -1,20 +1,18 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Show Product: '.$data->title)
+@section('title', 'Show Product:')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-3">
-                        <a href="{{route('admin.product.edit',['id'=>$data->id])}}" class="btn btn-block bg-gradient-info"
+                        <a href="{{route('admin.product.edit',['id'=>$id])}}" class="btn btn-block bg-gradient-info"
                            style="width: 200px">Edit</a>
                     </div>
                     <div class="col-sm-3">
-                        <a href="{{route('admin.product.destroy',['id'=>$data->id])}}"
+                        <a href="{{route('admin.product.destroy',['id'=>$id])}}"
                            onclick="return confirm('Deleting !! Are you sure ?')"
                            class="btn btn-block bg-gradient-danger" style="width: 200px">Delete</a>
                     </div>
@@ -26,86 +24,71 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Detail</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body p-0">
-                    <table class="table table-striped">
-                        <tr>
-                            <th style="width: 200px">ID</th>
-                            <td>{{$data->id}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Category</th>
-                            <td>
-                                {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($data->category, $data->category->title) }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Title</th>
-                            <td>{{$data->title}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Keywords</th>
-                            <td>{{$data->keywords}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Description</th>
-                            <td>{{$data->description}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Price</th>
-                            <td>{{$data->price}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Quantity</th>
-                            <td>{{$data->quantity}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Minimum Quantity</th>
-                            <td>{{$data->minquantity}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Tax</th>
-                            <td>{{$data->tax}}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Detail</th>
-                            <td>{!! $data->detail !!}</td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Image</th>
-                            <td>
-                                @if ($data->image)
-                                    <img src="{{Storage::url($data->image)}}" style="height: 100px">
-                                @endif
-                            </td>
-                        </tr>
-                        <tr>
-                            <th style="width: 150px">Status</th>
-                            <td>{{$data->status}}</td>
-                        </tr>
-                        <tr>
-                            <th>Created Date</th>
-                            <td>{{$data->created_at}}</td>
-                        </tr>
-                        <tr>
-                            <th>Update Date</th>
-                            <td>{{$data->updated_at}}</td>
-                        </tr>
+                    <table class="table table-striped" id="table-data">
                     </table>
                 </div>
-                <!-- /.card-body -->
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
+
+@push('js')
+    <script>
+        let res
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+                    response.data.data.forEach(function (each) {
+                    });
+                    res = response.data.data;
+                },
+                error: function (response) {
+                }
+
+            })
+        });
+
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('api.product') }}',
+                dataType: 'json',
+                success: function (response) {
+                    response.data.data.forEach(function (each) {
+                        if (each.id === {{$id}}) {
+
+                            let image = '<img src="' + '/storage/' + each.image + '" style="height: 150px" ></img>';
+
+                            $('#table-data')
+                                .append($('<tr>').append($('<th style="width: 200px">').append('ID')).append($('<td>').append(each.id)))
+                                .append($('<tr>').append($('<th>').append('Category'))     .append($('<td>').append(getParentsTree(each.category, each.category.title, res))))
+                                .append($('<tr>').append($('<th>').append('Title'))     .append($('<td>').append(each.title)))
+                                .append($('<tr>').append($('<th>').append('Keywords'))  .append($('<td>').append(each.keywords)))
+                                .append($('<tr>').append($('<th>').append('Description'))  .append($('<td>').append(each.description)))
+                                .append($('<tr>').append($('<th>').append('Price'))  .append($('<td>').append(each.price)))
+                                .append($('<tr>').append($('<th>').append('Quantity'))  .append($('<td>').append(each.quantity)))
+                                .append($('<tr>').append($('<th>').append('Minimum Quantity'))  .append($('<td>').append(each.minquantity)))
+                                .append($('<tr>').append($('<th>').append('Tax'))  .append($('<td>').append(each.tax)))
+                                .append($('<tr>').append($('<th>').append('Detail'))  .append($('<td>').append(each.detail)))
+                                .append($('<tr>').append($('<th>').append('Image'))     .append($('<td>').append(image)))
+                                .append($('<tr>').append($('<th>').append('Status'))    .append($('<td>').append(each.status)))
+                                .append($('<tr>').append($('<th>').append('Created At')).append($('<td>').append(convertDateToDateTime(each.created_at))))
+                                .append($('<tr>').append($('<th>').append('Updated At')).append($('<td>').append(convertDateToDateTime(each.updated_at))))
+                        }
+                    });
+                },
+                error: function (response) {
+                }
+            })
+        });
+    </script>
+@endpush

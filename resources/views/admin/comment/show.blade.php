@@ -59,7 +59,7 @@
             });
         }
 
-        $(document).ready(function () {
+        $(document).ready(async function () {
             $.ajax({
                 url: '{{ route('api.comment') }}',
                 dataType: 'json',

@@ -66,7 +66,7 @@
                         title = title.replace('id',each.product.id);
                         title = title.replace('prd',each.product.title);
 
-                        let del  = '<a href="{{route('admin.comment.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        let del  = '<a href="{{route('admin.comment.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm" >Delete</a>';
                         del = del.replace('id',each.id);
                         let show = '<a href="{{route('admin.comment.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
                         show = show.replace('id',each.id);

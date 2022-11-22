@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Faq;
+use App\Models\Image;
+use App\Models\Message;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -34,7 +38,7 @@ class ApiController extends Controller
 
     public function product(): JsonResponse
     {
-        $data = Product::query()->latest()->paginate(5);
+        $data = Product::query()->with('category')->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
@@ -49,6 +53,42 @@ class ApiController extends Controller
         $arr['pagination'] = $data->linkCollection();
         return $this->successResponse($arr);
     }
+
+    public function message(): JsonResponse
+    {
+        $data = Message::query()->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+    public function order(): JsonResponse
+    {
+        $data = Order::query()->with('user')->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+    public function orderproduct(): JsonResponse
+    {
+        $data = OrderProduct::query()->with('product')->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+/*    public function image(): JsonResponse
+    {
+        $data = Image::query()->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }*/
 
 
 }

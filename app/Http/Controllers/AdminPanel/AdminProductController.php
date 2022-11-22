@@ -12,10 +12,7 @@ class AdminProductController extends Controller
 {
     public function index()
     {
-        $data = Product::all();
-        return view('admin.product.index', [
-            'data' => $data
-        ]);
+        return view('admin.product.index');
     }
 
     public function create()
@@ -30,7 +27,7 @@ class AdminProductController extends Controller
     {
         $data = new Product();
         $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
+        $data->user_id = 0;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
@@ -43,17 +40,14 @@ class AdminProductController extends Controller
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }
-/*        dd($request->except('_token'));
-        $data->fill = $request->except('_token');*/
         $data->save();
         return redirect()->route('admin.product.index');
     }
 
     public function show(Product $product, $id)
     {
-        $data = Product::find($id);
         return view('admin.product.show', [
-            'data' => $data
+            'id' => $id,
         ]);
     }
 
@@ -72,7 +66,7 @@ class AdminProductController extends Controller
     {
         $data = Product::find($id);
         $data->category_id = $request->category_id;
-        $data->user_id = 0; //$request->category_id;
+        $data->user_id = 0;
         $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
@@ -97,7 +91,6 @@ class AdminProductController extends Controller
             Storage::delete($data->image);
         }
         $data->delete();
-        /*$product->delete();*/
         return redirect('admin/product');
     }
 }
