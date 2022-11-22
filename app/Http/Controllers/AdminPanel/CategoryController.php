@@ -50,11 +50,12 @@ class CategoryController extends Controller
         $datalist = Category::all();
         return view('admin.category.edit', [
             'data' => $data,
-            'datalist' => $datalist
+            'datalist' => $datalist,
+            'id' => $id
         ]);
     }
 
-    public function update(UpdateRequest $request, Category $category, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $data = Category::find($id);
         $data->parent_id = $request->parent_id;

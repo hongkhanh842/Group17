@@ -24,7 +24,16 @@ class ApiController extends Controller
 
     public function comment(): JsonResponse
     {
-        $data = Comment::query()->latest()->paginate(5);
+        $data = Comment::query()->with('product')->with('user')->latest()->paginate(5);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+    public function product(): JsonResponse
+    {
+        $data = Product::query()->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();

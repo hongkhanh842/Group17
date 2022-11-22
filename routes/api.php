@@ -19,9 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/product/{id}', [ApiController::class, 'product'])->name('api.product');
-
-
-
+Route::get('/product/', [ApiController::class, 'product'])->name('api.product');
 Route::get('/category', [ApiController::class, 'category'])->name('api.category');
+Route::get('/comment', [ApiController::class, 'comment'])->name('api.comment');
 
