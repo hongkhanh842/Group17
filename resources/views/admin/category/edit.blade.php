@@ -1,11 +1,9 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Category: '.$data->title)
+@section('title', 'Edit Category')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -19,24 +17,18 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Category Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form role="form" action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-
                         <div class="form-group">
                             <label >Parent Category</label>
-
                             <select class="form-control select2" name="parent_id" style="width: 100%;">
                                 <option value="0" selected="selected">Main Category</option>
                                 @foreach($datalist as $rs)
@@ -45,9 +37,7 @@
                                     </option>
                                 @endforeach
                             </select>
-
                         </div>
-
                         <div class="form-group">
                             <label for="exampleInputEmail1">Title</label>
                             <input type="text" class="form-control" name="title" value="{{$data->title}}">
@@ -83,15 +73,11 @@
                             </select>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection

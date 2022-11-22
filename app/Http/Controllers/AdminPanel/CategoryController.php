@@ -12,81 +12,31 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    protected $append = [
-        'getParentsTree'
-    ];
-
-    public static function getParentsTree($category, $title)
-    {
-        if ($category->parent_id == 0 )
-        {
-            return $title;
-        }
-        $parent = Category::find($category->parent_id);
-        $title = $parent->title . ' > ' . $title;
-        return CategoryController::getParentsTree($parent, $title);
-    }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        /*$data = Http::acceptJson()->get('http://group17.love/api/category');*/
-      /*  axios.get('http://group17.love/api/category')
-        .then(response => {
-        console.log(response.data);
-    });*/
-
-        $data = Category::all();
-        return view('admin.category.index', [
-            'data' => $data
-        ]);
+        return view('admin.category.index');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $data = Category::all();
-        return view('admin.category.create', [
-            'data' => $data
-        ]);
+        return view('admin.category.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreRequest $request)
     {
         $data = new Category();
         $data->parent_id = $request->parent_id;
-        $data->title = $request->title->validated();
+        $data->title = $request->title;
         $data->keywords = $request->keywords;
         $data->description = $request->description;
         $data->status = $request->status;
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }
-/*        dd($request->except('_token'));
-        $data->fill = $request->except('_token');*/
         $data->save();
         return redirect()->route('admin.category.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function show(Category $category, $id)
     {
         return view('admin.category.show', [
@@ -94,12 +44,6 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Category $category, $id)
     {
         $data = Category::find($id);
@@ -110,13 +54,6 @@ class CategoryController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateRequest $request, Category $category, $id)
     {
         $data = Category::find($id);
@@ -132,12 +69,7 @@ class CategoryController extends Controller
         return redirect('admin/category');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Category  $category
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Category $category, $id)
     {
         $data = Category::find($id);
@@ -145,7 +77,6 @@ class CategoryController extends Controller
             Storage::delete($data->image);
         }
         $data->delete();
-        /*$category->delete();*/
         return redirect('admin/category');
     }
 }

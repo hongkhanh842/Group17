@@ -14,6 +14,22 @@ function renderPagination(links) {
     })
 }
 
+function getParentsTree(object, title, data){
+    if (object.parent_id === 0) {
+        return title;
+    }
+    else {
+        let a ='';
+        data.forEach(function (each) {
+            if (each.id === object.parent_id) {
+                title = each.title + ' > ' + title;
+                a = title;
+            }
+        });
+        return a;
+    }
+}
+
 function notifySuccess(message = '') {
     $.toast({
         heading: 'Success',
@@ -33,3 +49,5 @@ function notifyError(message = '') {
         icon: 'error'
     });
 }
+
+
