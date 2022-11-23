@@ -16,7 +16,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Edit Product: {{$data->title}}</h1>
+                        <h1 id="title"></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -25,66 +25,49 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Product Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" action="{{route('admin.product.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{route('admin.product.update',['id'=>$id])}}" method="post"
+                      enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
-
                         <div class="form-group">
-                            <label >Parent Category</label>
-
-                            <select class="form-control select2" name="category_id" style="width: 100%;">
-                                @foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}"  @if ($rs->id === $data->category_id)  selected="selected"  @endif>
-                                      {{--  {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}--}}
-                                    </option>
-                                @endforeach
+                            <label>Parent Category</label>
+                            <select class="form-control select2" name="category_id" style="width: 100%;"
+                                    id="selected-data">
                             </select>
 
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{$data->title}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="keywords">
                             <label for="exampleInputEmail1">Keywords</label>
-                            <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="description">
                             <label for="exampleInputEmail1">Description</label>
-                            <input type="text" class="form-control" name="description" value="{{$data->description}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="price">
                             <label for="exampleInputEmail1">Price</label>
-                            <input type="number" class="form-control" name="price" value="{{$data->price}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="quantity">
                             <label for="exampleInputEmail1">Quantity</label>
-                            <input type="number" class="form-control" name="quantity" value="{{$data->quantity}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="minquantity">
                             <label for="exampleInputEmail1">Minimum Quantity</label>
-                            <input type="number" class="form-control" name="minquantity" value="{{$data->minquantity}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="tax">
                             <label for="exampleInputEmail1">Tax %</label>
-                            <input type="number" class="form-control" name="tax" value="{{$data->tax}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Detail</label>
-                            <textarea class="textarea" id="detail" name="detail">
-                                {{$data->detail}}
+                            <textarea class="textarea" id="detail" name="detail" id="detail">
                             </textarea>
                         </div>
                         <div class="form-group">
@@ -98,24 +81,19 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control" name="status">
-                                <option selected>{{$data->status}}</option>
+                            <select class="form-control" name="status" id="status">
                                 <option>True</option>
                                 <option>False</option>
                             </select>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
 
 @section('foot')
@@ -128,3 +106,102 @@
         })
     </script>
 @endsection
+
+@push('js')
+    <script>
+        function submitForm() {
+            $.ajax({
+                url: $("#form-edit").attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $("#form-edit").serialize(),
+                processData: false,
+                contentType: false,
+                async: false,
+                cache: false,
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    if (response.success) {
+                        notifySuccess();
+                    } else {
+                        notifyError(response.message);
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+
+            let val
+            $.ajax({
+                url: '{{ route('api.product') }}',
+                dataType: 'json',
+                success: function (response) {
+
+                    response.data.data.forEach(function (each) {
+                        let status = '<option selected>' + 'each.status' + '</option>'
+                        status = status.replace('each.status', each.status);
+
+
+                        let title1 = '<input type="text" class="form-control" name="title" value="each.title">'
+                        title1 = title1.replace('each.title', each.title);
+                        let keywords = '<input type="text" class="form-control" name="keywords" value="each.keywords">'
+                        keywords = keywords.replace('each.keywords', each.keywords);
+                        let description = '<input type="text" class="form-control" name="description" value="each.description">'
+                        description = description.replace('each.description', each.description);
+                        let price = '<input type="text" class="form-control" name="price" value="each.price">'
+                        price = price.replace('each.price', each.price);
+                        let quantity = '<input type="text" class="form-control" name="quantity" value="each.quantity">'
+                        quantity = quantity.replace('each.quantity', each.quantity);
+                        let minquantity = '<input type="text" class="form-control" name="minquantity" value="each.minquantity">'
+                        minquantity = minquantity.replace('each.minquantity', each.minquantity);
+                        let tax = '<input type="text" class="form-control" name="tax" value="each.tax">'
+                        tax = tax.replace('each.tax', each.tax);
+                        if (each.id === {{$id}}) {
+
+                            val = each.category_id;
+                            $('#title').html('Edit Category: ').append(each.title);
+                            $('#title1').append(title1);
+                            $('#keywords').append(keywords);
+                            $('#description').append(description);
+                            $('#price').append(price);
+                            $('#quantity').append(quantity);
+                            $('#minquantity').append(minquantity);
+                            $('#tax').append(tax);
+                            $('#detail').append(each.detail);
+                            $('#status').append(status);
+                        }
+
+                    });
+                },
+                error: function (response) {
+                }
+
+            })
+
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+
+                    response.data.data.forEach(function (each) {
+
+                        let html = "<option value='id'>"
+                        html = html.replace('id', each.id);
+                        let option = getParentsTree(each, each.title, response.data.data);
+
+                        $('#selected-data').append(html + option + '</option>')
+                    });
+                    val = val.toString()
+                    $('#selected-data').val(val)
+                },
+                error: function (response) {
+                }
+
+            })
+        })
+    </script>
+@endpush

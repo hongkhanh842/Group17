@@ -24,11 +24,12 @@
                 <div class="card-header">
                     <h3 class="card-title">Category Elements</h3>
                 </div>
-                <form role="form" action="{{route('admin.category.update',['id'=>$id])}}" method="post" enctype="multipart/form-data" id="form-edit">
+                <form role="form" action="{{route('admin.category.update',['id'=>$id])}}" method="post"
+                      enctype="multipart/form-data" id="form-edit">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label >Parent Category</label>
+                            <label>Parent Category</label>
                             <select class="form-control select2" name="parent_id" style="width: 100%;" id="select-data">
                                 {{--@if ($rs->id == $data->parent_id)  selected="selected"  @endif--}}
                             </select>
@@ -104,35 +105,38 @@
                 url: '{{ route('api.category') }}',
                 dataType: 'json',
                 success: function (response) {
-
+                    let val;
                     $('#select-data').html('<option value="0" selected="selected">Main Category</option>');
                     response.data.data.forEach(function (each) {
 
 
                         let html = "<option value='id'>"
-                        html =html.replace('id',each.id);
+                        html = html.replace('id', each.id);
                         let option = getParentsTree(each, each.title, response.data.data);
 
-                        let status = '<option selected>'+'each.status'+'</option>'
-                        status = status.replace('each.status',each.status);
+                        let status = '<option selected>' + 'each.status' + '</option>'
+                        status = status.replace('each.status', each.status);
 
-                        let title1 ='<input type="text" class="form-control" name="title" value="each.title">'
-                        title1 = title1.replace('each.title',each.title);
-                        let keywords ='<input type="text" class="form-control" name="keywords" value="each.keywords">'
-                        keywords = keywords.replace('each.keywords',each.keywords);
-                        let description ='<input type="text" class="form-control" name="description" value="each.description">'
-                        description = description.replace('each.description',each.description);
+                        let title1 = '<input type="text" class="form-control" name="title" value="each.title">'
+                        title1 = title1.replace('each.title', each.title);
+                        let keywords = '<input type="text" class="form-control" name="keywords" value="each.keywords">'
+                        keywords = keywords.replace('each.keywords', each.keywords);
+                        let description = '<input type="text" class="form-control" name="description" value="each.description">'
+                        description = description.replace('each.description', each.description);
 
-                        $('#select-data').append(html + option + '</option>' )
-                            if (each.id === {{$id}}) {
-                                $('#title').html('Edit Category: ').append(each.title);
-                                $('#title1').append(title1);
-                                $('#keywords').append(keywords);
-                                $('#description').append(description);
-                                $('#status').append(status);
-                            }
+                        $('#select-data').append(html + option + '</option>')
+                        if (each.id === {{$id}}) {
+                            $('#title').html('Edit Category: ').append(each.title);
+                            $('#title1').append(title1);
+                            $('#keywords').append(keywords);
+                            $('#description').append(description);
+                            $('#status').append(status);
+                            val=each.id.toString();
+                        }
 
+                         $('#select-data').val(val)
                     });
+
                 },
                 error: function (response) {
                 }
