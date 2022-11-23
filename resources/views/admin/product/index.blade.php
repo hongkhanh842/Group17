@@ -3,9 +3,7 @@
 @section('title', 'Product List')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -20,20 +18,15 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
-
-            <!-- Default box -->
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Product List</h3>
                 </div>
-                <!-- /.card-header -->
                 <div class="card-body">
-                    <table class="table table-bordered">
+                    <table class="table table-bordered" id="table-data">
                         <thead>
                         <tr>
                             <th style="width: 10px">Id</th>
@@ -49,44 +42,80 @@
                             <th style="width: 40px">Show</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        @foreach( $data as $rs)
-                            <tr>
-                                <td>{{$rs->id}}</td>
-                                <td> {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category, $rs->category->title) }} </td>
-                                <td>{{$rs->title}} </td>
-                                <td>{{$rs->price}} </td>
-                                <td>{{$rs->quantity}} </td>
-                                <td>
-                                    @if ($rs->image)
-                                        <img src="{{Storage::url($rs->image)}}" style="height: 40px">
-                                    @endif
-
-                                </td>
-                                <td> <a href="{{route('admin.image.index',['pid'=>$rs->id])}}"
-                                        onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">
-                                        <img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px">
-                                    </a>
-                                </td>
-                                <td>{{$rs->status}} </td>
-                                <td><a href="{{route('admin.product.edit',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">Edit</a>  </td>
-                                <td><a href="{{route('admin.product.destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
-                                       onclick="return confirm('Deleting !! Are you sure ?')">Delete</a>  </td>
-                                <td><a href="{{route('admin.product.show',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">Show</a>  </td>
-                            </tr>
-                        @endforeach
-                        </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
-              {{--  <div class="card-footer clearfix">
-                    {{ $data->links() }}
-                </div>--}}
+                <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right" id="pagination">
+                    </ul>
+                </div>
             </div>
-            <!-- /.card -->
-
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready( async function () {
+            var res
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+                    response.data.data.forEach(function (each) {
+                    });
+                    res = response.data.data;
+                },
+                error: function (response) {
+                }
+            })
+
+            $.ajax({
+                url: '{{ route('api.product') }}',
+                dataType: 'json',
+                data: {page: {{ request()->get('page') ?? 1 }}},
+
+                success: function (response) {
+                    response.data.data.forEach(function (each) {
+
+                        let image = '<img src="'+'/storage/' + each.image +'" style="height: 40px" ></img>' ;
+
+                        let gallery = '<a href="{{route('admin.image.index',['pid'])}}"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>'
+                        gallery = gallery.replace('pid',each.id)
+
+                        let edit = '<a href="{{route('admin.product.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
+                        edit = edit.replace('id',each.id);
+                        let del  = '<a href="{{route('admin.product.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        del = del.replace('id',each.id);
+                        let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
+                        show = show.replace('id',each.id);
+                        $('#table-data').append($('<tr>')
+                            .append($('<td>').append(each.id))
+                            .append($('<td>').append(getParentsTree(each.category, each.category.title, res)))
+                            .append($('<td>').append(each.title))
+                            .append($('<td>').append(each.price))
+                            .append($('<td>').append(each.quantity))
+                            .append($('<td>').append(image))
+                            .append($('<td>').append(gallery))
+                            .append($('<td>').append(each.status))
+                            .append($('<td>').append(edit))
+                            .append($('<td>').append(del))
+                            .append($('<td>').append(show))
+                        );
+
+                    });
+                    renderPagination(response.data.pagination);
+                },
+                error: function (response) {
+                }
+
+            })
+            $(document).on('click', '#pagination > li > a', function (event) {
+                event.preventDefault();
+                let page = $(this).text();
+                let urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', page);
+                window.location.search = urlParams;
+            });
+        });
+    </script>
+@endpush

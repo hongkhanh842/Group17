@@ -3,9 +3,7 @@
 @section('title', 'Add Category')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -19,38 +17,38 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Category Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data"
+                      id="form-create">
                     @csrf
                     <div class="card-body">
-
                         <div class="form-group">
                             <label>Parent Category</label>
-
-                            <select class="form-control select2" name="parent_id" style="width: 100%;">
-                                <option value="0" selected="selected">Main Category</option>
+                            <select class="form-control select2" name="parent_id" style="width: 100%;" id=select-data>
+                                {{--<option value="0" selected="selected">Main Category</option>
                                 @foreach($data as $rs)
                                     <option value="{{ $rs->id }}">
-                                        {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}
+                                        {{ CategoryController::getParentsTree($rs, $rs->title) }}
                                     </option>
-                                @endforeach
+                                @endforeach--}}
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Title">
+                            <input type="text" class="form-control" name="title" placeholder="Title" value="{{old('title')}}">
                         </div>
+                        @if ($errors->has('title'))
+                            <span class="alert alert-danger">
+                                {{ $errors->first('title') }}
+                            </span>
+                        @endif
                         <div class="form-group">
                             <label for="exampleInputEmail1">Keywords</label>
                             <input type="text" class="form-control" name="keywords" placeholder="Keywords">
@@ -76,15 +74,60 @@
                             </select>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
+
+@push('js')
+    <script>
+        function submitForm() {
+            $.ajax({
+                url: $("#form-create").attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $("#form-create").serialize(),
+                processData: false,
+                contentType: false,
+                async: false,
+                cache: false,
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    if (response.success) {
+                        notifySuccess();
+                    } else {
+                        notifyError(response.message);
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+
+        $(document).ready(async function () {
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+                    $('#select-data').html('<option value="0" selected="selected">Main Category</option>');
+                    response.data.data.forEach(function (each) {
+
+                        let html = "<option value='id'>"
+                        html =html.replace('id',each.id);
+                        let option = getParentsTree(each, each.title, response.data.data);
+
+                        $('#select-data').append(html + option + '</option>' )
+                    });
+                },
+                error: function (response) {
+                }
+
+            })
+        })
+    </script>
+@endpush

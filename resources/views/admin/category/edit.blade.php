@@ -1,16 +1,14 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Category: '.$data->title)
+@section('title', 'Edit Category')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Edit Category: {{$data->title}}</h1>
+                        <h1 id="title"></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -19,46 +17,36 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Category Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
-                <form role="form" action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{route('admin.category.update',['id'=>$id])}}" method="post"
+                      enctype="multipart/form-data" id="form-edit">
                     @csrf
                     <div class="card-body">
-
                         <div class="form-group">
-                            <label >Parent Category</label>
-
-                            <select class="form-control select2" name="parent_id" style="width: 100%;">
-                                <option value="0" selected="selected">Main Category</option>
-                                @foreach($datalist as $rs)
-                                    <option value="{{$rs->id}}"  @if ($rs->id == $data->parent_id)  selected="selected"  @endif>
-                                        {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}
-                                    </option>
-                                @endforeach
+                            <label>Parent Category</label>
+                            <select class="form-control select2" name="parent_id" style="width: 100%;" id="select-data">
+                                {{--@if ($rs->id == $data->parent_id)  selected="selected"  @endif--}}
                             </select>
-
                         </div>
-
-                        <div class="form-group">
+                        <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" value="{{$data->title}}">
                         </div>
-                        <div class="form-group">
+                        @if ($errors->has('title'))
+                            <span class="alert alert-danger">
+                                {{ $errors->first('title') }}
+                            </span>
+                        @endif
+                        <div class="form-group" id="keywords">
                             <label for="exampleInputEmail1">Keywords</label>
-                            <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="description">
                             <label for="exampleInputEmail1">Description</label>
-                            <input type="text" class="form-control" name="description" value="{{$data->description}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Image</label>
@@ -71,22 +59,89 @@
                         </div>
                         <div class="form-group">
                             <label>Status</label>
-                            <select class="form-control" name="status">
-                                <option selected>{{$data->status}}</option>
+                            <select class="form-control" name="status" id="status">
                                 <option>True</option>
                                 <option>False</option>
                             </select>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Update Data</button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
+
+@push('js')
+    <script>
+        function submitForm() {
+            $.ajax({
+                url: $("#form-edit").attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $("#form-edit").serialize(),
+                processData: false,
+                contentType: false,
+                async: false,
+                cache: false,
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    if (response.success) {
+                        notifySuccess();
+                    } else {
+                        notifyError(response.message);
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+
+        $(document).ready(async function () {
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+                    let val;
+                    $('#select-data').html('<option value="0" selected="selected">Main Category</option>');
+                    response.data.data.forEach(function (each) {
+
+
+                        let html = "<option value='id'>"
+                        html = html.replace('id', each.id);
+                        let option = getParentsTree(each, each.title, response.data.data);
+
+                        let status = '<option selected>' + 'each.status' + '</option>'
+                        status = status.replace('each.status', each.status);
+
+                        let title1 = '<input type="text" class="form-control" name="title" value="each.title">'
+                        title1 = title1.replace('each.title', each.title);
+                        let keywords = '<input type="text" class="form-control" name="keywords" value="each.keywords">'
+                        keywords = keywords.replace('each.keywords', each.keywords);
+                        let description = '<input type="text" class="form-control" name="description" value="each.description">'
+                        description = description.replace('each.description', each.description);
+
+                        $('#select-data').append(html + option + '</option>')
+                        if (each.id === {{$id}}) {
+                            $('#title').html('Edit Category: ').append(each.title);
+                            $('#title1').append(title1);
+                            $('#keywords').append(keywords);
+                            $('#description').append(description);
+                            $('#status').append(status);
+                            val=each.id.toString();
+                        }
+
+                         $('#select-data').val(val)
+                    });
+
+                },
+                error: function (response) {
+                }
+
+            })
+        })
+    </script>
+@endpush

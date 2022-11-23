@@ -5,9 +5,7 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/35.2.1/classic/ckeditor.js"></script>
 @endsection
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -21,17 +19,13 @@
                         </ol>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
                     <h3 class="card-title">Product Elements</h3>
                 </div>
-                <!-- /.card-header -->
-                <!-- form start -->
                 <form role="form" action="{{route('admin.product.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
@@ -39,12 +33,12 @@
                         <div class="form-group">
                             <label>Parent Product</label>
 
-                            <select class="form-control select2" name="category_id" style="width: 100%;">
-                                @foreach($data as $rs)
+                            <select class="form-control select2" name="category_id" style="width: 100%;" id="select-data">
+                               {{-- @foreach($data as $rs)
                                     <option value="{{ $rs->id }}">
-                                        {{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}
+                                        --}}{{--{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}--}}{{--
                                     </option>
-                                @endforeach
+                                @endforeach--}}
                             </select>
                         </div>
 
@@ -109,15 +103,60 @@
                             </select>
                         </div>
                     </div>
-                    <!-- /.card-body -->
-
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </form>
             </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection
+
+@push('js')
+    <script>
+        function submitForm() {
+            $.ajax({
+                url: $("#form-create").attr('action'),
+                type: 'POST',
+                dataType: 'json',
+                data: $("#form-create").serialize(),
+                processData: false,
+                contentType: false,
+                async: false,
+                cache: false,
+                enctype: 'multipart/form-data',
+                success: function (response) {
+                    if (response.success) {
+                        notifySuccess();
+                    } else {
+                        notifyError(response.message);
+                    }
+                },
+                error: function (response) {
+                }
+            });
+        }
+
+
+        $(document).ready(async function () {
+            $.ajax({
+                url: '{{ route('api.category') }}',
+                dataType: 'json',
+                success: function (response) {
+                    $('#select-data').html('<option value="0" selected="selected">Main Product</option>');
+                    response.data.data.forEach(function (each) {
+
+                        let html = "<option value='id'>"
+                        html =html.replace('id',each.id);
+                        let option = getParentsTree(each, each.title, response.data.data);
+
+                        $('#select-data').append(html + option + '</option>' )
+                    });
+                },
+                error: function (response) {
+                }
+
+            })
+        })
+    </script>
+@endpush

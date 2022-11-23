@@ -19,7 +19,6 @@
                         <th style="width: 200px">Id</th>
                         <td>{{$data->id}}</td>
                     </tr>
-                    </tr>
 
                     <tr>
                         <th>Name & Surname</th>

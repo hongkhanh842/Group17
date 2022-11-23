@@ -56,7 +56,7 @@
                                 <span class="sale">-20%</span>
                             </div>
                             <h2 class="product-name">{{$data->title}}</h2>
-                            <h3 class="product-price">${{$data->price}} <del class="product-old-price">${{$data->price * 1.20}}</del></h3>
+                            <h3 class="product-price">${{$data->price}}</h3>
                             <div>
                                 @php
                                     $average = $data->comment->average('rate');
@@ -211,10 +211,10 @@
 
 @push('js')
     <script>
-        $.get('http://group17.love/api/product/{id}', function(res){
+       /* $.get('http://group17.love/api/product/{id}', function(res){
             console.log(res);
             let data = res.data;
             $('#abc').html(data.title);
-        });
+        });*/
     </script>
 @endpush
