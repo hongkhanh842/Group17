@@ -88,7 +88,6 @@
                         del = del.replace('id',each.id);
                         let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
                         show = show.replace('id',each.id);
-
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
                             .append($('<td>').append(getParentsTree(each.category, each.category.title, res)))

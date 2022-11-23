@@ -17,10 +17,7 @@ class AdminProductController extends Controller
 
     public function create()
     {
-        $data = Category::all();
-        return view('admin.product.create', [
-            'data' => $data
-        ]);
+        return view('admin.product.create');
     }
 
     public function store(Request $request)

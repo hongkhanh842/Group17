@@ -20,7 +20,7 @@ class ApiController extends Controller
 
     public function category(): JsonResponse
     {
-        $data = Category::query()->latest()->paginate(5);
+        $data = Category::query()->latest()->paginate(10);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
@@ -38,7 +38,7 @@ class ApiController extends Controller
 
     public function product(): JsonResponse
     {
-        $data = Product::query()->with('category')->latest()->paginate(5);
+        $data = Product::query()->with('category')->latest()->paginate(10);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();

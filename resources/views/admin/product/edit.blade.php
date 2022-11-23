@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Product: '.$data->title)
+@section('title', 'Edit Product:')
 
 @section('head')
     <!-- include summernote css/js -->

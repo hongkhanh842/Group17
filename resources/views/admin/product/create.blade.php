@@ -34,11 +34,11 @@
                             <label>Parent Product</label>
 
                             <select class="form-control select2" name="category_id" style="width: 100%;" id="select-data">
-                                @foreach($data as $rs)
+                               {{-- @foreach($data as $rs)
                                     <option value="{{ $rs->id }}">
-                                        {{--{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}--}}
+                                        --}}{{--{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}--}}{{--
                                     </option>
-                                @endforeach
+                                @endforeach--}}
                             </select>
                         </div>
 
