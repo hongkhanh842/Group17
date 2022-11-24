@@ -206,7 +206,7 @@
                                             <img src="{{Storage::url($rs->image)}}" style="height: 360px; width: 270px">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-price">${{$rs->price}}000 VND</h3>
+                                            <h3 class="product-price">{{$rs->price}}000 VND</h3>
                                         {{--    <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
