@@ -11,7 +11,6 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Product</a></li>
                 <li><a href="#" >{{$data->category->title}}</a></li>
-                <li class="active" id="abc">{{--{{$data->title}}--}}</li>
             </ul>
         </div>
     </div>
@@ -52,11 +51,11 @@
                         <div class="product-body">
                             @include('home.messages')
                             <div class="product-label">
-                                <span>New</span>
-                                <span class="sale">-20%</span>
+                               {{-- <span>New</span>
+                                <span class="sale">-20%</span>--}}
                             </div>
                             <h2 class="product-name">{{$data->title}}</h2>
-                            <h3 class="product-price">${{$data->price}}</h3>
+                            <h3 class="product-price">{{$data->price}}000 VND</h3>
                             <div>
                                 @php
                                     $average = $data->comment->average('rate');
@@ -69,25 +68,24 @@
                                     <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
                                     <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
                                 </div>
-                                <a href="#"> {{$data->comment->count('id')}} /{{number_format($average,1)}}  Review(s) / Add Review</a>
+                                <a> {{$data->comment->count('id')}} Review(s) || {{number_format($average,1)}}  Star(s)</a>
                             </div>
-                            <p><strong>Availability:</strong> In Stock</p>
-                            <p><strong>Brand:</strong> E-SHOP</p>
+                            <p><strong>Brand:</strong> {{$data->category->title}}</p>
                             <p>{{$data->description}}</p>
                             <div class="product-options">
-                                <ul class="size-option">
+                               {{-- <ul class="size-option">
                                     <li><span class="text-uppercase">Size:</span></li>
                                     <li class="active"><a href="#">S</a></li>
                                     <li><a href="#">XL</a></li>
                                     <li><a href="#">SL</a></li>
-                                </ul>
-                                <ul class="color-option">
+                                </ul>--}}
+                               {{-- <ul class="color-option">
                                     <li><span class="text-uppercase">Color:</span></li>
                                     <li class="active"><a href="#" style="background-color:#475984;"></a></li>
                                     <li><a href="#" style="background-color:#8A2454;"></a></li>
                                     <li><a href="#" style="background-color:#BF6989;"></a></li>
                                     <li><a href="#" style="background-color:#9A54D8;"></a></li>
-                                </ul>
+                                </ul>--}}
                             </div>
 
                             <div class="product-btns">
@@ -100,11 +98,11 @@
                                     </div>
                                     <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
                                 </form>
-                                <div class="pull-right">
+                               {{-- <div class="pull-right">
                                     <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
                                     <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
                                     <button class="main-btn icon-btn"><i class="fa fa-share-alt"></i></button>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
@@ -145,12 +143,12 @@
                                                 @endforeach
 
 
-                                                <ul class="reviews-pages">
+                                                {{--<ul class="reviews-pages">
                                                     <li class="active">1</li>
                                                     <li><a href="#">2</a></li>
                                                     <li><a href="#">3</a></li>
                                                     <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                                </ul>
+                                                </ul>--}}
                                             </div>
                                         </div>
                                         <div class="col-md-6">

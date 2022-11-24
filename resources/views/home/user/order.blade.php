@@ -48,7 +48,7 @@
                     <div class="col-md-6">
                         <div class="shiping-methods">
                             <div class="section-title">
-                                <h4 class="title">Payment Information [ ${{$total}} ]</h4>
+                                <h4 class="title">Payment Information [ {{$total}}000 VND ]</h4>
                             </div>
                             <div class="input-checkbox">
                                 <div class="form-group">

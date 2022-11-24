@@ -58,7 +58,7 @@
                                         <a href="#">{{$rs->product->title}}</a>
 
                                     </td>
-                                    <td class="price text-center"><strong>${{$rs->product->price}}</strong><br><del class="font-weak"></td>
+                                    <td class="price text-center"><strong>{{$rs->product->price}}000 VND</strong><br><del class="font-weak"></td>
                                     <td class="qty text-center">
 
                                         <form action="{{route('shopcart.update',['id' => $rs->id])}}" method="post">
@@ -66,7 +66,7 @@
                                             <input  name="quantity" type="number" value="{{$rs->quantity}}" min="1" max="{{$rs->product->quantity}}" onchange="this.form.submit()">
                                         </form>
                                     </td>
-                                    <td class="total text-center"><strong class="primary-color">${{$rs->product->price * $rs->quantity }}</strong></td>
+                                    <td class="total text-center"><strong class="primary-color">{{$rs->product->price * $rs->quantity }}000 VND</strong></td>
                                     <td class="text-right">
 
                                         <a href="{{route('shopcart.destroy',['id'=>$rs->id])}}" class="main-btn icon-btn"
@@ -85,7 +85,7 @@
                             <tr>
                                 <th class="empty" colspan="3"></th>
                                 <th>TOTAL</th>
-                                <th colspan="2" class="total">${{$total}}</th>
+                                <th colspan="2" class="total">{{$total}}000 VND</th>
                             </tr>
                             </tfoot>
                         </table>

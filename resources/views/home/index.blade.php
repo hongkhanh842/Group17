@@ -64,7 +64,7 @@
                 <!-- section-title -->
                 <div class="col-md-12">
                     <div class="section-title">
-                        <h2 class="title">Deals Of The Day</h2>
+                        <h2 class="title">New Product</h2>
                         <div class="pull-right">
                             <div class="product-slick-dots-1 custom-dots"></div>
                         </div>
@@ -77,8 +77,7 @@
                     <div class="banner banner-2">
                         <img src="{{asset('assets')}}/img/banner14.jpg" alt="">
                         <div class="banner-caption">
-                            <h2 class="white-color">NEW<br>COLLECTION</h2>
-                            <button class="primary-btn">Shop Now</button>
+                            {{--<h2 class="white-color">NEW<br></h2>--}}
                         </div>
                     </div>
                 </div>
@@ -94,31 +93,32 @@
                             <div class="product product-single">
                                 <div class="product-thumb">
                                     <div class="product-label">
-                                        <span>New</span>
-                                        <span class="sale">-20%</span>
+                                    {{--    <span>New</span>
+                                        <span class="sale">-20%</span>--}}
                                     </div>
-                                    <ul class="product-countdown">
+                                {{--    <ul class="product-countdown">
                                         <li><span>00 H</span></li>
                                         <li><span>00 M</span></li>
                                         <li><span>00 S</span></li>
-                                    </ul>
+                                    </ul>--}}
                                     <a href="{{route('product',['id'=>$rs->id])}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                     <img src="{{Storage::url($rs->image)}}" style="width:270px; height:360px">
                                 </div>
                                 <div class="product-body">
-                                    <h3 class="product-price">{{$rs->price}} <del class="product-old-price">{{$rs->price*1.1}}</del></h3>
-                                    <div class="product-rating">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star-o empty"></i>
-                                    </div>
+                                    <h3 class="product-price">{{$rs->price}}000 VND</h3>
+
+                                   {{-- <div class="product-rating">
+                                        <i class="fa fa-star @if ($rs->rate<1) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<2) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<3) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<4) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<5) -o empty @endif"></i>
+                                    </div>--}}
                                     <h2 class="product-name"><a href="#">{{$rs->title}}</a></h2>
-                                    <div class="product-btns">
-                                        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                        <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                    <div class="product-btn">
+                                     {{--   <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>--}}
+                                      {{--  <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>--}}
                                     </div>
                                 </div>
                             </div>
