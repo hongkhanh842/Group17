@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
+    <a href="{{route('admin.index')}}" class="brand-link">
         <img src="{{asset('assets')}}/admin/img/AdminLTELogo.png"
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
@@ -14,11 +14,11 @@
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{asset('assets')}}/admin/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+               {{-- <img src="{{asset('assets')}}/admin/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">--}}
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ Auth::user()->name }} </a>
-                <a href="/logoutuser" class="text-uppercase">Logout</a>
+                <a class="d-block text-bold">{{ Auth::user()->name }} </a>
+                <a href="/logoutuser" class="text-uppercase text-danger">Logout</a>
             </div>
         </div>
 
@@ -91,11 +91,11 @@
                 <li class="nav-item">
                     <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> Users</a>
                 </li>
-                <li class="nav-item">
+              {{--  <li class="nav-item">
                     <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> Social</a>
-                </li>
+                </li>--}}
 
-                <li class="nav-header">LABELS</li>
+               {{-- <li class="nav-header">LABELS</li>--}}
                 <li class="nav-item">
                     <a href="/admin/setting" class="nav-link">
                         <i class="nav-icon fas fa-tools"></i>

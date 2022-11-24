@@ -73,8 +73,8 @@
 
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
-                            .append($('<td>').append(title))
                             .append($('<td>').append(each.user.name))
+                            .append($('<td>').append(title))
                             .append($('<td>').append(each.subject))
                             .append($('<td>').append(each.review))
                             .append($('<td>').append(each.rate))

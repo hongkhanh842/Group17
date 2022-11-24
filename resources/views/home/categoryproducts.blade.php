@@ -16,9 +16,9 @@
         <div class="container">
             <!-- row -->
             <div class="row">
-                <!-- ASIDE -->
+               {{-- <!-- ASIDE -->
                 <div id="aside" class="col-md-3">
-                    <!-- aside widget -->
+                    --}}{{--<!-- aside widget -->
                     <div class="aside">
                         <h3 class="aside-title">Shop by:</h3>
                         <ul class="filter-list">
@@ -146,13 +146,13 @@
                         </div>
                         <!-- /widget product -->
                     </div>
-                    <!-- /aside widget -->
+                    <!-- /aside widget -->--}}{{--
                 </div>
-                <!-- /ASIDE -->
+                <!-- /ASIDE -->--}}
 
                 <!-- MAIN -->
-                <div id="main" class="col-md-9">
-                    <!-- store top filter -->
+                <div id="main" class="col-md-12">
+                   {{-- <!-- store top filter -->
                     <div class="store-filter clearfix">
                         <div class="pull-left">
                             <div class="row-filter">
@@ -187,7 +187,7 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- /store top filter -->
+                    <!-- /store top filter -->--}}
 
                     <!-- STORE -->
                     <div id="store">
@@ -198,27 +198,27 @@
                                 <div class="col-md-4 col-sm-6 col-xs-6">
                                     <div class="product product-single">
                                         <div class="product-thumb">
-                                            <div class="product-label">
+                                            {{--<div class="product-label">
                                                 <span>New</span>
                                                 <span class="sale">-20%</span>
-                                            </div>
+                                            </div>--}}
                                             <a href="{{route('product',['id'=>$rs->id])}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick view</a>
                                             <img src="{{Storage::url($rs->image)}}" style="height: 360px; width: 270px">
                                         </div>
                                         <div class="product-body">
-                                            <h3 class="product-price">${{$rs->price}}  <del class="product-old-price">${{$rs->price * 1.10}}</del></h3>
-                                            <div class="product-rating">
+                                            <h3 class="product-price">{{$rs->price}}000 VND</h3>
+                                        {{--    <div class="product-rating">
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star"></i>
                                                 <i class="fa fa-star-o empty"></i>
-                                            </div>
+                                            </div>--}}
                                             <h2 class="product-name"><a href="#">{{$rs->title}}</a></h2>
                                             <div class="product-btns">
-                                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
-                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
-                                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+                                                {{--<button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>--}}
+                                                {{--<button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>--}}
                                             </div>
                                         </div>
                                     </div>
@@ -236,11 +236,11 @@
                     <!-- store bottom filter -->
                     <div class="store-filter clearfix">
                         <div class="pull-left">
-                            <div class="row-filter">
+                           {{-- <div class="row-filter">
                                 <a href="#"><i class="fa fa-th-large"></i></a>
                                 <a href="#" class="active"><i class="fa fa-bars"></i></a>
-                            </div>
-                            <div class="sort-filter">
+                            </div>--}}
+                          {{--  <div class="sort-filter">
                                 <span class="text-uppercase">Sort By:</span>
                                 <select class="input">
                                     <option value="0">Position</option>
@@ -248,24 +248,24 @@
                                     <option value="0">Rating</option>
                                 </select>
                                 <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
-                            </div>
+                            </div>--}}
                         </div>
                         <div class="pull-right">
-                            <div class="page-filter">
+                           {{-- <div class="page-filter">
                                 <span class="text-uppercase">Show:</span>
                                 <select class="input">
                                     <option value="0">10</option>
                                     <option value="1">20</option>
                                     <option value="2">30</option>
                                 </select>
-                            </div>
-                            <ul class="store-pages">
+                            </div>--}}
+                           {{-- <ul class="store-pages">
                                 <li><span class="text-uppercase">Page:</span></li>
                                 <li class="active">1</li>
                                 <li><a href="#">2</a></li>
                                 <li><a href="#">3</a></li>
                                 <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                            </ul>
+                            </ul>--}}
                         </div>
                     </div>
                     <!-- /store bottom filter -->
