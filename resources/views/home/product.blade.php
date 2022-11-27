@@ -93,9 +93,14 @@
                                     @csrf
                                     <div class="qty-input">
                                         <span class="text-uppercase">QTY: </span>
-                                        <input class="input" name="quantity" type="number" value="1" min="1" max="{{$data->quantity}}" >
+                                        <input class="input" name="quantity" type="number" value="1" max="{{$data->quantity}}" >
                                         <input class="input" name="id" value="{{$data->id}}" type="hidden">
                                     </div>
+                                    @if ($errors->has('quantity'))
+                                        <span class="alert alert-danger">
+                                {{ $errors->first('quantity') }}
+                            </span>
+                                    @endif
                                     <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
                                 </form>
                                {{-- <div class="pull-right">
