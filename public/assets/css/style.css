@@ -217,6 +217,10 @@ textarea.input {
 	Lists
 \*----------------------------*/
 
+ul.subcategoryTree.list-links{
+  padding-left: 10px;
+}
+
 .list-links .list-links-title {
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -1711,6 +1715,11 @@ z-index:99;
 .custom-dots .slick-dots {
   position: static;
   margin: 15px 0px;
+}
+
+/* Contact */
+.btn.btn-success.btnSubmitContact{
+  width: 100%;
 }
 
 /*=========================================================

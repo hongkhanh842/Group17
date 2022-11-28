@@ -47,11 +47,10 @@
                             </div>
                             <div class="form-group">
                                 <textarea class="input" type="text" name="message" placeholder="Your Message"></textarea>
+                       
                             </div>
-
-                            <div class="form-group">
-                                <input class="input" type="submit" value="Send Message">
-                            </div>
+                                <button class="btn btn-success btnSubmitContact">SEND MESSAGE</button>
+    
                         </form>
                     </div>
                 </div>
