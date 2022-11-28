@@ -26,5 +26,7 @@ Route::get('/faq', [ApiController::class, 'faq'])->name('api.faq');
 Route::get('/message', [ApiController::class, 'message'])->name('api.message');
 Route::get('/order', [ApiController::class, 'order'])->name('api.order');
 Route::get('/orderproduct', [ApiController::class, 'orderproduct'])->name('api.orderproduct');
+Route::get('/search-product', [ApiController::class, 'ajaxSearch'])->name('api.search-product');
+
 /*Route::get('/image', [ApiController::class, 'image'])->name('api.image');*/
 

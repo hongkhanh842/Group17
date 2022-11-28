@@ -81,6 +81,12 @@ class ApiController extends Controller
         return $this->successResponse($arr);
     }
 
+    public function ajaxSearch()
+    {
+        $data = Product::search()->limit(5)->get();
+        return $this->successResponse($data);
+    }
+
 /*    public function image(): JsonResponse
     {
         $data = Image::query()->latest()->paginate(5);
