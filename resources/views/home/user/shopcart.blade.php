@@ -68,7 +68,7 @@
 
                                         <form action="{{route('shopcart.update',['id' => $rs->id])}}" method="post">
                                             @csrf
-                                            <input  name="quantity" type="number" value="{{$rs->quantity}}" max="{{$rs->product->quantity}}" onchange="this.form.submit()">
+                                            <input  name="quantity" type="number" value="{{$rs->quantity}}" min='1' max="{{$rs->product->quantity}}" onchange="this.form.submit()">
                                         </form>
 
                                     </td>

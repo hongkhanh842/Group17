@@ -93,7 +93,7 @@
                                     @csrf
                                     <div class="qty-input">
                                         <span class="text-uppercase">QTY: </span>
-                                        <input class="input" name="quantity" type="number" value="1" max="{{$data->quantity}}" >
+                                        <input class="input" name="quantity" type="number" value="1" min="1" max="{{$data->quantity}}" >
                                         <input class="input" name="id" value="{{$data->id}}" type="hidden">
                                     </div>
                                     @if ($errors->has('quantity'))
