@@ -33,6 +33,21 @@ Table OF Contents
 ------ Mobile Nav
 4 > BANNERS
 5 > HOME SLIDER
+*/
+
+.banner.banner-1.container .banner-caption{
+  position: absolute;
+  top: 35%;
+  right: 10%;
+  width: 40%;
+}
+
+.banner.banner-1.container .banner-caption h1.sliderCaption{
+  font-size: 30px;
+}
+
+
+/*
 6 > PRODUCT
 ------ Single product
 ------ Widget product
@@ -788,14 +803,7 @@ textarea.input {
   width: 100%;
 }
 
-.banner.banner-1 .banner-caption {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
+
 
 .banner.banner-2 .banner-caption {
   position: absolute;

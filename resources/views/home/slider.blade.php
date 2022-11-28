@@ -8,12 +8,20 @@
             <div id="home-slick">
                 <!-- banner -->
                 @foreach($sliderdata as $rs)
-                    <div class="banner banner-1">
-                        <img src="{{Storage::url($rs->image)}}" style="width: 450px; height: 400px">
-                        <div class="banner-caption text-right" style="width:600px">
-                            <h1>{{$rs->title}}</h1>
-                            <a href="{{route('product',['id'=>$rs->id])}}" class="primary-btn">Shop Now</a>
+                    <div class="banner banner-1 container">
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="img-fluid" src="{{Storage::url($rs->image)}}" style="width: 450px; height: 400px">
+                            </div>
+                            <div class="col-6">
+                                <div class="banner-caption text-center">
+                                    <h1 class="text-dark sliderCaption">{{$rs->title}}</h1>
+                                    <button href="{{route('product',['id'=>$rs->id])}}" class="btn primary-btn btnShop">SHOP NOW</button>
+                                </div> 
+                            </div>
                         </div>
+                        
+                        
                     </div>
                 @endforeach
                 <!-- /banner -->

@@ -58,5 +58,6 @@
 @yield('foot')
 
 @stack('js')
+
 </body>
 </html>
