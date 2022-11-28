@@ -371,7 +371,10 @@ textarea.input {
 .header-search {
   display: inline-block;
   padding: 15px 0px;
-  max-width: 400px;
+  width: 500px;
+    position: relative;
+    float:right;
+    margin-inside: 10px;
 }
 
 .header-search>form {
@@ -379,8 +382,15 @@ textarea.input {
 }
 
 .header-search>form .search-input {
-  padding-left: 150px;
+  padding-left: 45px;
   padding-right: 45px;
+}
+
+.header-search>form .search-ajax-result {
+  position: absolute;
+    background-color: floralwhite;
+    padding:5px;
+z-index:99;
 }
 
 .header-search>form .search-categories {

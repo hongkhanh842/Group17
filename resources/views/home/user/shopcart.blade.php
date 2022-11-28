@@ -51,6 +51,11 @@
                             @php
                                 $total=0;
                             @endphp
+                            @if ($errors->has('quantity'))
+                                <span class="alert alert-danger">
+                                {{ $errors->first('quantity') }}
+                            </span>
+                            @endif
                             @foreach($data as $rs)
                                 <tr>
                                     <td class="thumb"><img src="{{Storage::url($rs->product->image)}}" alt=""></td>
@@ -63,9 +68,11 @@
 
                                         <form action="{{route('shopcart.update',['id' => $rs->id])}}" method="post">
                                             @csrf
-                                            <input  name="quantity" type="number" value="{{$rs->quantity}}" min="1" max="{{$rs->product->quantity}}" onchange="this.form.submit()">
+                                            <input  name="quantity" type="number" value="{{$rs->quantity}}" min='1' max="{{$rs->product->quantity}}" onchange="this.form.submit()">
                                         </form>
+
                                     </td>
+
                                     <td class="total text-center"><strong class="primary-color">{{$rs->product->price * $rs->quantity }}000 VND</strong></td>
                                     <td class="text-right">
 

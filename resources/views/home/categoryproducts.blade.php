@@ -8,11 +8,24 @@
             <ul class="breadcrumb">
                 <li><a href="{{route('home')}}">Home</a></li>
                 <li class="active">{{$category->title}}</li>
+                <div class="header-search">
+                    <form>
+                        <input class="input search-input" type="text" placeholder="Enter your keyword">
+                        <div class="search-ajax-result">
+                        </div>
+                    </form>
+                </div>
             </ul>
+
         </div>
     </div>
+
+
+
     <div class="section">
         <!-- container -->
+
+
         <div class="container">
             <!-- row -->
             <div class="row">
@@ -152,8 +165,9 @@
 
                 <!-- MAIN -->
                 <div id="main" class="col-md-12">
-                   {{-- <!-- store top filter -->
-                    <div class="store-filter clearfix">
+
+                    <!-- store top filter -->
+                    {{--<div class="store-filter clearfix">
                         <div class="pull-left">
                             <div class="row-filter">
                                 <a href="#"><i class="fa fa-th-large"></i></a>
@@ -185,9 +199,9 @@
                                 <li><a href="#">3</a></li>
                                 <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
                             </ul>
-                        </div>
+                        </div>--}}
                     </div>
-                    <!-- /store top filter -->--}}
+                    <!-- /store top filter -->
 
                     <!-- STORE -->
                     <div id="store">
@@ -275,5 +289,37 @@
             <!-- /row -->
         </div>
         <!-- /container -->
-    </div>
+    {{--</div>--}}
 @endsection
+
+@push('js')
+    <script>
+        $('.search-input').keyup(function(){
+            let _text = $(this).val();
+
+            $.ajax({
+                url: "{{route('api.search-product')}}?key=" + _text,
+                type: 'GET',
+                success: function(response){
+                    let _html = '';
+
+                    for (let each of response.data){
+                        _html += '<div class="media">'
+                        _html += '<a class="pull-left" href="{{route('product',['pid'])}}">'
+                        _html += '<img class="media-object" width="50" src = "/storage/'+each.image+'">'
+                        _html += '</a>'
+                        _html += '<div class="media-body">'
+                        _html += '<h4 class="media-heading"><a href="{{route('product',['pid'])}}">' +each.title+ '</a></h4>'
+                        _html += '<p>'+each.description+'</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        _html = _html.replace('pid',each.id)
+                        $('.search-ajax-result').html(_html)
+                    }
+                }
+            })
+
+
+        })
+    </script>
+@endpush
