@@ -63,9 +63,10 @@ class ApiController extends Controller
         return $this->successResponse($arr);
     }
 
-    public function order(): JsonResponse
+    public function order(/*$slug*/): JsonResponse
     {
-        $data = Order::query()->with('user')->latest()->paginate(5);
+       /* dd($slug);*/
+        $data = Order::query()/*->where('status', $slug)*/->with('user')->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();

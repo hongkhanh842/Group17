@@ -16,12 +16,10 @@
                             <div class="col-6">
                                 <div class="banner-caption text-center">
                                     <h1 class="text-dark sliderCaption">{{$rs->title}}</h1>
-                                    <button href="{{route('product',['id'=>$rs->id])}}" class="btn primary-btn btnShop">SHOP NOW</button>
-                                </div> 
+                                    <a href="{{route('product',['id'=>$rs->id])}}" class="btn primary-btn btnShop">SHOP NOW</a>
+                                </div>
                             </div>
                         </div>
-                        
-                        
                     </div>
                 @endforeach
                 <!-- /banner -->
