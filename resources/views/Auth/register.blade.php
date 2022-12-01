@@ -12,6 +12,12 @@
         <label>Avatar</label>
         <img src="{{auth()->user()->avatar}}" width="32px">
         <br>
+
+        <label>Password</label>
+        <input required type="password" name="password">
+        <br>
+
+        <input hidden type="password" value="1" name="role">
     @endauth
 
     @guest

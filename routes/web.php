@@ -17,7 +17,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
@@ -28,3 +28,5 @@ Route::get('/auth/redirect/{provider}', function ($provider) {
 })->name('auth.redirect');
 
 Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->name('auth.callback');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
