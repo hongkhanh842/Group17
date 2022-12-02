@@ -30,14 +30,6 @@ class RegisteringRequest extends FormRequest
                 'min:0',
                 'max:255',
             ],
-            /*'role' => [
-                'required',
-                Rule::in([
-                    UserRoleEnum::CUSTOMER,
-                    UserRoleEnum::MANAGER,
-                    UserRoleEnum::SHIPPER,
-                ])
-            ]*/
         ];
     }
 }

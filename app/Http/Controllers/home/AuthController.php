@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\home;
 
+use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\home\Auth\LoggingRequest;
 use App\Http\Requests\home\Auth\RegisteringRequest;
@@ -46,7 +47,6 @@ class AuthController extends Controller
                 'email' => $request->email,
                 'avatar' => $request->avatar,
                 'password' => $password,
-                /*'role' => UserRoleEnum::CUSTOMER,*/
             ]);
             Auth::login($user);
         }

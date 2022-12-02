@@ -51,8 +51,7 @@
             </div>
         </section>
     </div>
-    {{--/*let gallery = '<a href="{{route('admin.image.index',['pid'])}}"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>'
-    gallery = gallery.replace('pid',each.id)*/--}}
+
 @endsection
 
 @push('js')
@@ -68,6 +67,8 @@
                     response.data.data.forEach(function (each) {
 
                         let image = '<img src="'+'/storage/' + each.image +'" style="height: 40px" ></img>' ;
+                        let gallery = '<a href="{{route('admin.image.index',['pid'])}}"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>'
+                        gallery = gallery.replace('pid', each.id)
 
                         let edit = '<a href="{{route('admin.product.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
                         edit = edit.replace('id',each.id);
@@ -75,6 +76,7 @@
                         del = del.replace('id',each.id);
                         let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
                         show = show.replace('id',each.id);
+
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
                             .append($('<td>').append(each.category.name))
@@ -82,7 +84,7 @@
                             .append($('<td>').append(each.price))
                             .append($('<td>').append(each.quantity))
                             .append($('<td>').append(image))
-                            /*.append($('<td>').append(gallery))*/
+                            .append($('<td>').append(gallery))
                             .append($('<td>').append(each.status))
                             .append($('<td>').append(show))
                             .append($('<td>').append(edit))

@@ -70,7 +70,6 @@
                                 <p>Đã huỷ</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="nav-item">
@@ -80,7 +79,7 @@
                     <a href="{{route('admin.product.index')}}" class="nav-link"><i class="nav-icon fas fa-th"></i>Sản phẩm</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{--/admin/user--}}" class="nav-link"><i class="nav-icon fas fa-user text-green"></i>Tài khoản</a>
+                    <a href="{{route('admin.user.index')}}" class="nav-link"><i class="nav-icon fas fa-user text-green"></i>Tài khoản</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{--/admin/comment--}}" class="nav-link"><i class="nav-icon fas fa-comment"></i>Bình luận</a>

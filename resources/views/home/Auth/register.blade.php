@@ -21,15 +21,15 @@
 
     @guest
         <label>Name</label>
-        <input required type="text" placeholder="Nhập tên">
+        <input required type="text" placeholder="Nhập tên" name="name">
         <br>
 
         <label>Email</label>
-        <input required type="email" placeholder="Nhập email">
+        <input required type="email" placeholder="Nhập email" name="email">
         <br>
 
         <label>Password</label>
-        <input required type="password" name="password">
+        <input required type="password" name="password" name="password">
         <br>
     @endguest
 
