@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Sửa danh mục')
+@section('title', 'DANH MỤC')
 
 @section('content')
     <div class="content-wrapper">
@@ -13,7 +13,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Sửa danh mục</li>
+                            <li class="breadcrumb-item active">Danh mục</li>
                         </ol>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                         $('#select-data').append(html + option + '</option>')
                         if (each.id === {{$id}}) {
-                            $('#name').html('Sửa danh mục: ').append(each.name);
+                            $('#name').html('SỬA DANH MỤC: ').append(each.name);
                             $('#title1').append(title1);
                             $('#status').append(status);
                             val=each.id.toString();

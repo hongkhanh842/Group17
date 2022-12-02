@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'DANH MỤC')
+@section('title', 'SẢN PHẨM')
 
 @section('content')
     <div class="content-wrapper">
@@ -8,32 +8,34 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <a href="{{route('admin.category.create')}}" class="btn btn-block bg-gradient-info"
-                           style="width: 200px">Thêm danh mục</a>
+                        <a href="{{route('admin.product.create')}}" class="btn btn-block bg-gradient-info" style="width: 200px">Thêm sản phẩm</a>
+
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">Danh mục</li>
+                            <li class="breadcrumb-item active">Sản phẩm</li>
                         </ol>
                     </div>
                 </div>
             </div>
         </section>
-
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">BẢNG DANH MỤC</h3>
+                    <h3 class="card-title">DANH SÁCH SẢN PHẨM</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered" id="table-data">
                         <thead>
                         <tr>
-                            <th style="width: 10px">ID</th>
+                            <th style="width: 10px">Id</th>
                             <th>Thuộc danh mục</th>
-                            <th>Tên danh mục</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Số lượng</th>
                             <th>Hình ảnh</th>
+                            <th>Các hình ảnh khác</th>
                             <th>Trạng thái</th>
                             <th style="width: 40px">Xem</th>
                             <th style="width: 40px">Sửa</th>
@@ -42,50 +44,56 @@
                         </thead>
                     </table>
                 </div>
-                <nav class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right"
-                        id="pagination">
+                <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right" id="pagination">
                     </ul>
-                </nav>
+                </div>
             </div>
         </section>
     </div>
+    {{--/*let gallery = '<a href="{{route('admin.image.index',['pid'])}}"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>'
+    gallery = gallery.replace('pid',each.id)*/--}}
 @endsection
 
 @push('js')
     <script>
-        $(document).ready(function () {
+        $(document).ready( async function () {
+
             $.ajax({
-                url: '{{ route('api.category.full') }}',
+                url: '{{ route('api.product.full') }}',
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
-                success: async function (response) {
+
+                success: function (response) {
                     response.data.data.forEach(function (each) {
 
-                        let image = '<img src="' + '/storage/' + each.image + '" style="height: 40px" ></img>';
+                        let image = '<img src="'+'/storage/' + each.image +'" style="height: 40px" ></img>' ;
 
-                        let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Sửa</a>';
-                        edit = edit.replace('id', each.id);
-                        let del = '<a href="{{route('admin.category.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Xoá</a>';
-                        del = del.replace('id', each.id);
-                        let show = '<a href="{{route('admin.category.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Xem</a>';
-                        show = show.replace('id', each.id);
+                        let edit = '<a href="{{route('admin.product.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
+                        edit = edit.replace('id',each.id);
+                        let del  = '<a href="{{route('admin.product.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        del = del.replace('id',each.id);
+                        let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
+                        show = show.replace('id',each.id);
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
-                            .append($('<td>').append(getParentsTree(each, each.name, response.data.data)))
+                            .append($('<td>').append(each.category.name))
                             .append($('<td>').append(each.name))
+                            .append($('<td>').append(each.price))
+                            .append($('<td>').append(each.quantity))
                             .append($('<td>').append(image))
+                            /*.append($('<td>').append(gallery))*/
                             .append($('<td>').append(each.status))
                             .append($('<td>').append(show))
                             .append($('<td>').append(edit))
                             .append($('<td>').append(del))
                         );
+
                     });
                     renderPagination(response.data.pagination);
                 },
                 error: function (response) {
                 }
-
             })
             $(document).on('click', '#pagination > li > a', function (event) {
                 event.preventDefault();

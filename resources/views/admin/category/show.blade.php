@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Chi tiết danh mục')
+@section('title', 'DANH MỤC')
 
 @section('content')
     <div class="content-wrapper">
@@ -25,7 +25,7 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title text-bold">Chi tiết danh mục</h3>
+                    <h3 class="card-title text-bold">CHI TIẾT DANH MỤC</h3>
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped" id="table-data">

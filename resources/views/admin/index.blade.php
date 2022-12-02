@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Trang chủ')
+@section('title', 'TRANG CHỦ')
 
 @section('content')
     <!-- Content Wrapper. Contains page content -->

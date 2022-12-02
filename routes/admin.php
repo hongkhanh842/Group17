@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
+use App\Http\Controllers\admin\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -18,7 +19,7 @@ Route::prefix('category')->controller(CategoryController::class)->name('category
         Route::get('/show/{id}', 'show')->name('show');
     });
 
-Route::prefix('product')->controller(AdminProductController::class)->name('product.')
+Route::prefix('product')->controller(ProductController::class)->name('product.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/create', 'create')->name('create');
