@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use App\Enums\UserRoleEnum;
+use App\Providers\RouteServiceProvider;
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class ManagerMiddleware
+{
+    public function handle(Request $request, Closure $next)
+    {
+        if (!isManager()) {
+            return redirect()->route('login');
+        }
+        return $next($request);
+    }
+}
