@@ -1,3 +1,4 @@
+@include('notify')
 <form action="{{route('logging')}}" method="post">
     @csrf
     <input type="email" class="form-control" placeholder="Email" name="email">

@@ -32,7 +32,6 @@
                             <th style="width: 10px">Id</th>
                             <th>Tên</th>
                             <th>Hình ảnh</th>
-                            <th style="width: 40px">Cập nhật</th>
                             <th style="width: 40px">Xoá</th>
                         </tr>
                         </thead>
@@ -46,7 +45,6 @@
                                         <img src="{{Storage::url($rs->image)}}" style="height: 100px">
                                     @endif
                                 </td>
-                                <td> Edit</td>
                                 <td><a href="{{route('admin.image.destroy',['pid'=>$product->id,'id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
                                        onclick="return confirm('Deleting !! Are you sure ?')">Delete</a>  </td>
                             </tr>

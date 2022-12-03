@@ -25,7 +25,7 @@ class ImageController extends Controller
     {
         $data = new Image();
         $data->product_id = $pid;
-        $data->title = $request->title;
+        $data->name = $request->name;
         if ($request->file('image')){
             $data->image = $request->file('image')->store('images');
         }

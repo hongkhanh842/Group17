@@ -3,7 +3,7 @@
     @csrf
     <div class="input-group">
         <label for="exampleInputEmail1"> Tên: </label>
-        <input type="text" class="form-control" name="title" placeholder="Title" >
+        <input type="text" class="form-control" name="name" placeholder="Nhập tên" >
         <label for="exampleInputEmail1"> Hình ảnh: </label>
         <div class="custom-file">
             <input type="file" class="custom-file-input"  name="image">

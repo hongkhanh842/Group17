@@ -23,9 +23,9 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->route("welcome");
+            return redirect()->route("home");
         }
-        return redirect()->route("login");
+        return redirect()->route("login")->with('error', 'Email hoặc mật khẩu không đúng');
     }
 
     public function register()
@@ -50,7 +50,7 @@ class AuthController extends Controller
             ]);
             Auth::login($user);
         }
-        return redirect()->route("welcome");
+        return redirect()->route("home");
     }
 
     public function callback($provider)
@@ -73,7 +73,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         if($checkExists){
-            return redirect()->route("welcome");
+            return redirect()->route("home");
         }
         return redirect()->route('register');
     }
