@@ -17,7 +17,7 @@ class AuthController extends Controller
     public function logging(LoggingRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials) && isAdmin()===true) {
+        if (Auth::attempt($credentials) /*&& isAdmin()===true*/) {
             return redirect()->route("admin.index");
         }
         return redirect()->route("admin.login");

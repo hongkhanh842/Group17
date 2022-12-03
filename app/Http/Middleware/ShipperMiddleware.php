@@ -12,7 +12,7 @@ class ShipperMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!isShipper()) {
+        if (!isShipper() || !isAdmin()) {
             return redirect()->route('login');
         }
         return $next($request);

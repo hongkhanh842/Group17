@@ -12,7 +12,7 @@ class ManagerMiddleware
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!isManager()) {
+        if (!isManager() && !isAdmin()) {
             return redirect()->route('login');
         }
         return $next($request);

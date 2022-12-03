@@ -127,7 +127,7 @@
                         $('#select-data').append(html + option + '</option>')
 
                         if (each.id === {{$id}}) {
-                            $('#name').html('SỬA DANH MỤC: ').append(each.name);
+                            $('#name').html('SỬA TÀI KHOẢN: ').append(each.name);
                             $('#title1').append(title1);
                             $('#email').append(email);
                             $('#address').append(address);

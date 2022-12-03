@@ -19,4 +19,9 @@ class User extends Model implements Authenticatable
         'address',
         /*'role',*/
     ];
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

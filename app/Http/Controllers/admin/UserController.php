@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -24,8 +25,9 @@ class UserController extends Controller
         return view('admin.user.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
+
         $password = Hash::make($request->password);
 
         $data = new User();

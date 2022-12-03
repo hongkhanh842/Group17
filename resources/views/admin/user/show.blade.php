@@ -41,13 +41,6 @@
                         <td>
 
                            {{getRoleByKey($data->role)}}
-                           {{-- <form action="{{route('admin.user.update',[$id])}}" method="post">
-                                <select class="form-control select2" name="role" style="width: 100%;">
-                                    <option value="2" selected="selected">Quản lí</option>
-                                    <option value="3">Shipper</option>
-                                </select>
-                                <button type="submit" class="btn btn-block bg-gradient-success">Cập nhật quyền</button>
-                            </form>--}}
                         </td>
                     </tr>
                     <tr>

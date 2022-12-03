@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\OrderStatusEnum;
 use App\Enums\UserRoleEnum;
 
 if (!function_exists('getRoleByKey')) {
@@ -33,6 +34,20 @@ if (!function_exists('isManager')) {
     function isShipper(): bool
     {
         return user() && user()->role === UserRoleEnum::SHIPPER;
+    }
+}
+
+if (!function_exists('getStatusByKey')) {
+    function getStatusByKey($key): string
+    {
+        return OrderStatusEnum::getValue($key);
+    }
+}
+
+if (!function_exists('getStatusByValue')) {
+    function getStatusByValue($value): string
+    {
+        return OrderStatusEnum::getKey($value);
     }
 }
 

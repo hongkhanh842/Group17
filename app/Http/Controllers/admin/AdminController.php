@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        if (isAdmin()===true) {
+        if (isShipper()===true || isAdmin()===true || isManager()===true) {
             return view('admin.index');
         }
         return redirect()->route("admin.login");

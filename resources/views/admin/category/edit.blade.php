@@ -95,12 +95,12 @@
 
         $(document).ready(async function () {
             $.ajax({
-                url: '{{ route('api.category.min') }}',
+                url: "{{ route('api.category.one',[$id])}}",
                 dataType: 'json',
                 success: function (response) {
                     let val;
                     $('#select-data').html('<option value="0" selected="selected">Danh mục chính</option>');
-                    response.data.data.forEach(function (each) {
+                        let each=response.data;
 
 
                         let html = "<option value='id'>"
@@ -114,16 +114,14 @@
                         title1 = title1.replace('each.name', each.name);
 
                         $('#select-data').append(html + option + '</option>')
-                        if (each.id === {{$id}}) {
+
                             $('#name').html('SỬA DANH MỤC: ').append(each.name);
                             $('#title1').append(title1);
                             $('#status').append(status);
                             val=each.id.toString();
                             console.log(val);
-                        }
 
                          $('#select-data').val(val)
-                    });
 
                 },
                 error: function (response) {

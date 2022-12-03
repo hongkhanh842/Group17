@@ -41,31 +41,31 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/order/New" class="nav-link">
+                            <a href="{{route('admin.order.index',['new'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Mới</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Accepted" class="nav-link">
+                            <a href="{{route('admin.order.index',['accepted'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Đã xác nhận</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Shipped" class="nav-link">
+                            <a href="{{route('admin.order.index',['shipping'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Đang giao</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Cancelled" class="nav-link">
+                            <a href="{{route('admin.order.index',['shipped'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Đã giao</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Completed" class="nav-link">
+                            <a href="{{route('admin.order.index',['cancel'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Đã huỷ</p>
                             </a>
