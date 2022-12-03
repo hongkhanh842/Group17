@@ -63,9 +63,11 @@
                                                     <i class="fa fa-star"></i>
                                                     <i class="fa fa-star-o empty"></i>
                                                 </div>--}}
-                                            <h2 class="product-name"><a href="{{--{{route('product',['id'=>$rs->id])}}--}}">{{$rs->name}}</a></h2>
+                                            <h2 class="product-name"><a href="{{route('product.show',['id'=>$rs->id])}}">{{$rs->name}}</a></h2>
                                             <div class="product-btn">
-                                                <button class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
+                                                <a class="primary-btn add-to-cart" href="{{route('shopcart.add',['id'=>$rs->id])}}">
+                                                    <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
+                                                </a>
                                             </div>
                                         </div>
                                     </div>

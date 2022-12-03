@@ -4,7 +4,9 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\home\CategoryController;
 use App\Http\Controllers\home\HomeController;
+use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
+use App\Http\Controllers\home\ShopCartController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -40,4 +42,31 @@ Route::prefix('category')
     ->controller(CategoryController::class)->name('category.')
     ->group(function () {
         Route::get('/show/{id}', 'show')->name('show');
+    });
+
+Route::prefix('shopcart')->controller(ShopCartController::class)->name('shopcart.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/add/{id}', 'add')->name('add');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/show/{id}', 'show')->name('show');
+       /* Route::post('/order', 'order')->name('order');
+        Route::post('/storeorder', 'storeorder')->name('storeorder');
+        Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');*/
+    });
+
+Route::prefix('order')->controller(OrderController::class)->name('order.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/add/{id}', 'add')->name('add');
+        Route::post('/update/{id}', 'update')->name('update');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::get('/show/{id}', 'show')->name('show');
+       /* Route::post('/order', 'order')->name('order');
+        Route::post('/storeorder', 'storeorder')->name('storeorder');
+        Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');*/
     });

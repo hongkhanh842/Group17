@@ -34,10 +34,10 @@
                     </li>
 
                     <li class="header-cart">
-                        <a href="{{--{{route('shopcart.index')}}--}}" >
+                        <a href="{{route('shopcart.index')}}" >
                             <div class="header-btns-icon">
                                 <i class="fa fa-shopping-cart"></i>
-                              {{--  <span class="qty">{{\App\Http\Controllers\ShopCartController::countshopcart()}}</span>--}}
+                                <span class="qty">{{\App\Http\Controllers\home\ShopCartController::countshopcart()}}</span>
                             </div>
                             <strong class="text-uppercase">Giỏ hàng:</strong>
                             <br>
