@@ -16,7 +16,7 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        return view('home.user.index');
+        return redirect()->route('user.index')->with('success','Cập nhật tài khoản thành công');
     }
     public function orders()
     {

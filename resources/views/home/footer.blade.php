@@ -16,3 +16,5 @@
 <script src="{{asset('assets')}}/js/nouislider.min.js"></script>
 <script src="{{asset('assets')}}/js/jquery.zoom.min.js"></script>
 <script src="{{asset('assets')}}/js/main.js"></script>
+
+<script src="{{asset('assets/admin')}}/js/helper.js"></script>
