@@ -60,7 +60,7 @@ Route::prefix('shopcart')->controller(ShopCartController::class)->name('shopcart
 
 Route::prefix('order')->controller(OrderController::class)->name('order.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route::post('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store');
         Route::get('/add/{id}', 'add')->name('add');
         Route::post('/update/{id}', 'update')->name('update');

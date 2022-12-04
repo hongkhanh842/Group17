@@ -33,7 +33,7 @@
                             <thead>
                             <tr>
                                 <th>Sản phẩm</th>
-                                <th></th>
+                                <th>Tên</th>
                                 <th class="text-center">Giá</th>
                                 <th class="text-center">Số lượng</th>
                                 <th class="text-center">Tổng tiền</th>
