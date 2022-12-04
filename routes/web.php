@@ -8,6 +8,7 @@ use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
 use App\Http\Controllers\home\ShopCartController;
 use App\Http\Controllers\home\UserController;
+use App\Http\Controllers\MailController;
 use App\Mail\MailNotify;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -30,8 +31,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin/login', [\App\Http\Controllers\admin\AuthController::class, 'login'])->name('admin.login');
 Route::post('admin/login', [\App\Http\Controllers\admin\AuthController::class, 'logging'])->name('admin.logging');
 
-Route::get('/send',function (){Mail::to('1851120019@sv.ut.edu.vn')->send(new MailNotify());
-});
+/*Route::get('/send',function (){Mail::to('1851120019@sv.ut.edu.vn')->send(new MailNotify());});*/
+Route::get('/mail/{email}', [MailController::class, 'index'])->name('mail');
 //___
 
 //HOME ROUTES

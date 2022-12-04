@@ -92,13 +92,8 @@
                                   <a href="#" class="main-btn icon-btn"><i class="fa fa-arrow-down"></i></a>
                               </div>
                         </div>--}}
-                        <div class="pull-right">
-                            <ul class="store-pages">
-                                <li><span class="text-uppercase">Trang:</span></li>
-                                <li class="active">1</li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
+                        <div class="pull-right" >
+                            <ul class="store-pages" id="pagination">
                             </ul>
                         </div>
                     </div>
@@ -108,32 +103,39 @@
     </div>
 @endsection
 
-{{--@push('js')
+@push('js')
     <script>
-        $('.search-input').keyup(function(){
-            let _text = $(this).val();
-
+        $(document).ready(function () {
             $.ajax({
-                url: "{{route('api.search-product')}}?key=" + _text,
-                type: 'GET',
-                success: function(response){
-                    let _html = '';
-
-                    for (let each of response.data){
-                        _html += '<div class="media">'
-                        _html += '<a class="pull-left" href="{{route('product',['pid'])}}">'
-                        _html += '<img class="media-object" width="50" src = "/storage/'+each.image+'">'
-                        _html += '</a>'
-                        _html += '<div class="media-body">'
-                        _html += '<h4 class="media-heading"><a href="{{route('product',['pid'])}}">' +each.title+ '</a></h4>'
-                        _html += '<p>'+each.description+'</p>'
-                        _html += '</div>'
-                        _html += '</div>'
-                        _html = _html.replace('pid',each.id)
-                        $('.search-ajax-result').html(_html)
-                    }
+                url: "{{ route('api.category.show',[$id])}}",
+                dataType: 'json',
+                data: {page: {{ request()->get('page') ?? 1 }}},
+                success: function (response) {
+                    response.data.product.forEach(function (each) {
+                       /* $('#table-data').append($('<tr>')
+                            .append($('<td>').append(each.id))
+                            .append($('<td>').append(getParentsTree(each, each.name, response.data.data)))
+                            .append($('<td>').append(each.name))
+                            .append($('<td>').append(image))
+                            .append($('<td>').append(each.status))
+                            .append($('<td>').append(show))
+                            .append($('<td>').append(edit))
+                            .append($('<td>').append(del))
+                        );*/
+                    });
+                    renderPagination(response.data.pagination);
+                },
+                error: function (response) {
                 }
+
             })
-        })
+            $(document).on('click', '#pagination > li > a', function (event) {
+                event.preventDefault();
+                let page = $(this).text();
+                let urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', page);
+                window.location.search = urlParams;
+            });
+        });
     </script>
-@endpush--}}
+@endpush

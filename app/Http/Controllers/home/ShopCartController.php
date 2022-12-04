@@ -38,7 +38,7 @@ class ShopCartController extends Controller
         }
         $data->save();
 
-        return redirect()->back()->with('success','Product added to Shopcart successfully');
+        return redirect()->back()->with('success','Đã thêm vào giỏ hàng');
     }
 
     public function add($id)
@@ -57,7 +57,7 @@ class ShopCartController extends Controller
 
         $data->save();
 
-        return redirect()->back()->with('success','Product added to Shopcart successfully');
+        return redirect()->back()->with('success','Đã thêm vào giỏ hàng');
     }
 
     public function update(Request $request, $id)
@@ -65,13 +65,13 @@ class ShopCartController extends Controller
         $data = ShopCart::find($id);
         $data->quantity = $request->input('quantity');
         $data->save();
-        return redirect()->back()->with('success','Update successful');
+        return redirect()->back();
     }
 
     public function destroy($id)
     {
         $data = ShopCart::find($id);
         $data->delete();
-        return redirect()->back()->with('info', 'Delete successful');
+        return redirect()->back();
     }
 }

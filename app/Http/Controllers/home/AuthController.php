@@ -6,10 +6,12 @@ use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\home\Auth\LoggingRequest;
 use App\Http\Requests\home\Auth\RegisteringRequest;
+use App\Mail\MailNotify;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
@@ -49,6 +51,8 @@ class AuthController extends Controller
                 'password' => $password,
             ]);
             Auth::login($user);
+            Mail::to($request->email)->send(new MailNotify());
+            return redirect()->route('home')->with('success', 'Đăng ký thành công, kiểm tra thư của bạn');
         }
         return redirect()->route("home");
     }
@@ -84,6 +88,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
 }
