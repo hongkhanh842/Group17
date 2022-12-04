@@ -13,7 +13,7 @@ class AdminMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (!isAdmin() && !isManager() && !isShipper()) {
-            return redirect()->route('admin.login');
+            return redirect()->back()->with('error', 'Bạn không đủ quyền để thực hiện hành động này');
         }
         return $next($request);
     }

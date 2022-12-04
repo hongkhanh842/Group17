@@ -61,13 +61,12 @@
                 success: function (response) {
                     response.data.data.forEach(function (each) {
 
-                        let show = '<a href="{{route('admin.order.show', ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
+                        let show = '<a href="{{route('admin.order.show', ['id'])}}" class="btn btn-block btn-info btn-sm">Xem</a>';
                         show = show.replace('id',each.id);
 
                         let user = '<a href="{{route('admin.user.show',['id'=>'each.user_id'])}}">each.user.name</a>'
                         user = user.replace('each.user.name',each.user.name);
                         user = user.replace('each.user_id',each.user_id);
-                        console.log(user);
 
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))

@@ -32,7 +32,7 @@ class Product extends Model
     {
         if (request('key')){
             $key = request('key');
-            $query = $query->where('title', 'like', '%'.$key.'%');
+            $query = $query->where('name', 'like', '%'.$key.'%');
         }
         return $query;
     }

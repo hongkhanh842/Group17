@@ -18,6 +18,36 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show($id)
+    {
+        $order = Order::find($id);
+        $orderproducts = OrderDetail::where('order_id', '=', $id)->get();
+        return view('home.order.show',[
+            'order' => $order,
+            'orderproducts' => $orderproducts,
+        ]);
+    }
+
+    public function cancel($id)
+    {
+        $order = Order::find($id);
+        if ($order->status === "Mới")
+        {
+            return redirect()->route('order.update',[
+                'id' => $id,
+                ]);
+        }
+    }
+
+    public function update($id)
+    {
+        $order = Order::find($id);
+        $order->status = "Huỷ";
+        $order->save();
+    }
+
+
+
     public function store(Request $request)
     {
         $cardcheck = "True";

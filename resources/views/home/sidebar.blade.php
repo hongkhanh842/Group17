@@ -9,7 +9,8 @@
                 <ul class="category-list">
                     @foreach($mainCategories as $rs)
                         <li class="dropdown side-dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ $rs->name }}<i class="fa fa-angle-right"></i></a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">{{ $rs->name }}<i
+                                    class="fa fa-angle-right"></i></a>
                             <div class="custom-menu">
                                 <div class="row">
                                     @if(count($rs->children))
@@ -27,18 +28,13 @@
                 <ul class="menu-list">
                     <li><a href="{{route('home')}}">Trang chủ</a></li>
                     <li><a href="{{route('product.index')}}">Sản phẩm</a></li>
-                    <li><a {{--href="{{route('faq')}}"--}}>FAQ</a></li>
-                    <li><a {{--href="{{route('about')}}"--}}>About </a></li>
-                    <li><a {{--href="{{route('contact')}}"--}}>Contact</a></li>
-                    <li>
-                            <form>
-                                <input class="input search-input" type="text" placeholder="Nhập sản phẩm cần tìm">
-                                <div class="search-ajax-result">
-                                </div>
-                            </form>
-                    </li>
+                    {{--<li><a --}}{{--href="{{route('faq')}}"--}}{{-->FAQ</a></li>
+                    <li><a --}}{{--href="{{route('about')}}"--}}{{-->About </a></li>
+                    <li><a --}}{{--href="{{route('contact')}}"--}}{{-->Contact</a></li>--}}
+
                 </ul>
             </div>
         </div>
     </div>
 </div>
+

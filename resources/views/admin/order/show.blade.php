@@ -72,38 +72,7 @@
     </section>
     </div>
 @endsection
-{{--$(document).ready(async function () {
-$.ajax({
-url: '{{ route('api.orderproduct') }}',
-dataType: 'json',
-success: function (response) {
-response.data.data.forEach(function (each) {
-if (each.order_id === {{$id}}) {
-let image = '<img src="'+'/storage/' + each.product.image +'" style="height: 40px" ></img>' ;
 
-
-let accept ='<a href="{{route('admin.order.acceptproduct',['id'] )}}" class="btn btn-block btn-success btn-sm">Accept</a>'
-accept = accept.replace('id',each.id);
-let cancel = '<a href="{{route('admin.order.cancelproduct',['id'] )}}" class="btn btn-block btn-danger btn-sm">Cancel</a>'
-cancel = cancel.replace('id',each.id);
-
-$('#table-product').append($('<tr>')
-    .append($('<td>').append(each.id))
-        .append($('<td>').append(each.product.title))
-        .append($('<td>').append(each.price))
-        .append($('<td>').append(each.quantity))
-        .append($('<td>').append(each.amount))
-        .append($('<td>').append(image))
-        .append($('<td>').append(each.status))
-        .append($('<td>').append(accept).append(cancel))
-        );
-        }
-        });
-        },
-        error: function (response) {
-        }
-        })
-        });--}}
 @push('js')
     <script>
         function submitForm() {
@@ -158,6 +127,30 @@ $('#table-product').append($('<tr>')
             })
         });
 
+        $(document).ready(async function () {
+            $.ajax({
+                url: '{{ route('api.orderdetail.min') }}',
+                dataType: 'json',
+                success: function (response) {
+                    response.data.data.forEach(function (each) {
+                        if (each.order_id === {{$id}}) {
+                            let image = '<img src="' + '/storage/' + each.product.image + '" style="height: 40px" ></img>';
+
+                            $('#table-product').append($('<tr>')
+                                .append($('<td>').append(each.id))
+                                .append($('<td>').append(each.product.name))
+                                .append($('<td>').append(each.price))
+                                .append($('<td>').append(each.quantity))
+                                .append($('<td>').append(each.total))
+                                .append($('<td>').append(image))
+                            );
+                        }
+                    });
+                },
+                error: function (response) {
+                }
+            })
+        });
 
     </script>
     <script src="{{asset('assets/admin')}}/js/helper.js"></script>

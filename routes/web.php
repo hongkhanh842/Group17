@@ -7,6 +7,7 @@ use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
 use App\Http\Controllers\home\ShopCartController;
+use App\Http\Controllers\home\UserController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -62,11 +63,18 @@ Route::prefix('order')->controller(OrderController::class)->name('order.')
     ->group(function () {
         Route::post('/', 'index')->name('index');
         Route::post('/store', 'store')->name('store');
-        Route::get('/add/{id}', 'add')->name('add');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/show/{id}', 'show')->name('show');
-       /* Route::post('/order', 'order')->name('order');
-        Route::post('/storeorder', 'storeorder')->name('storeorder');
-        Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');*/
+        Route::get('/update/{id}', 'update')->name('update');
+        Route::get('/cancel/{id}', 'cancel')->name('cancel');
     });
+
+Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function (
+) {
+    Route::get('/', 'index')->name('index');
+    Route::post('/update', 'update')->name('update');
+    /*Route::get('/reviews', 'reviews')->name('reviews');
+    Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');*/
+    Route::get('/orders', 'orders')->name('orders');
+    /*Route::get('/orderdetail/{id}', 'orderdetail')->name('orderdetail');*/
+    /*Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');*/
+});

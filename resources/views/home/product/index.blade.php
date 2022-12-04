@@ -108,32 +108,32 @@
     </div>
 @endsection
 
-{{--@push('js')
+@push('js')
     <script>
-        $('.search-input').keyup(function(){
+        $('.search-input').keyup(function () {
             let _text = $(this).val();
 
             $.ajax({
-                url: "{{route('api.search-product')}}?key=" + _text,
+                url: "{{route('api.product.search')}}?key=" + _text,
                 type: 'GET',
-                success: function(response){
+                success: function (response) {
                     let _html = '';
 
-                    for (let each of response.data){
+                    for (let each of response.data) {
                         _html += '<div class="media">'
-                        _html += '<a class="pull-left" href="{{route('product',['pid'])}}">'
-                        _html += '<img class="media-object" width="50" src = "/storage/'+each.image+'">'
+                        _html += '<a class="pull-left" href="{{route('product.show',['pid'])}}">'
+                        _html += '<img class="media-object" width="50" src = "/storage/' + each.image + '">'
                         _html += '</a>'
                         _html += '<div class="media-body">'
-                        _html += '<h4 class="media-heading"><a href="{{route('product',['pid'])}}">' +each.title+ '</a></h4>'
-                        _html += '<p>'+each.description+'</p>'
+                        _html += '<h4 class="media-heading"><a href="{{route('product.show',['pid'])}}">' + each.name + '</a></h4>'
+                        _html += '<p>' + each.description + '</p>'
                         _html += '</div>'
                         _html += '</div>'
-                        _html = _html.replace('pid',each.id)
+                        _html = _html.replace('pid', each.id)
                         $('.search-ajax-result').html(_html)
                     }
                 }
             })
         })
     </script>
-@endpush--}}
+@endpush

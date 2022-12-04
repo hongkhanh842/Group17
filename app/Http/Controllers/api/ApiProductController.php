@@ -33,4 +33,10 @@ class ApiProductController extends Controller
         $arr['data'] = $data->getCollection();
         return $this->successResponse($arr);
     }
+
+    public function ajaxSearch()
+    {
+        $data = Product::search()->limit(5)->get();
+        return $this->successResponse($data);
+    }
 }

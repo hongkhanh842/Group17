@@ -11,7 +11,6 @@ class OrderController extends Controller
 {
     public function index($slug)
     {
-
         $slug = getStatusByKey($slug);
 
         return view('admin.order.index',[
@@ -21,12 +20,9 @@ class OrderController extends Controller
 
     public function show($id)
     {
-        $data = Order::find($id);
-        $datalist = OrderDetail::where('order_id', $id)->get();
-        $slug = $data->status;
+        $slug = Order::find($id)->status;
+
         return view('admin.order.show',[
-            'data' => $data,
-            'datalist' => $datalist,
             'id' => $id,
             'slug' => $slug,
         ]);
@@ -41,26 +37,6 @@ class OrderController extends Controller
         $slug = getStatusByValue($data->status);
         return redirect()->route('admin.order.index',['slug' => $slug]);
     }
-
-/*    public function cancelproduct($id)
-    {
-        $data = OrderProduct::find($id);
-        $data->status = 'Cancelled';
-        $data->save();
-
-        return redirect()->back();
-
-    }
-
-    public function acceptproduct($id)
-    {
-        $data = OrderProduct::find($id);
-        $data->status = 'Accepted';
-        $data->save();
-
-        return redirect()->back();
-
-    }*/
 
     public function destroy($id)
     {

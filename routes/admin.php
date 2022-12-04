@@ -51,16 +51,17 @@ Route::prefix('user')
     ->controller(UserController::class)->name('user.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::get('/show/{id}', 'show')->name('show');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        Route::middleware('super')->group(function () {
+            Route::get('/create', 'create')->name('create');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::get('/show/{id}', 'show')->name('show');
+            Route::post('/update/{id}', 'update')->name('update');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        });
     });
 
 Route::prefix('order')
-    ->middleware('manager')
     ->controller(OrderController::class)->name('order.')
     ->group(function () {
         Route::get('/{slug}', 'index')->name('index');
@@ -70,7 +71,5 @@ Route::prefix('order')
         Route::post('/update/{id}', 'update')->name('update');
         Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/show/{id}', 'show')->name('show');
-        /*Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');
-        Route::get('/acceptproduct/{id}', 'acceptproduct')->name('acceptproduct');*/
     });
 

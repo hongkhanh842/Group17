@@ -81,21 +81,21 @@
                 <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link"><i class="nav-icon fas fa-user text-green"></i>Tài khoản</a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{--/admin/comment--}}" class="nav-link"><i class="nav-icon fas fa-comment"></i>Bình luận</a>
+                {{--<li class="nav-item">
+                    <a href="--}}{{--/admin/comment--}}{{--" class="nav-link"><i class="nav-icon fas fa-comment"></i>Bình luận</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{--{{route('admin.faq.index')}}--}}" class="nav-link"><i class="nav-icon fas fa-question"></i>FAQ</a>
+                    <a href="--}}{{--{{route('admin.faq.index')}}--}}{{--" class="nav-link"><i class="nav-icon fas fa-question"></i>FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{--{{route('admin.message.index')}}--}}" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>Tin nhắn</a>
+                    <a href="--}}{{--{{route('admin.message.index')}}--}}{{--" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>Tin nhắn</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{--/admin/setting--}}" class="nav-link">
+                    <a href="--}}{{--/admin/setting--}}{{--" class="nav-link">
                         <i class="nav-icon fas fa-tools"></i>
                         <p class="text">Cấu hình</p>
                     </a>
-                </li>
+                </li>--}}
 
             </ul>
         </nav>
