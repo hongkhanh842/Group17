@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ApiCategoryController;
+use App\Http\Controllers\api\ApiDashboardController;
 use App\Http\Controllers\api\ApiOrderController;
 use App\Http\Controllers\api\ApiOrderDetailController;
 use App\Http\Controllers\api\ApiProductController;
@@ -25,7 +26,9 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/search','ajaxSearch')->name('search');
     });
 
-Route::prefix('user')->controller(ApiUserController::class)->name('api.user.')
+Route::prefix('user')
+    ->middleware('manager')
+    ->controller(ApiUserController::class)->name('api.user.')
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
@@ -41,4 +44,9 @@ Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.'
     ->group(function () {
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/slug/{slug}', 'slug')->name('slug');
+    });
+
+Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')
+    ->group(function () {
+        Route::get('/all', 'all')->name('all');
     });

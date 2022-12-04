@@ -57,7 +57,7 @@
                             $('#table-data')
                                 .append($('<tr>').append($('<th style="width: 300px">').append('ID')).append($('<td>').append(each.id)))
                                 .append($('<tr>').append($('<th>').append('Tên'))     .append($('<td>').append(each.name)))
-                                .append($('<tr>').append($('<th>').append('Thuộc danh mục'))  .append($('<td>').append(getParentsTree(each, each.name, response.data.data))))
+                                .append($('<tr>').append($('<th>').append('Thuộc danh mục'))  .append($('<td>').append(each.parent_id)))
                                 .append($('<tr>').append($('<th>').append('Hình ảnh'))     .append($('<td>').append(image)))
                                 .append($('<tr>').append($('<th>').append('Trạng thái'))    .append($('<td>').append(each.status)))
                                 .append($('<tr>').append($('<th>').append('Tạo lúc')).append($('<td>').append(convertDateToDateTime(each.created_at))))

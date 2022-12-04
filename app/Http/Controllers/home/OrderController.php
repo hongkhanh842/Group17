@@ -37,6 +37,7 @@ class OrderController extends Controller
                 'id' => $id,
                 ]);
         }
+        return redirect()->route('user.orders')->with('error','Bạn không thể huỷ đơn hàng này');
     }
 
     public function update($id)
@@ -44,6 +45,7 @@ class OrderController extends Controller
         $order = Order::find($id);
         $order->status = "Huỷ";
         $order->save();
+        return redirect()->route('user.orders')->with('success','Huỷ đơn hàng thành công');
     }
 
 
@@ -77,8 +79,8 @@ class OrderController extends Controller
             $data3 = ShopCart::where('user_id', Auth::id());
             $data3->delete();
 
-            /*return redirect()->route('shopcart.ordercomplete')->with('success', 'Product Orders Success');*/
+            return redirect()->route('user.orders')->with('success', 'Đặt hàng thành công');
         }
-       /* return redirect()->route('shopcart.ordercomplete')->with('error', 'Your Credit Card is not valid');*/
+        return redirect()->route('user.orders')->with('error', 'Đặt hàng thất bại');
     }
 }

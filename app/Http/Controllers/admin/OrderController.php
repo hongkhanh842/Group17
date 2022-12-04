@@ -35,7 +35,7 @@ class OrderController extends Controller
         $data->note = $request->note;
         $data->save();
         $slug = getStatusByValue($data->status);
-        return redirect()->route('admin.order.index',['slug' => $slug]);
+        return redirect()->route('admin.order.index',['slug' => $slug])->with('success','Cập nhật trọng thái đơn hàng thành công');
     }
 
     public function destroy($id)

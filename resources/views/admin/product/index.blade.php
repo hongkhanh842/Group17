@@ -70,11 +70,11 @@
                         let gallery = '<a href="{{route('admin.image.index',['pid'])}}"><img src="{{asset('assets')}}/admin/img/gallery.png" style="height: 40px"></a>'
                         gallery = gallery.replace('pid', each.id)
 
-                        let edit = '<a href="{{route('admin.product.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
+                        let edit = '<a href="{{route('admin.product.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Sửa</a>';
                         edit = edit.replace('id',each.id);
-                        let del  = '<a href="{{route('admin.product.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        let del  = '<a href="{{route('admin.product.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Xoá</a>';
                         del = del.replace('id',each.id);
-                        let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
+                        let show = '<a href="{{route('admin.product.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Xem</a>';
                         show = show.replace('id',each.id);
 
                         $('#table-data').append($('<tr>')

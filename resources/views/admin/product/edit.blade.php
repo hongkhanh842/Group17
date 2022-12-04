@@ -87,11 +87,12 @@
 @section('foot')
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-    <script>
+    {{--<script>
         $(function () {
             $('.textarea').summernote()
         })
-    </script>
+    </script>--}}
+
 @endsection
 
 @push('js')
@@ -148,9 +149,8 @@
                             $('#description').append(description);
                             $('#price').append(price);
                             $('#quantity').append(quantity);
-                            $('#detail').append(each.detail);
+                            $('#detail').append(each.detail).summernote();
                             $('#status').append(status);
-
                 },
                 error: function (response) {
                 }
