@@ -1,51 +1,44 @@
 @extends('layouts.frontbase')
 
-@section('title', 'User Panel')
+@section('title', 'TÀI KHOẢN')
 
 
 @section('content')
-    <!-- BREADCRUMB -->
     <div id="breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="{{route('home')}}">Home</a></li>
-                <li class="active">User Panel</li>
+                <li><a href="{{route('home')}}">Trang chủ</a></li>
+                <li class="active">Tài khoản</li>
             </ul>
         </div>
     </div>
-    <!-- /BREADCRUMB -->
 
-    <!-- section -->
     <div class="section">
-        <!-- container -->
         <div class="container">
-            <!-- row -->
             <div class="row">
-
                 <div class="col-md-2">
                     <div class="billing-details">
                         <div class="section-title">
-                            <h3 class="title">User Menu</h3>
+                            <h3 class="title">Quản lý</h3>
                         </div>
-                        @include('home.user.usermenu')
+                        @include('home.user.menu')
                     </div>
                 </div>
-
                 <div class="col-md-10">
-                    <div class="shiping-methods">
+                    <div class="order-summary clearfix">
                         <div class="section-title">
-                            <h4 class="title">User Profile</h4>
+                            <h3 class="title">Thông tin tài khoản</h3>
                         </div>
                         <div class="input-checkbox">
-                            @include('profile.show')
+                           <form action="{{route('user.update')}}" method="post">
+                               @csrf
+                               <input name="name" value="{{Auth::user()->name}}">
+                               <button type="submit">Cập nhật</button>
+                           </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-            <!-- /row -->
         </div>
-        <!-- /container -->
     </div>
-    <!-- /section -->
 @endsection

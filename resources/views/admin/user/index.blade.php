@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'User List')
+@section('title', 'TÀI KHOẢN')
 
 @section('content')
     <div class="content-wrapper">
@@ -8,13 +8,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-
-
+                        <a href="{{route('admin.user.create')}}" class="btn btn-block bg-gradient-info"
+                           style="width: 200px">Thêm tài khoản</a>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="breadcrumb-item active">User List</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Tài khoản</li>
                         </ol>
                     </div>
                 </div>
@@ -24,18 +24,20 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">User List</h3>
+                    <h3 class="card-title">Danh sách tài khoản</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered">
                         <thead>
                         <tr>
                             <th style="width: 10px">Id</th>
-                            <th>Name</th>
+                            <th>Tên</th>
                             <th>Email</th>
-                            <th>Role</th>
-                            <th style="width: 40px">Show</th>
-                            <th style="width: 40px">Delete</th>
+                            <th>Ảnh đại diện</th>
+                            <th>Quyền</th>
+                            <th style="width: 40px">Xem</th>
+                            <th style="width: 40px">Sửa</th>
+                            <th style="width: 40px">Xoá</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,22 +46,24 @@
                                 <td>{{$rs->id}}</td>
                                 <td>{{$rs->name}} </td>
                                 <td>{{$rs->email}} </td>
-                                <td>
-                                    @foreach ($rs->roles as $role)
-                                        {{$role->name}}
-                                    @endforeach
-
-                                </td>
+                                <td><img src="{{$rs->avatar}}" style="height: 40px" ></img></td>
+                                <td>{{getRoleByKey($rs->role)}}</td>
 
                                 <td>
-                                    <a href="{{route('admin.user.show',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm"
-                                       onclick="return !window.open(this.href, '','top=50 left=100 width=1100,height=700')">
-                                        Show
+                                    <a href="{{route('admin.user.show',['id'=>$rs->id])}}" class="btn btn-block btn-info btn-sm">
+                                        Xem
                                     </a>
                                 </td>
-                                <td><a href="{{route('admin.message.destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
-                                       onclick="return confirm('Deleting !! Are you sure ?')">Delete</a>  </td>
-
+                                <td>
+                                    <a href="{{route('admin.user.edit',['id'=>$rs->id])}}" class="btn btn-block btn-success btn-sm">
+                                        Sửa
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="{{route('admin.user.destroy',['id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm">
+                                        Xoá
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -67,12 +71,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer clearfix">
-                    <ul class="pagination pagination-sm m-0 float-right">
-                        <li class="page-item"><a class="page-link" href="#">«</a></li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    <ul class="pagination pagination-sm m-0 float-right" id="pagination">
                     </ul>
                 </div>
             </div>

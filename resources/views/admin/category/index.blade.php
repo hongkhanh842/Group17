@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Category List')
+@section('title', 'DANH MỤC')
 
 @section('content')
     <div class="content-wrapper">
@@ -9,12 +9,12 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <a href="{{route('admin.category.create')}}" class="btn btn-block bg-gradient-info"
-                           style="width: 200px">Add Category</a>
+                           style="width: 200px">Thêm danh mục</a>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Category List</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Danh mục</li>
                         </ol>
                     </div>
                 </div>
@@ -24,20 +24,20 @@
         <section class="content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Category List</h3>
+                    <h3 class="card-title">BẢNG DANH MỤC</h3>
                 </div>
                 <div class="card-body">
                     <table class="table table-bordered" id="table-data">
                         <thead>
                         <tr>
                             <th style="width: 10px">ID</th>
-                            <th>Parent</th>
-                            <th>Title</th>
-                            <th>Image</th>
-                            <th>Status</th>
-                            <th style="width: 40px">Edit</th>
-                            <th style="width: 40px">Delete</th>
-                            <th style="width: 40px">Show</th>
+                            <th>Thuộc danh mục</th>
+                            <th>Tên danh mục</th>
+                            <th>Hình ảnh</th>
+                            <th>Trạng thái</th>
+                            <th style="width: 40px">Xem</th>
+                            <th style="width: 40px">Sửa</th>
+                            <th style="width: 40px">Xoá</th>
                         </tr>
                         </thead>
                     </table>
@@ -55,9 +55,8 @@
 @push('js')
     <script>
         $(document).ready(function () {
-
             $.ajax({
-                url: '{{ route('api.category') }}',
+                url: '{{ route('api.category.full') }}',
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
                 success: async function (response) {
@@ -65,23 +64,22 @@
 
                         let image = '<img src="' + '/storage/' + each.image + '" style="height: 40px" ></img>';
 
-                        let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Edit</a>';
+                        let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block btn-success btn-sm">Sửa</a>';
                         edit = edit.replace('id', each.id);
-                        let del = '<a href="{{route('admin.category.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Delete</a>';
+                        let del = '<a href="{{route('admin.category.destroy', ['id'])}}" class="btn btn-block btn-danger btn-sm">Xoá</a>';
                         del = del.replace('id', each.id);
-                        let show = '<a href="{{route('admin.category.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Show</a>';
+                        let show = '<a href="{{route('admin.category.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Xem</a>';
                         show = show.replace('id', each.id);
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
-                            .append($('<td>').append(getParentsTree(each, each.title, response.data.data)))
-                            .append($('<td>').append(each.title))
+                            .append($('<td>').append(getParentsTree(each, each.name, response.data.data)))
+                            .append($('<td>').append(each.name))
                             .append($('<td>').append(image))
                             .append($('<td>').append(each.status))
+                            .append($('<td>').append(show))
                             .append($('<td>').append(edit))
                             .append($('<td>').append(del))
-                            .append($('<td>').append(show))
                         );
-                       /* location.reload();*/
                     });
                     renderPagination(response.data.pagination);
                 },

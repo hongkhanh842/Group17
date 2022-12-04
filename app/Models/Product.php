@@ -9,12 +9,10 @@ class Product extends Model
 {
     use HasFactory;
 
-    #many to one
     public function category()
     {
         return  $this->belongsTo(Category::class);
     }
-
     public function comment()
     {
         return  $this->hasMany(Comment::class);
@@ -25,16 +23,16 @@ class Product extends Model
         return $this->hasMany(ShopCart::class);
     }
 
-    public function orderproduct()
+    public function orderdetail()
     {
-        return $this->hasMany(OrderProduct::class);
+        return $this->hasMany(OrderDetail::class);
     }
 
     public function scopeSearch($query)
     {
         if (request('key')){
             $key = request('key');
-            $query = $query->where('title', 'like', '%'.$key.'%');
+            $query = $query->where('name', 'like', '%'.$key.'%');
         }
         return $query;
     }

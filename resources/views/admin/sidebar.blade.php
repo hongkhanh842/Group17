@@ -6,7 +6,7 @@
              alt="AdminLTE Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">My Admin Panel</span>
+        <span class="brand-text font-weight-light">TRANG QUẢN TRỊ</span>
     </a>
 
     <!-- Sidebar -->
@@ -18,7 +18,7 @@
             </div>
             <div class="info">
                 <a class="d-block text-bold">{{ Auth::user()->name }} </a>
-                <a href="/logoutuser" class="text-uppercase text-danger">Logout</a>
+                <a href="{{route('admin.logout')}}" class="text-uppercase text-danger">Đăng xuất</a>
             </div>
         </div>
 
@@ -28,80 +28,74 @@
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i> Dashboard</a>
+                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-yellow"></i>Thống kê</a>
                 </li>
 
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-box-open text-blue"></i>
                         <p>
-                            Orders
+                            Đơn hàng
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="/admin/order/New" class="nav-link">
+                            <a href="{{route('admin.order.index',['new'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>New Orders</p>
+                                <p>Mới</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Accepted" class="nav-link">
+                            <a href="{{route('admin.order.index',['accepted'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Accepted Orders</p>
+                                <p>Đã xác nhận</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Shipped" class="nav-link">
+                            <a href="{{route('admin.order.index',['shipping'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Shipped Orders</p>
+                                <p>Đang giao</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Cancelled" class="nav-link">
+                            <a href="{{route('admin.order.index',['shipped'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Cancelled Orders</p>
+                                <p>Đã giao</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/order/Completed" class="nav-link">
+                            <a href="{{route('admin.order.index',['cancel'])}}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Completed Orders</p>
+                                <p>Đã huỷ</p>
                             </a>
                         </li>
-
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/category" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i> Categories</a>
+                    <a href="{{route('admin.category.index')}}" class="nav-link"><i class="nav-icon fas fa-th text-yellow"></i>Danh mục</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/product" class="nav-link"><i class="nav-icon fas fa-th"></i> Products</a>
+                    <a href="{{route('admin.product.index')}}" class="nav-link"><i class="nav-icon fas fa-th"></i>Sản phẩm</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/comment" class="nav-link"><i class="nav-icon fas fa-comment"></i> Comments</a>
+                    <a href="{{route('admin.user.index')}}" class="nav-link"><i class="nav-icon fas fa-user text-green"></i>Tài khoản</a>
+                </li>
+                {{--<li class="nav-item">
+                    <a href="--}}{{--/admin/comment--}}{{--" class="nav-link"><i class="nav-icon fas fa-comment"></i>Bình luận</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.faq.index')}}" class="nav-link"><i class="nav-icon fas fa-question"></i> FAQ</a>
+                    <a href="--}}{{--{{route('admin.faq.index')}}--}}{{--" class="nav-link"><i class="nav-icon fas fa-question"></i>FAQ</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('admin.message.index')}}" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i> Messages</a>
+                    <a href="--}}{{--{{route('admin.message.index')}}--}}{{--" class="nav-link"><i class="nav-icon fas fa-mail-bulk"></i>Tin nhắn</a>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/user" class="nav-link"><i class="nav-icon fas fa-user text-green"></i> Users</a>
-                </li>
-              {{--  <li class="nav-item">
-                    <a href="/admin/social" class="nav-link"><i class="nav-icon fas fa-th"></i> Social</a>
-                </li>--}}
-
-               {{-- <li class="nav-header">LABELS</li>--}}
-                <li class="nav-item">
-                    <a href="/admin/setting" class="nav-link">
+                    <a href="--}}{{--/admin/setting--}}{{--" class="nav-link">
                         <i class="nav-icon fas fa-tools"></i>
-                        <p class="text">Settings</p>
+                        <p class="text">Cấu hình</p>
                     </a>
-                </li>
+                </li>--}}
 
             </ul>
         </nav>

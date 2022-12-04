@@ -1,11 +1,10 @@
-@extends('layouts.adminwindow')
+@extends('layouts.adminbase')
 
-@section('title', 'User Detail :'.$data->title)
+@section('title', 'TÀI KHOẢN')
 
 @section('content')
+    <div class="content-wrapper">
 
-
-    <!-- Main content -->
     <section class="content">
 
         <div class="card">
@@ -21,7 +20,7 @@
                     </tr>
 
                     <tr>
-                        <th>Name & Surname</th>
+                        <th>Tên</th>
                         <td>{{$data->name}}</td>
                     </tr>
 
@@ -30,48 +29,35 @@
                         <td>{{$data->email}}</td>
                     </tr>
                     <tr>
-                        <th>Roles</th>
+                        <th>Ảnh đại diện</th>
+                        <td> <img src="{{$data->avatar}}" style="height: 150px" ></img></td>
+                    </tr>
+                    <tr>
+                        <th>Địa chỉ</th>
+                        <td>{{$data->address}}</td>
+                    </tr>
+                    <tr>
+                        <th>Quyền</th>
                         <td>
-                            @foreach ($data->roles as $role)
-                                {{$role->name}}
-                                <a href="{{route('admin.user.destroyrole',['uid'=>$data->id,'rid'=>$role->id ])}}"
-                                   onclick="return confirm('Deleting !! Are you sure ?')">[x]</a>
-                            @endforeach
 
+                           {{getRoleByKey($data->role)}}
                         </td>
                     </tr>
                     <tr>
-                        <th >Created Date</th>
+                        <th >Được tạo lúc</th>
                         <td>{{$data->created_at}}</td>
                     </tr>
                     <tr>
-                        <th >Update Date</th>
+                        <th >Cập nhật lúc</th>
                         <td>{{$data->updated_at}}</td>
-                    </tr>
-                    <tr>
-                        <th >Add Role to User</th>
-                        <td>
-                            <form role="form" action="{{route('admin.user.addrole',['id'=>$data->id])}}" method="post" >
-                                @csrf
-                                <select name="role_id">
-                                    @foreach ($roles as $role)
-                                        <option value="{{$role->id}}">{{$role->name}}</option>
-                                    @endforeach
-                                </select>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Add Role</button>
-                                </div>
-                            </form>
-                        </td>
                     </tr>
 
 
                 </table>
             </div>
-            <!-- /.card-body -->
         </div>
 
-    </section>
-    <!-- /.content -->
 
+    </section>
+    </div>
 @endsection

@@ -22,7 +22,7 @@ function getParentsTree(object, title, data){
         let a ='';
         data.forEach(function (each) {
             if (each.id === object.parent_id) {
-                title = each.title + ' > ' + title;
+                title = each.name + ' > ' + title;
                 a = title;
             }
         });

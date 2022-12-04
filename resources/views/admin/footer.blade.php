@@ -24,6 +24,7 @@
 <script src="{{asset('assets/admin')}}/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{asset('assets/admin')}}/js/demo.js"></script>
+<script src="{{asset('assets/admin')}}/plugins/chart.js/Chart.min.js"></script>
 
 
 <script src="{{asset('assets/admin')}}/js/helper.js"></script>

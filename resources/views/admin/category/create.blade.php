@@ -1,6 +1,6 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Add Category')
+@section('title', 'DANH MỤC')
 
 @section('content')
     <div class="content-wrapper">
@@ -8,12 +8,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Category</h1>
+                        <h1>THÊM DANH MỤC</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Add Category</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Danh mục</li>
                         </ol>
                     </div>
                 </div>
@@ -22,60 +22,46 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Category Elements</h3>
+                    <h3 class="card-title">Thông tin danh mục</h3>
                 </div>
                 <form role="form" action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data"
                       id="form-create">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Parent Category</label>
+                            <label>Thuộc danh mục</label>
                             <select class="form-control select2" name="parent_id" style="width: 100%;" id=select-data>
-                                {{--<option value="0" selected="selected">Main Category</option>
-                                @foreach($data as $rs)
-                                    <option value="{{ $rs->id }}">
-                                        {{ CategoryController::getParentsTree($rs, $rs->title) }}
-                                    </option>
-                                @endforeach--}}
                             </select>
                         </div>
 
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Title</label>
-                            <input type="text" class="form-control" name="title" placeholder="Title" value="{{old('title')}}">
+                            <label for="exampleInputEmail1">Tên</label>
+                            <input type="text" class="form-control" name="name" placeholder="Nhập tên" value="{{old('name')}}">
                         </div>
-                        @if ($errors->has('title'))
+                 {{--       @if ($errors->has('title'))
                             <span class="alert alert-danger">
                                 {{ $errors->first('title') }}
                             </span>
-                        @endif
+                        @endif--}}
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Keywords</label>
-                            <input type="text" class="form-control" name="keywords" placeholder="Keywords">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Description</label>
-                            <input type="text" class="form-control" name="description" placeholder="Description">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputFile">Image</label>
+                            <label for="exampleInputFile">Hình ảnh</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="image">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose image file</label>
+                                    <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Status</label>
+                            <label>Trang thái</label>
                             <select class="form-control" name="status">
-                                <option>True</option>
-                                <option>False</option>
+                                <option>Hiển thị</option>
+                                <option>Không hiển thị</option>
                             </select>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary">Lưu</button>
                     </div>
                 </form>
             </div>
@@ -111,16 +97,15 @@
 
         $(document).ready(async function () {
             $.ajax({
-                url: '{{ route('api.category') }}',
+                url: '{{ route('api.category.min') }}',
                 dataType: 'json',
                 success: function (response) {
-                    $('#select-data').html('<option value="0" selected="selected">Main Category</option>');
+                    $('#select-data').html('<option value="0" selected="selected">Danh mục chính</option>');
                     response.data.data.forEach(function (each) {
 
                         let html = "<option value='id'>"
                         html =html.replace('id',each.id);
-                        let option = getParentsTree(each, each.title, response.data.data);
-
+                        let option = getParentsTree(each, each.name, response.data.data);
                         $('#select-data').append(html + option + '</option>' )
                     });
                 },

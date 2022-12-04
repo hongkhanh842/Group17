@@ -1,11 +1,9 @@
 @extends('layouts.adminbase')
 
-@section('title', 'Edit Product:')
+@section('title', 'SẢN PHẨM')
 
 @section('head')
-    <!-- include summernote css/js -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
-
 @endsection
 
 @section('content')
@@ -20,8 +18,8 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Home</a></li>
-                            <li class="breadcrumb-item active">Edit Product</li>
+                            <li class="breadcrumb-item"><a href="{{route('admin.index')}}">Trang chủ</a></li>
+                            <li class="breadcrumb-item active">Sản phẩm</li>
                         </ol>
                     </div>
                 </div>
@@ -30,65 +28,55 @@
         <section class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">Product Elements</h3>
+                    <h3 class="card-title">Thông tin sản phẩm</h3>
                 </div>
-                <form role="form" action="{{route('admin.product.update',['id'=>$id])}}" method="post"
+                <form role="form" action="{{route('admin.product.update',[$id])}}" method="post"
                       enctype="multipart/form-data">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
-                            <label>Parent Category</label>
+                            <label>Danh mục</label>
                             <select class="form-control select2" name="category_id" style="width: 100%;"
                                     id="selected-data">
                             </select>
-
                         </div>
 
                         <div class="form-group" id="title1">
-                            <label for="exampleInputEmail1">Title</label>
-                        </div>
-                        <div class="form-group" id="keywords">
-                            <label for="exampleInputEmail1">Keywords</label>
+                            <label for="exampleInputEmail1">Tên</label>
                         </div>
                         <div class="form-group" id="description">
-                            <label for="exampleInputEmail1">Description</label>
+                            <label for="exampleInputEmail1">Mô tả</label>
                         </div>
                         <div class="form-group" id="price">
-                            <label for="exampleInputEmail1">Price</label>
+                            <label for="exampleInputEmail1">Giá</label>
                         </div>
                         <div class="form-group" id="quantity">
-                            <label for="exampleInputEmail1">Quantity</label>
-                        </div>
-                        <div class="form-group" id="minquantity">
-                            <label for="exampleInputEmail1">Minimum Quantity</label>
-                        </div>
-                        <div class="form-group" id="tax">
-                            <label for="exampleInputEmail1">Tax %</label>
+                            <label for="exampleInputEmail1">Số lượng</label>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Detail</label>
-                            <textarea class="textarea" id="detail" name="detail" id="detail">
+                            <label for="exampleInputEmail1">Chi tiết</label>
+                            <textarea class="textarea" id="detail" name="detail">
                             </textarea>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputFile">Image</label>
+                            <label for="exampleInputFile">Hình ảnh</label>
                             <div class="input-group">
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" name="image">
-                                    <label class="custom-file-label" for="exampleInputFile">Choose image file</label>
+                                    <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Status</label>
+                            <label>Trạng thái</label>
                             <select class="form-control" name="status" id="status">
-                                <option>True</option>
-                                <option>False</option>
+                                <option>Hiển thị</option>
+                                <option>Không hiển thị</option>
                             </select>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary">Update Data</button>
+                        <button type="submit" class="btn btn-primary">Cập nhật</button>
                     </div>
                 </form>
             </div>
@@ -101,7 +89,6 @@
 
     <script>
         $(function () {
-            // Summernote
             $('.textarea').summernote()
         })
     </script>
@@ -137,45 +124,33 @@
 
             let val
             $.ajax({
-                url: '{{ route('api.product') }}',
+                url: "{{ route('api.product.one',[$id])}}",
                 dataType: 'json',
                 success: function (response) {
+                    let each = response.data;
 
-                    response.data.data.forEach(function (each) {
                         let status = '<option selected>' + 'each.status' + '</option>'
                         status = status.replace('each.status', each.status);
 
-
-                        let title1 = '<input type="text" class="form-control" name="title" value="each.title">'
-                        title1 = title1.replace('each.title', each.title);
-                        let keywords = '<input type="text" class="form-control" name="keywords" value="each.keywords">'
-                        keywords = keywords.replace('each.keywords', each.keywords);
+                        let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
+                        title1 = title1.replace('each.name', each.name);
                         let description = '<input type="text" class="form-control" name="description" value="each.description">'
                         description = description.replace('each.description', each.description);
                         let price = '<input type="text" class="form-control" name="price" value="each.price">'
                         price = price.replace('each.price', each.price);
                         let quantity = '<input type="text" class="form-control" name="quantity" value="each.quantity">'
                         quantity = quantity.replace('each.quantity', each.quantity);
-                        let minquantity = '<input type="text" class="form-control" name="minquantity" value="each.minquantity">'
-                        minquantity = minquantity.replace('each.minquantity', each.minquantity);
-                        let tax = '<input type="text" class="form-control" name="tax" value="each.tax">'
-                        tax = tax.replace('each.tax', each.tax);
-                        if (each.id === {{$id}}) {
+
 
                             val = each.category_id;
-                            $('#title').html('Edit Category: ').append(each.title);
+                            $('#title').html('Edit Category: ').append(each.name);
                             $('#title1').append(title1);
-                            $('#keywords').append(keywords);
                             $('#description').append(description);
                             $('#price').append(price);
                             $('#quantity').append(quantity);
-                            $('#minquantity').append(minquantity);
-                            $('#tax').append(tax);
                             $('#detail').append(each.detail);
                             $('#status').append(status);
-                        }
 
-                    });
                 },
                 error: function (response) {
                 }
@@ -183,7 +158,7 @@
             })
 
             $.ajax({
-                url: '{{ route('api.category') }}',
+                url: '{{ route('api.category.min') }}',
                 dataType: 'json',
                 success: function (response) {
 
@@ -191,12 +166,12 @@
 
                         let html = "<option value='id'>"
                         html = html.replace('id', each.id);
-                        let option = getParentsTree(each, each.title, response.data.data);
+                        let option = getParentsTree(each, each.name, response.data.data);
 
                         $('#selected-data').append(html + option + '</option>')
                     });
-                    val = val.toString()
-                    $('#selected-data').val(val)
+                    /*val = val.toString()
+                    $('#selected-data').val(val)*/
                 },
                 error: function (response) {
                 }
