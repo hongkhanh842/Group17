@@ -15,7 +15,7 @@ class ApiCategoryController extends Controller
 
     public function full()
     {
-        $data = Category::query()->latest()->paginate(5);
+        $data = Category::query()->latest()->paginate(10);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
@@ -30,7 +30,7 @@ class ApiCategoryController extends Controller
 
     public function min()
     {
-        $data = Category::query()->latest()->paginate(5);
+        $data = Category::query()->latest()->paginate(10);
 
         $arr['data'] = $data->getCollection();
         return $this->successResponse($arr);

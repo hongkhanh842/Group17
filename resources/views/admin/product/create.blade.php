@@ -136,7 +136,7 @@
                         let html = "<option value='id'>"
                         html =html.replace('id',each.id);
                         let option = getParentsTree(each, each.name, response.data.data);
-
+                        console.log(response.data.data)
                         $('#select-data').append(html + option + '</option>' )
                     });
                 },

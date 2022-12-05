@@ -32,7 +32,16 @@
                         <div class="input-checkbox">
                            <form action="{{route('user.update')}}" method="post">
                                @csrf
+                               <img src="{{Auth::user()->avatar}}" width="32px">
+                               <br>
                                <input name="name" value="{{Auth::user()->name}}">
+                               <br>
+                               <input name="password" placeholder="Nhập mật khẩu mới">
+                               <br>
+                               <input name="phone" value="{{Auth::user()->phone}}" placeholder="Nhập số điện thoại">
+                               <br>
+                               <input name="address" value="{{Auth::user()->address}}" placeholder="Nhập địa chỉ">
+                               <br>
                                <button type="submit">Cập nhật</button>
                            </form>
                         </div>
