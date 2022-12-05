@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\home\CategoryController;
+use App\Http\Controllers\home\CommentController;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
@@ -31,7 +32,6 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
 Route::get('admin/login', [\App\Http\Controllers\admin\AuthController::class, 'login'])->name('admin.login');
 Route::post('admin/login', [\App\Http\Controllers\admin\AuthController::class, 'logging'])->name('admin.logging');
 
-/*Route::get('/send',function (){Mail::to('1851120019@sv.ut.edu.vn')->send(new MailNotify());});*/
 Route::get('/mail/{email}', [MailController::class, 'index'])->name('mail');
 //___
 
@@ -61,9 +61,6 @@ Route::middleware('auth')->group(function () {
             Route::post('/update/{id}', 'update')->name('update');
             Route::get('/destroy/{id}', 'destroy')->name('destroy');
             Route::get('/show/{id}', 'show')->name('show');
-            /* Route::post('/order', 'order')->name('order');
-             Route::post('/storeorder', 'storeorder')->name('storeorder');
-             Route::get('/ordercomplete', 'ordercomplete')->name('ordercomplete');*/
         });
 
     Route::prefix('order')->controller(OrderController::class)->name('order.')
@@ -73,6 +70,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/show/{id}', 'show')->name('show');
             Route::get('/update/{id}', 'update')->name('update');
             Route::get('/cancel/{id}', 'cancel')->name('cancel');
+        });
+
+    Route::prefix('comment')
+        ->controller(CommentController::class)->name('comment.')
+        ->group(function () {
+            Route::post('/store', 'store')->name('store');
         });
 
     Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function () {
