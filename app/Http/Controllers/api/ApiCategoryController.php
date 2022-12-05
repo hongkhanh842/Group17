@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ResponseTrait;
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -43,5 +44,10 @@ class ApiCategoryController extends Controller
         $arr['pagination'] = $product->linkCollection();
 
         return $this->successResponse($arr);
+    }
+    public function ajaxSearch($id)
+    {
+        $data = Product::search()->where('category_id',$id)->limit(5)->get();
+        return $this->successResponse($data);
     }
 }

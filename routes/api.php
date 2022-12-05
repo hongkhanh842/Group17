@@ -18,6 +18,7 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/search/{id}','ajaxSearch')->name('search');
     });
 
 Route::prefix('product')->controller(ApiProductController::class)->name('api.product.')

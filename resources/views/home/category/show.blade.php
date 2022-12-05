@@ -25,8 +25,8 @@
                         <div class="pull-left">
                             <div class="sort-filter">
                                 <form>
-                                    <input class="input search-input" type="text" placeholder="Nhập sản phẩm cần tìm">
-                                    <div class="search-ajax-result">
+                                    <input class="input search-input1" type="text" placeholder="Nhập sản phẩm cần tìm">
+                                    <div class="search-ajax-result1">
                                     </div>
                                 </form>
                             </div>
@@ -103,7 +103,7 @@
     </div>
 @endsection
 
-@push('js')
+{{--@push('js')
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -137,5 +137,34 @@
                 window.location.search = urlParams;
             });
         });
+    </script>
+@endpush--}}
+@push('js')
+    <script>
+        $('.search-input1').keyup(function () {
+            let _text = $(this).val();
+
+            $.ajax({
+                url: "{{route('api.category.search',[$id])}}?key=" + _text,
+                type: 'GET',
+                success: function (response) {
+                    let _html = '';
+
+                    for (let each of response.data) {
+                        _html += '<div class="media">'
+                        _html += '<a class="pull-left" href="{{route('product.show',['pid'])}}">'
+                        _html += '<img class="media-object" width="50" src = "/storage/' + each.image + '">'
+                        _html += '</a>'
+                        _html += '<div class="media-body">'
+                        _html += '<h4 class="media-heading"><a href="{{route('product.show',['pid'])}}">' + each.name + '</a></h4>'
+                        _html += '<p>' + each.description + '</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        _html = _html.replace('pid', each.id)
+                        $('.search-ajax-result1').html(_html)
+                    }
+                }
+            })
+        })
     </script>
 @endpush

@@ -25,8 +25,8 @@
                         <div class="pull-left">
                             <div class="sort-filter">
                                 <form>
-                                    <input class="input search-input" type="text" placeholder="Nhập sản phẩm cần tìm">
-                                    <div class="search-ajax-result">
+                                    <input class="input search-input1" type="text" placeholder="Nhập sản phẩm cần tìm">
+                                    <div class="search-ajax-result1">
                                     </div>
                                 </form>
                             </div>
@@ -110,7 +110,7 @@
 
 @push('js')
     <script>
-        $('.search-input').keyup(function () {
+        $('.search-input1').keyup(function () {
             let _text = $(this).val();
 
             $.ajax({
@@ -130,7 +130,7 @@
                         _html += '</div>'
                         _html += '</div>'
                         _html = _html.replace('pid', each.id)
-                        $('.search-ajax-result').html(_html)
+                        $('.search-ajax-result1').html(_html)
                     }
                 }
             })
