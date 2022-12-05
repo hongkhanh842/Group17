@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha512-9BwLAVqqt6oFdXohPLuNHxhx36BVj5uGSGmizkmGkgl3uMSgNalKc/smum+GJU/TTP0jy0+ruwC3xNAk3F759A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     {{-- admin MAIN CSS --}}
-    <link rel="stylesheet" href="{{asset('assets')}}/admin/css/adminStyle.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/css/loginStyle.css">
 </head>
 <body>
     @include('notify')
