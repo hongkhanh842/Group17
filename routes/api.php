@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ApiCategoryController;
+use App\Http\Controllers\api\ApiCommentController;
 use App\Http\Controllers\api\ApiDashboardController;
 use App\Http\Controllers\api\ApiOrderController;
 use App\Http\Controllers\api\ApiOrderDetailController;
@@ -17,6 +18,7 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
+        Route::get('/search/{id}','ajaxSearch')->name('search');
     });
 
 Route::prefix('product')->controller(ApiProductController::class)->name('api.product.')
@@ -50,4 +52,13 @@ Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.'
 Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')
     ->group(function () {
         Route::get('/all', 'all')->name('all');
+    });
+
+Route::prefix('comment')
+    ->middleware('manager')
+    ->controller(ApiCommentController::class)->name('api.comment.')
+    ->group(function () {
+        Route::get('/full', 'full')->name('full');
+        Route::get('/min', 'min')->name('min');
+        Route::get('/one/{id}', 'one')->name('one');
     });

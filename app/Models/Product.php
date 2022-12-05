@@ -36,4 +36,10 @@ class Product extends Model
         }
         return $query;
     }
+
+   /* public function average($query)
+    {
+        $average = $query->comment->average('rate');
+        return
+    }*/
 }

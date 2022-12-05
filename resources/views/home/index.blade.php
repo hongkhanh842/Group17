@@ -44,12 +44,15 @@
                                 <div class="product-body">
                                     <h3 class="product-price">{{$rs->price}}.000 VND</h3>
 
+                                    @php
+                                        $average = $rs->comment->average('rate');
+                                    @endphp
                                     <div class="product-rating">
-                                        <i class="fa fa-star @if ($rs->rate<1) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<2) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<3) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<4) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<5) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($average<1) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($average<2) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($average<3) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
+                                        <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
                                     </div>
                                     <h2 class="product-name"><a href="{{route('product.show',['id'=>$rs->id])}}">{{$rs->name}}</a></h2>
                                     <div class="product-btn">

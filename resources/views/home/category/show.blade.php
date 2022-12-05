@@ -25,8 +25,8 @@
                         <div class="pull-left">
                             <div class="sort-filter">
                                 <form>
-                                    <input class="input search-input" type="text" placeholder="Nhập sản phẩm cần tìm">
-                                    <div class="search-ajax-result">
+                                    <input class="input search-input1" type="text" placeholder="Nhập sản phẩm cần tìm">
+                                    <div class="search-ajax-result1">
                                     </div>
                                 </form>
                             </div>
@@ -56,13 +56,16 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-price">{{$rs->price}}.000 VND</h3>
-                                            {{--    <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o empty"></i>
-                                                </div>--}}
+                                            {{--@php
+                                                $average = $rs->comment->average('rate');
+                                            @endphp
+                                            <div class="product-rating">
+                                                <i class="fa fa-star @if ($average<1) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<2) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<3) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
+                                            </div>--}}
                                             <h2 class="product-name"><a href="{{route('product.show',['id'=>$rs->id])}}">{{$rs->name}}</a></h2>
                                             <div class="product-btn">
                                                 <a class="primary-btn add-to-cart" href="{{route('shopcart.add',['id'=>$rs->id])}}">
@@ -103,7 +106,7 @@
     </div>
 @endsection
 
-@push('js')
+{{--@push('js')
     <script>
         $(document).ready(function () {
             $.ajax({
@@ -137,5 +140,34 @@
                 window.location.search = urlParams;
             });
         });
+    </script>
+@endpush--}}
+@push('js')
+    <script>
+        $('.search-input1').keyup(function () {
+            let _text = $(this).val();
+
+            $.ajax({
+                url: "{{route('api.category.search',[$id])}}?key=" + _text,
+                type: 'GET',
+                success: function (response) {
+                    let _html = '';
+
+                    for (let each of response.data) {
+                        _html += '<div class="media">'
+                        _html += '<a class="pull-left" href="{{route('product.show',['pid'])}}">'
+                        _html += '<img class="media-object" width="50" src = "/storage/' + each.image + '">'
+                        _html += '</a>'
+                        _html += '<div class="media-body">'
+                        _html += '<h4 class="media-heading"><a href="{{route('product.show',['pid'])}}">' + each.name + '</a></h4>'
+                        _html += '<p>' + each.description + '</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        _html = _html.replace('pid', each.id)
+                        $('.search-ajax-result1').html(_html)
+                    }
+                }
+            })
+        })
     </script>
 @endpush

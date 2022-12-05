@@ -22,21 +22,21 @@
                             <div class="product-view">
                                 <img src="{{Storage::url($data->image)}}" alt="">
                             </div>
-                            {{--@foreach($images as $rs)
+                            @foreach($images as $rs)
                                 <div class="product-view">
                                     <img src="{{Storage::url($rs->image)}}" alt="">
                                 </div>
-                            @endforeach--}}
+                            @endforeach
                         </div>
                         <div id="product-view">
                             <div class="product-view">
                                 <img src="{{Storage::url($data->image)}}" alt="">
                             </div>
-                            {{--@foreach($images as $rs)
+                            @foreach($images as $rs)
                                 <div class="product-view">
                                     <img src="{{Storage::url($rs->image)}}" alt="">
                                 </div>
-                            @endforeach--}}
+                            @endforeach
                         </div>
                     </div>
 
@@ -114,7 +114,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="product-reviews">
-                                             {{--   @foreach($reviews as $rs)
+                                                @foreach($reviews as $rs)
                                                     <div class="single-review">
                                                         <div class="review-heading">
                                                             <div><a href="#"> <i class="fa fa-user-o"></i> {{$rs->user->name}}</a> </div>
@@ -132,13 +132,13 @@
                                                             <p>{{$rs->review}}</p>
                                                         </div>
                                                     </div>
-                                                @endforeach--}}
-                                                {{--<ul class="reviews-pages">
+                                                @endforeach
+                                                <ul class="reviews-pages">
                                                     <li class="active">1</li>
                                                     <li><a href="#">2</a></li>
                                                     <li><a href="#">3</a></li>
                                                     <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                                </ul>--}}
+                                                </ul>
                                             </div>
                                         </div>
 
@@ -146,7 +146,7 @@
                                             <h4 class="text-uppercase">Gửi đánh giá</h4>
                                             <p>Email sẽ không được hiển thị</p>
 
-                                            <form class="review-form" action="{{--{{route('storecomment')}}--}}" method="post">
+                                            <form class="review-form" action="{{route('comment.store')}}" method="post">
                                                 @csrf
                                                 <input class="input" type="hidden" name="product_id" value="{{$data->id}}" />
                                                 <div class="form-group">
