@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\home;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,5 +25,18 @@ class UserController extends Controller
         return view('home.user.orders',[
             'data' => $data,
         ]);
+    }
+    public function reviews()
+    {
+        $comments = Comment::where('user_id', '=', Auth::id())->get();
+        return view('home.user.comments',[
+            'comments' => $comments,
+        ]);
+    }
+    public function destroy($id)
+    {
+        $data = Comment::find($id);
+        $data->delete();
+        return redirect(route('user.reviews'));
     }
 }

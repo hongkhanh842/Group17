@@ -21,7 +21,7 @@
                         <div class="section-title">
                             <h3 class="title">Quản lý</h3>
                         </div>
-                     {{--   @include('home.user.usermenu')--}}
+                        @include('home.user.menu')
                     </div>
                 </div>
                 <div class="col-md-10">

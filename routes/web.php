@@ -81,8 +81,8 @@ Route::middleware('auth')->group(function () {
     Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update', 'update')->name('update');
-        /*Route::get('/reviews', 'reviews')->name('reviews');
-        Route::get('/reviewdestroy/{id}', 'reviewdestroy')->name('reviewdestroy');*/
+        Route::get('/reviews', 'reviews')->name('reviews');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/orders', 'orders')->name('orders');
         /*Route::get('/orderdetail/{id}', 'orderdetail')->name('orderdetail');*/
         /*Route::get('/cancelproduct/{id}', 'cancelproduct')->name('cancelproduct');*/
