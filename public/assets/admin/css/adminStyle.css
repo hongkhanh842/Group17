@@ -1,0 +1,53 @@
+/* Login */
+.containerLogin {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('../img/loginAdmin.jpg');
+}
+
+.containerLogin .loginAuth {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid gray;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.btn-submitLogin {
+    display: block;
+    margin: 20px 0;
+    margin-left: auto;
+}
+
+.containerLogin .loginAuth .loginAdminFooter p{
+    display: inline-block;
+}
+.loginAdminFooter{
+    margin-top: 30px;
+}
+
+.loginAdminFooter a{
+    font-size: 1.5rem;
+    line-height: 1.5rem;
+    margin-right: 5px;
+}
+
+.loginAdminFooter a.github{
+    margin-left: 3px;
+    color: black;
+}
+.loginAdminFooter a.facebook{
+    color: navy;
+}
+.loginAdminFooter a.google{
+    color: brown;
+}
+
+.loginAdminFooter a:hover{
+    color: blue;
+}
+

@@ -29,6 +29,9 @@
     <!-- Font Awesome Icon -->
     <link rel="stylesheet" href="{{asset('assets')}}/css/font-awesome.min.css">
 
+    {{-- admin MAIN CSS --}}
+    <link rel="stylesheet" href="{{asset('assets')}}/admin/css/adminStyle.css">
+
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/style.css" />
 
