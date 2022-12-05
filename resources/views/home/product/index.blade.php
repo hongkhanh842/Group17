@@ -45,7 +45,7 @@
                     </div>
 
                     <div id="store">
-                        <div class="row">
+                        <div class="row" id="show">
                             @foreach($products as $rs)
                                 <div class="col-md-4 col-sm-6 col-xs-6">
                                     <div class="product product-single">
@@ -56,13 +56,16 @@
                                         </div>
                                         <div class="product-body">
                                             <h3 class="product-price">{{$rs->price}}.000 VND</h3>
-                                            {{--    <div class="product-rating">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star-o empty"></i>
-                                                </div>--}}
+                                            @php
+                                                $average = $rs->comment->average('rate');
+                                            @endphp
+                                            <div class="product-rating">
+                                                <i class="fa fa-star @if ($average<1) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<2) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<3) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
+                                                <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
+                                            </div>
                                             <h2 class="product-name"><a href="{{route('product.show',['id'=>$rs->id])}}">{{$rs->name}}</a></h2>
                                             <div class="product-btn">
                                                 <a class="primary-btn add-to-cart" href="{{route('shopcart.add',['id'=>$rs->id])}}">
@@ -118,6 +121,7 @@
                 type: 'GET',
                 success: function (response) {
                     let _html = '';
+                    let _html1 ='';
 
                     for (let each of response.data) {
                         _html += '<div class="media">'
@@ -131,6 +135,7 @@
                         _html += '</div>'
                         _html = _html.replace('pid', each.id)
                         $('.search-ajax-result1').html(_html)
+
                     }
                 }
             })

@@ -18,6 +18,8 @@ class HomeController extends Controller
     {
         $page='home';
         $sliderdata = Product::limit(4)->get();
+        /*$sliderdata1 = Product::avarage(5)->limit(4)->get();
+        dd($sliderdata1);*/
         $productlist1 = Product::limit(6)->get();
         /*$setting=Setting::first();*/
         return view('home.index',[
