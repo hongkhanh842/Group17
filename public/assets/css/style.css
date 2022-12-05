@@ -1722,6 +1722,13 @@ z-index:99;
   width: 100%;
 }
 
+/* Thông tin tài khoản  */
+.accountInfoManage a.manageItem{
+    font-size: 2rem;
+    display: block;
+    margin: 2rem 0;
+    font-weight: bold;
+}
 
 
 /*=========================================================

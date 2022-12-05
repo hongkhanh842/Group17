@@ -52,8 +52,8 @@
                 <label for="email">Email:</label>
                 <input class="d-block form-control" required type="email" placeholder="Nhập email" name="email">
 
-                <label for="email">Số điện thoại:</label>
-                <input class="d-block form-control" required type="email" placeholder="Nhập số điện thoại" name="email">
+                <label for="phone">Số điện thoại:</label>
+                <input class="d-block form-control" required type="tel" placeholder="Nhập số điện thoại" name="phone">
 
                 <label for="password">Password:</label>
                 <input class="d-block form-control" required type="password" name="password" placeholder="Nhập password">
