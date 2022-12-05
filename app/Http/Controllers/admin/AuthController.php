@@ -20,7 +20,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials) /*&& isAdmin()===true*/) {
             return redirect()->route("admin.index");
         }
-        return redirect()->route("admin.login");
+        return redirect()->route("home")->with('error', 'Bạn không có quyền đăng nhập vào trang này');
     }
 
     public function logout(Request $request)
