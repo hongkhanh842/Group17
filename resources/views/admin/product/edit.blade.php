@@ -55,7 +55,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Chi tiết</label>
-                            <textarea class="textarea" id="detail" name="detail">
+                            <textarea  id="detail" name="detail">
                             </textarea>
                         </div>
                         <div class="form-group">
@@ -87,10 +87,10 @@
 @section('foot')
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 
-    {{--<script>
-        $(function () {
-            $('.textarea').summernote()
-        })
+   {{-- <script>
+        $(document).ready(function() {
+            $('#detail').summernote();
+        });
     </script>--}}
 
 @endsection

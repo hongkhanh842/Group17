@@ -46,7 +46,7 @@
                                     @endif
                                 </td>
                                 <td><a href="{{route('admin.image.destroy',['pid'=>$product->id,'id'=>$rs->id])}}" class="btn btn-block btn-danger btn-sm"
-                                       onclick="return confirm('Deleting !! Are you sure ?')">Delete</a>  </td>
+                                       onclick="return confirm('Deleting !! Are you sure ?')">Xoá</a>  </td>
                             </tr>
                         @endforeach
                         </tbody>
