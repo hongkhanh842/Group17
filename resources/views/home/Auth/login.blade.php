@@ -19,7 +19,7 @@
     @include('notify')
 <div class="containerLogin">
     <div class="loginAuth">
-        <div class="loginAdminTitle">
+        <div class="loginTitle">
             <h2 class="text-success text-center font-weight-bold">Đăng Nhập</h2>
             <p class="text-danger text-center font-weight-bold">LAPTOP HOUSE</p>
         </div>
@@ -31,7 +31,7 @@
             <input class="form-control"  type="password" class="form-control" placeholder="Password" name="password">
             <button class="btn-submitLogin btn btn-success" type="submit">Đăng nhập</button>
         </form>
-        <div class="loginAdminFooter">
+        <div class="loginFooter">
             <p class="font-weight-bold text-info">Đăng nhập bằng:</p>
         <a class="github" href="{{ route('auth.redirect', 'github') }}"><i class="fab fa-github"></i></a>
         <a class="facebook" href="{{ route('auth.redirect', 'facebook') }}"><i class="fab fa-facebook"></i></a>

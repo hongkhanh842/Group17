@@ -23,31 +23,31 @@
     margin-left: auto;
 }
 
-.containerLogin .loginAuth .loginAdminFooter p{
+.containerLogin .loginAuth .loginFooter p{
     display: inline-block;
 }
-.loginAdminFooter{
+.loginFooter{
     margin-top: 30px;
 }
 
-.loginAdminFooter a{
+.loginFooter a{
     font-size: 1.5rem;
     line-height: 1.5rem;
     margin-right: 5px;
 }
 
-.loginAdminFooter a.github{
+.loginFooter a.github{
     margin-left: 3px;
     color: black;
 }
-.loginAdminFooter a.facebook{
+.loginFooter a.facebook{
     color: navy;
 }
-.loginAdminFooter a.google{
+.loginFooter a.google{
     color: brown;
 }
 
-.loginAdminFooter a:hover{
+.loginFooter a:hover{
     color: blue;
 }
 
