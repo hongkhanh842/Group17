@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Socialite route
+Route::get('/auth/redirect/{provider}', function ($provider) {
+    return Socialite::driver($provider)->redirect();
+})->name('auth.redirect');
+
+/*Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->name('auth.callback');*/
+//
