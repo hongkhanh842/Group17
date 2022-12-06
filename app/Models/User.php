@@ -8,4 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
     use HasFactory;
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class);
+    }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function orderdetail()
+    {
+        return $this->hasMany(OrderDetail::class);
+    }
 }
