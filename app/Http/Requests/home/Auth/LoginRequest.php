@@ -33,7 +33,6 @@ class LoginRequest extends FormRequest
                 'string',
                 'min:6',
                 'max:255',
-                'confirm',
             ],
         ];
     }

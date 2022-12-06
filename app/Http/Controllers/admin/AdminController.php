@@ -11,6 +11,7 @@ class AdminController extends Controller
         if (isShipper()===true || isAdmin()===true || isManager()===true) {
             return view('admin.index');
         }
-        return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng');
+
+        return redirect()->route('admin.login');
     }
 }

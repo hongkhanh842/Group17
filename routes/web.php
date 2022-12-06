@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
+use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -30,5 +31,5 @@ Route::post('admin/login', [\App\Http\Controllers\admin\AuthController::class, '
 //___
 
 //HOME ROUTES
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 //___

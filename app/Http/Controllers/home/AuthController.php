@@ -43,7 +43,7 @@ class AuthController extends Controller
             'password' => $password,
         ]);
         Auth::login($user);
-        Mail::to($request->email)->send(new MailNotify());
+       /* Mail::to($request->email)->send(new MailNotify());*/
         return redirect()->route('home')->with('success', 'Đăng ký thành công, kiểm tra email của bạn');
     }
 
@@ -62,7 +62,6 @@ class AuthController extends Controller
         $user->save();
 
         Auth::login($user);
-
         return redirect()->route("home");
     }
 
