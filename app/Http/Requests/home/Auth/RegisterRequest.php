@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
                 'required',
                 'string',
                 'min:1',
-                'max:100'
+                'max:100',
             ],
             'email' =>[
                 'required',
@@ -39,6 +39,8 @@ class RegisterRequest extends FormRequest
                 'string',
                 'min:6',
                 'max:255',
+                'confirm',
+              /*  'password.numbers',*/
             ],
         ];
     }
