@@ -37,13 +37,14 @@ class AuthController extends Controller
     public function registering(RegisterRequest $request)
     {
         $password = Hash::make($request->password);
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
         ]);
         Auth::login($user);
-       /* Mail::to($request->email)->send(new MailNotify());*/
+        Mail::to($request->email)->send(new MailNotify());
         return redirect()->route('home')->with('success', 'Đăng ký thành công, kiểm tra email của bạn');
     }
 

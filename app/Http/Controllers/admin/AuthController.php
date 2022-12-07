@@ -19,7 +19,7 @@ class AuthController extends Controller
     public function logging(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials) && isAdmin()===true) {
+        if (Auth::attempt($credentials)) {
             return redirect()->route("admin.index");
         }
         return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng');

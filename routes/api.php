@@ -15,6 +15,7 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
+        Route::get('/edit', 'edit')->name('edit');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/search/{id}','ajaxSearch')->name('search');
@@ -50,5 +51,5 @@ Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.'
 
 Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')
     ->group(function () {
-        Route::get('/all', 'all')->name('all');
+        Route::get('/', 'all')->name('all');
     });

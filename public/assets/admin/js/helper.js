@@ -14,20 +14,21 @@ function renderPagination(links) {
     })
 }
 
-function getParentsTree(object, title, data){
-    if (object.parent_id === 0) {
-        return title;
+function getParentName(parent_id, parents){
+    let name = "Danh mục chính";
+    parents.forEach(function (each) {
+        if (parent_id === each.id) {
+            name = each.name;
+        }
+    })
+    return name;
+}
+function getParentName1(data){
+    let name = "Danh mục chính";
+    if (data.parent) {
+        name=data.parent.name;
     }
-    else {
-        let a ='';
-        data.forEach(function (each) {
-            if (each.id === object.parent_id) {
-                title = each.name + ' > ' + title;
-                a = title;
-            }
-        });
-        return a;
-    }
+    return name;
 }
 
 function notifySuccess(message = '') {

@@ -22,8 +22,8 @@ class ApiDashboardController extends Controller
         $arr['shipped'] = Order::where('status', 'Đã giao')->count();
         $arr['cancel'] = Order::where('status', 'Huỷ')->count();
         $arr['users'] = User::where('role','1')->count();
-        $arr['categories'] = Category::where('status','Hiển thị')->count();
-        $arr['products'] = Product::where('status','Hiển thị')->count();
+        $arr['categories'] = Category::count();
+        $arr['products'] = Product::count();
 
         return $this->successResponse($arr);
     }

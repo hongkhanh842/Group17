@@ -44,6 +44,7 @@
                 dataType: 'json',
                 success: function (response) {
                             let each=response.data;
+
                             let image = '<img src="' + '/storage/' + each.image + '" style="height: 150px" ></img>';
 
                             let edit = '<a href="{{route('admin.category.edit',    ['id'])}}" class="btn btn-block bg-gradient-success">Sửa</a>';
@@ -53,13 +54,11 @@
 
                             $('#edit').append(edit);
                             $('#del').append(del);
-
                             $('#table-data')
                                 .append($('<tr>').append($('<th style="width: 300px">').append('ID')).append($('<td>').append(each.id)))
                                 .append($('<tr>').append($('<th>').append('Tên'))     .append($('<td>').append(each.name)))
-                                .append($('<tr>').append($('<th>').append('Thuộc danh mục'))  .append($('<td>').append(each.parent_id)))
+                                .append($('<tr>').append($('<th>').append('Thuộc danh mục'))  .append($('<td>').append(getParentName1(each))))
                                 .append($('<tr>').append($('<th>').append('Hình ảnh'))     .append($('<td>').append(image)))
-                                .append($('<tr>').append($('<th>').append('Trạng thái'))    .append($('<td>').append(each.status)))
                                 .append($('<tr>').append($('<th>').append('Tạo lúc')).append($('<td>').append(convertDateToDateTime(each.created_at))))
                                 .append($('<tr>').append($('<th>').append('Cập nhật lúc')).append($('<td>').append(convertDateToDateTime(each.updated_at))))
                 },
