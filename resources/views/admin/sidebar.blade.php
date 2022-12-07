@@ -19,11 +19,11 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link"><i class="nav-icon fas fa-home text-orange"></i><p>Thống kê</p></a>
+                    <a href="{{route('admin.index')}}" class="nav-link"><i class="nav-icon fas fa-home text-orange"></i><p>Thống kê</p></a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="#" class="nav-link"><i class="nav-icon fas fa-box-open text-cyan"></i><p>Đơn hàng</p></a>
+                    <a href="{{route('admin.order.index')}}" class="nav-link"><i class="nav-icon fas fa-box-open text-cyan"></i><p>Đơn hàng</p></a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.category.index')}}" class="nav-link"><i class="nav-icon fas fa-th text-green"></i><p>Danh mục</p></a>

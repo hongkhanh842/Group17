@@ -69,7 +69,6 @@
                         </tbody>
                     </table>
                 </div>
-                <!-- /.card-body -->
                 <div class="card-footer clearfix">
                     <ul class="pagination pagination-sm m-0 float-right" id="pagination">
                     </ul>
@@ -77,7 +76,5 @@
             </div>
 
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
 @endsection

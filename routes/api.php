@@ -48,6 +48,7 @@ Route::prefix('orderdetail')->controller(ApiOrderDetailController::class)->name(
 Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.')
     ->group(function () {
         Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/full', 'full')->name('full');
         Route::get('/slug/{slug}', 'slug')->name('slug');
     });
 

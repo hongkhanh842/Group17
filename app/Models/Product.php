@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Product extends Model
 {
     use HasFactory;
+   /* protected $casts = [
+        'price' => 'number_format',
+    ];*/
 
     public function category()
     {
