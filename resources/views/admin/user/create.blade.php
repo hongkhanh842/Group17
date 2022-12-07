@@ -42,15 +42,19 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="text" class="form-control" name="email" placeholder="Nhập email" value="{{old('name')}}">
+                            <input type="text" class="form-control" name="email" placeholder="Nhập email" value="{{old('email')}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mật khẩu</label>
-                            <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu" value="{{old('name')}}">
+                            <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Số điện thoại</label>
+                            <input type="text" class="form-control" name="phone" placeholder="Nhập số diện thoại" value="{{old('phone')}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Địa chỉ</label>
-                            <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ" value="{{old('name')}}">
+                            <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ" value="{{old('address')}}">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Ảnh đại diện</label>

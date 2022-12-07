@@ -32,6 +32,7 @@ class UserController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $password;
+        $data->phone = $request->phone;
         $data->address = $request->address;
         $data->role = $request->role;
         if ($request->file('avatar')) {
@@ -64,6 +65,7 @@ class UserController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $password;
+        $data->phone = $request->phone;
         $data->address = $request->address;
         $data->role = $request->role;
         if ($request->file('avatar')) {
