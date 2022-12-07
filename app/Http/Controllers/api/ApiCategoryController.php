@@ -60,4 +60,10 @@ class ApiCategoryController extends Controller
         $data = Product::search()->where('category_id',$id)->limit(5)->get();
         return $this->successResponse($data);
     }
+
+    public function data()
+    {
+        $data =  Category::select('id','name','image')->where('parent_id', '=', 0)->with('children')->get();
+        return $this->successResponse($data);
+    }
 }

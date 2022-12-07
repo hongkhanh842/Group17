@@ -34,21 +34,45 @@
                             <label>Thuộc danh mục</label>
 
                             <select class="form-control select2" name="category_id" style="width: 100%;" id="select-data">
-                               {{-- @foreach($data as $rs)
-                                    <option value="{{ $rs->id }}">
-                                        --}}{{--{{ \App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs, $rs->title) }}--}}{{--
-                                    </option>
-                                @endforeach--}}
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>RAM</label>
+                            <select class="form-control select2" name="ram"  style="width: 100%;">
+                                <option value=0 >8GB</option>
+                                <option value=1 >16GB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>CPU</label>
+                            <select class="form-control select2" name="cpu" style="width: 100%;">
+                                <option value=0 >Intel Core i5</option>
+                                <option value=1 >Intel Core i7</option>
+                                <option value=2 >Ryzen 5</option>
+                                <option value=3 >Ryzen 7</option>
+                                <option value=4 >Ryzen 9</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label>SSD</label>
+                            <select class="form-control select2" name="ssd" style="width: 100%;">
+                                <option value=0 >256 GB</option>
+                                <option value=1 >512 GB</option>
+                                <option value=2 >1 TB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                        <label>Nhu cầu</label>
+                            <select class="form-control select2" name="use" style="width: 100%;">
+                                <option value=0 >Gaming</option>
+                                <option value=1 >Văn phòng</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên</label>
                             <input type="text" class="form-control" name="name" placeholder="Tên">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Mô tả</label>
-                            <input type="text" class="form-control" name="description" placeholder="Mô tả">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá</label>
@@ -71,13 +95,6 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Trạng thái</label>
-                            <select class="form-control" name="status">
-                                <option>Hiển thị</option>
-                                <option>Không hiển thị</option>
-                            </select>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -130,13 +147,11 @@
                 url: '{{ route('api.category.min') }}',
                 dataType: 'json',
                 success: function (response) {
-                  /*  $('#select-data').html('<option value="0" selected="selected">Main Product</option>');*/
                     response.data.data.forEach(function (each) {
 
                         let html = "<option value='id'>"
                         html =html.replace('id',each.id);
-                        let option = getParentsTree(each, each.name, response.data.data);
-                        console.log(response.data.data)
+                        let option = each.name;
                         $('#select-data').append(html + option + '</option>' )
                     });
                 },

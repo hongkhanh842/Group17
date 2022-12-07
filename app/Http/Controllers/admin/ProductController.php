@@ -24,11 +24,13 @@ class ProductController extends Controller
         $data = new Product();
         $data->category_id = $request->category_id;
         $data->name = $request->name;
-        $data->description = $request->description;
         $data->detail = $request->detail;
         $data->price = $request->price;
         $data->quantity = $request->quantity;
-        $data->status = $request->status;
+        $data->ram = $request->ram;
+        $data->cpu = $request->cpu;
+        $data->ssd = $request->ssd;
+        $data->use = $request->use;
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }
@@ -60,7 +62,10 @@ class ProductController extends Controller
         $data->detail = $request->detail;
         $data->price = $request->price;
         $data->quantity = $request->quantity;
-        $data->status = $request->status;
+        $data->ram = $request->ram;
+        $data->cpu = $request->cpu;
+        $data->ssd = $request->ssd;
+        $data->use = $request->use;
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }

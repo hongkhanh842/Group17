@@ -19,6 +19,7 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/search/{id}','ajaxSearch')->name('search');
+        Route::get('/data','data')->name('data');
     });
 
 Route::prefix('product')->controller(ApiProductController::class)->name('api.product.')
@@ -26,6 +27,7 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/search','ajaxSearch')->name('search');
     });
 

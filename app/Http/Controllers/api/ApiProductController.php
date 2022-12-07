@@ -23,6 +23,18 @@ class ApiProductController extends Controller
     public function one($id)
     {
         $data = Product::with('category')->find($id);
+        $data->ram = getRamByKey($data->ram);
+        $data->cpu = getCPUByKey($data->cpu);
+        $data->ssd = getSSDByKey($data->ssd);
+        $data->use = getUseByKey($data->use);
+        /*$data->price = number_format($data->price);*/
+        return $this->successResponse($data);
+    }
+
+    public function edit($id)
+    {
+        $data = Product::with('category')->find($id);
+
         return $this->successResponse($data);
     }
 

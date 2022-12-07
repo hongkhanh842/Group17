@@ -44,14 +44,43 @@
                         <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Tên</label>
                         </div>
-                        <div class="form-group" id="description">
-                            <label for="exampleInputEmail1">Mô tả</label>
-                        </div>
                         <div class="form-group" id="price">
                             <label for="exampleInputEmail1">Giá</label>
                         </div>
                         <div class="form-group" id="quantity">
                             <label for="exampleInputEmail1">Số lượng</label>
+                        </div>
+                        <div class="form-group" >
+                            <label>RAM</label>
+                            <select class="form-control select2" name="ram" id="ram" style="width: 100%;">
+                                <option value=0 >8GB</option>
+                                <option value=1 >16GB</option>
+                            </select>
+                        </div>
+                        <div class="form-group" >
+                            <label>CPU</label>
+                            <select class="form-control select2" name="cpu" id="cpu" style="width: 100%;">
+                                <option value=0 >Intel Core i5</option>
+                                <option value=1 >Intel Core i7</option>
+                                <option value=2 >Ryzen 5</option>
+                                <option value=3 >Ryzen 7</option>
+                                <option value=4 >Ryzen 9</option>
+                            </select>
+                        </div>
+                        <div class="form-group" >
+                            <label>SSD</label>
+                            <select class="form-control select2" name="ssd" id="ssd" style="width: 100%;">
+                                <option value=0 >256 GB</option>
+                                <option value=1 >512 GB</option>
+                                <option value=2 >1 TB</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Nhu cầu</label>
+                            <select class="form-control select2" name="use" id="use" style="width: 100%;">
+                                <option value=0 >Gaming</option>
+                                <option value=1 >Văn phòng</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Chi tiết</label>
@@ -66,13 +95,6 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Trạng thái</label>
-                            <select class="form-control" name="status" id="status">
-                                <option>Hiển thị</option>
-                                <option>Không hiển thị</option>
-                            </select>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -123,15 +145,12 @@
 
         $(document).ready(function () {
 
-            let val
+            let val=0;
             $.ajax({
-                url: "{{ route('api.product.one',[$id])}}",
+                url: "{{ route('api.product.edit',[$id])}}",
                 dataType: 'json',
                 success: function (response) {
                     let each = response.data;
-
-                        let status = '<option selected>' + 'each.status' + '</option>'
-                        status = status.replace('each.status', each.status);
 
                         let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
                         title1 = title1.replace('each.name', each.name);
@@ -142,15 +161,20 @@
                         let quantity = '<input type="text" class="form-control" name="quantity" value="each.quantity">'
                         quantity = quantity.replace('each.quantity', each.quantity);
 
+                        val = each.category_id;
 
-                            val = each.category_id;
                             $('#title').html('Edit Category: ').append(each.name);
                             $('#title1').append(title1);
                             $('#description').append(description);
                             $('#price').append(price);
                             $('#quantity').append(quantity);
+                            $('#ram').val(each.ram);
+                            $('#cpu').val(each.cpu);
+                            $('#ssd').val(each.ssd);
+                            $('#use').val(each.use);
                             $('#detail').append(each.detail).summernote();
-                            $('#status').append(status);
+
+                            $('#selected-data').val(val);
                 },
                 error: function (response) {
                 }
@@ -166,12 +190,11 @@
 
                         let html = "<option value='id'>"
                         html = html.replace('id', each.id);
-                        let option = getParentsTree(each, each.name, response.data.data);
+
+                        let option = each.name;
 
                         $('#selected-data').append(html + option + '</option>')
                     });
-                    /*val = val.toString()
-                    $('#selected-data').val(val)*/
                 },
                 error: function (response) {
                 }
