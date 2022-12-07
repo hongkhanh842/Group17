@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\category\StoreRequest;
+use App\Http\Requests\admin\category\UpdateRequest;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +21,7 @@ class CategoryController extends Controller
         return view('admin.category.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = new Category();
 
@@ -47,7 +49,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $data = Category::find($id);
 
