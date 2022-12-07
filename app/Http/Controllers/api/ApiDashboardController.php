@@ -16,14 +16,15 @@ class ApiDashboardController extends Controller
 
     public function all()
     {
-        $arr['new'] = Order::where('status', 'Mới')->count();
-        $arr['accepted'] = Order::where('status', 'Đã xác nhận')->count();
-        $arr['shipping'] = Order::where('status', 'Đang giao')->count();
-        $arr['shipped'] = Order::where('status', 'Đã giao')->count();
-        $arr['cancel'] = Order::where('status', 'Huỷ')->count();
+        $arr['new'] = Order::where('status', 'Mới')->whereMonth('created_at', date('m'))->count();
+        $arr['accepted'] = Order::where('status', 'Đã xác nhận')->whereMonth('created_at', date('m'))->count();
+        $arr['shipping'] = Order::where('status', 'Đang giao')->whereMonth('created_at', date('m'))->count();
+        $arr['shipped'] = Order::where('status', 'Đã giao')->whereMonth('created_at', date('m'))->count();
+        $arr['cancel'] = Order::where('status', 'Huỷ')->whereMonth('created_at', date('m'))->count();
         $arr['users'] = User::where('role','1')->count();
         $arr['categories'] = Category::count();
         $arr['products'] = Product::count();
+        $arr['month'] = date('m');
 
         return $this->successResponse($arr);
     }

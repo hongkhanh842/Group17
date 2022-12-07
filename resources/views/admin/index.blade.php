@@ -74,7 +74,7 @@
         <section class="content">
         <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Thống kê đơn hàng trong tháng</h3>
+                <h3 class="card-title" id="month">Thống kê đơn hàng trong tháng </h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -128,6 +128,7 @@ let all;
             $('#categories').append(all.categories)
             $('#products').append(all.products)
             $('#users').append(all.users)
+            $('#month').append(all.month)
         },
         error: function (response) {
         }

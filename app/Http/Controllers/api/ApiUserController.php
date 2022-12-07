@@ -13,7 +13,7 @@ class ApiUserController extends Controller
 
     public function full()
     {
-        $data = User::query()->latest()->paginate(5);
+        $data = User::query()->where('role','!=',0)->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
@@ -28,7 +28,7 @@ class ApiUserController extends Controller
 
     public function min()
     {
-        $data = User::query()->latest()->paginate(5);
+        $data = User::query()->where('role','!=',0)->latest()->paginate(5);
 
         $arr['data'] = $data->getCollection();
         return $this->successResponse($arr);

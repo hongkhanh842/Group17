@@ -31,6 +31,21 @@ function getParentName1(data){
     return name;
 }
 
+function getRoleByKey(key){
+   if (key == 1)
+   {
+       return "Khách hàng"
+   } else if (key == 2)
+   {
+       return "Quản lý"
+   }
+
+       return "Shipper"
+
+}
+
+
+
 function notifySuccess(message = '') {
     $.toast({
         heading: 'Success',

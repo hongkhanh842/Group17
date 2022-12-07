@@ -39,7 +39,6 @@
                                 <textarea name="note" cols="80" id="note"></textarea>
                                 <br>
                                 <select name="status" id="status">
-                                 {{--   <option selected id="status"></option>--}}
                                     <option>Đã xác nhận</option>
                                     <option>Đang giao</option>
                                     <option>Đã giao</option>

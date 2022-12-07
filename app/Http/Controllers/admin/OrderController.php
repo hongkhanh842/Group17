@@ -29,8 +29,4 @@ class OrderController extends Controller
         $data->save();
         return redirect()->route('admin.order.index')->with('success','Cập nhật trọng thái đơn hàng thành công');
     }
-
-    public function destroy($id)
-    {
-    }
 }
