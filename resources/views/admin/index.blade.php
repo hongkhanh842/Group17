@@ -128,7 +128,7 @@ let all;
             $('#categories').append(all.categories)
             $('#products').append(all.products)
             $('#users').append(all.users)
-            $('#month').append(all.month)
+            $('#month').append(all.month).append(":   ").append(all.total).append(" đơn hàng")
         },
         error: function (response) {
         }

@@ -58,7 +58,6 @@ class ProductController extends Controller
         $data = Product::find($id);
         $data->category_id = $request->category_id;
         $data->name = $request->name;
-        $data->description = $request->description;
         $data->detail = $request->detail;
         $data->price = $request->price;
         $data->quantity = $request->quantity;

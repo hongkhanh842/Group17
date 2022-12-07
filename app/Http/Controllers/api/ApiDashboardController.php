@@ -21,6 +21,7 @@ class ApiDashboardController extends Controller
         $arr['shipping'] = Order::where('status', 'Đang giao')->whereMonth('created_at', date('m'))->count();
         $arr['shipped'] = Order::where('status', 'Đã giao')->whereMonth('created_at', date('m'))->count();
         $arr['cancel'] = Order::where('status', 'Huỷ')->whereMonth('created_at', date('m'))->count();
+        $arr['total'] = Order::whereMonth('created_at', date('m'))->count();
         $arr['users'] = User::where('role','1')->count();
         $arr['categories'] = Category::count();
         $arr['products'] = Product::count();
