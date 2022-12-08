@@ -15,6 +15,7 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
+        Route::get('/product', 'product')->name('product');
         Route::get('/edit', 'edit')->name('edit');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');

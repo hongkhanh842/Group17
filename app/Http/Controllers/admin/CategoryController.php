@@ -58,7 +58,6 @@ class CategoryController extends Controller
         if ($request->file('image')) {
             $data->image=$request->file('image')->store('image');
         }
-        $data->status = $request->status;
         $data->save();
 
         return redirect()->route('admin.category.index')->with('success','Cập nhật danh mục thành công');

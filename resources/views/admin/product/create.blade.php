@@ -144,7 +144,7 @@
 
         $(document).ready(async function () {
             $.ajax({
-                url: '{{ route('api.category.min') }}',
+                url: '{{ route('api.category.product') }}',
                 dataType: 'json',
                 success: function (response) {
                     response.data.data.forEach(function (each) {

@@ -15,7 +15,7 @@ class ApiCategoryController extends Controller
 
     public function full()
     {
-        $data = Category::query()->latest()->paginate(6);
+        $data = Category::query()->latest()->paginate(5);
         $parent = Category::select('id','name')->where('parent_id', '=', 0)->get();
         $arr['data'] = $data->getCollection();
         $arr['parent_data'] = $parent;
@@ -30,6 +30,14 @@ class ApiCategoryController extends Controller
     }
 
     public function min()
+    {
+        $data = Category::query()->select('id','name')->get();
+
+        $arr['data'] = $data;
+        return $this->successResponse($arr);
+    }
+
+    public function product()
     {
         $data = Category::query()->select('id','name')
             ->where('parent_id', '!=' , 0)->get();

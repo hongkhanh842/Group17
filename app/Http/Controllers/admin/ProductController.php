@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\product\StoreRequest;
+use App\Http\Requests\admin\product\UpdateRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +21,7 @@ class ProductController extends Controller
         return view('admin.product.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $data = new Product();
         $data->category_id = $request->category_id;
@@ -53,12 +55,11 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request, Product $product, $id)
+    public function update(UpdateRequest $request, Product $product, $id)
     {
         $data = Product::find($id);
         $data->category_id = $request->category_id;
         $data->name = $request->name;
-        $data->detail = $request->detail;
         $data->price = $request->price;
         $data->quantity = $request->quantity;
         $data->ram = $request->ram;

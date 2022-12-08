@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Requests\admin\category;
+namespace App\Http\Requests\admin\product;
 
+use App\Enums\ProductRAMEnum;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreRequest extends FormRequest
 {
@@ -27,11 +29,32 @@ class StoreRequest extends FormRequest
             'name' =>[
                 'required',
                 'string',
-                'unique:App\Models\Category,name',
+                'unique:App\Models\Product,name',
             ],
             'image' =>[
                 'required',
                 'image',
+            ],
+            'quantity' =>[
+                'required',
+                'integer',
+                'min:0',
+            ],
+            'price' =>[
+                'required',
+                'min:0',
+            ],
+            'ram' =>[
+                'required',
+            ],
+            'ssd' =>[
+                'required',
+            ],
+            'cpu' =>[
+                'required',
+            ],
+            'use' =>[
+                'required',
             ],
         ];
     }

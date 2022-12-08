@@ -146,10 +146,33 @@
         $(document).ready(function () {
 
             let val=0;
+
+            $.ajax({
+                url: '{{ route('api.category.product') }}',
+                dataType: 'json',
+                success: async function (response) {
+
+                    response.data.data.forEach(function (each) {
+
+                        let html = "<option value='id'>"
+                        html = html.replace('id', each.id);
+
+                        let option = each.name;
+
+                        $('#selected-data').append(html + option + '</option>')
+
+                    });
+
+                },
+                error: function (response) {
+                }
+
+            })
+
             $.ajax({
                 url: "{{ route('api.product.edit',[$id])}}",
                 dataType: 'json',
-                success: function (response) {
+                success: async function (response) {
                     let each = response.data;
 
                         let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
@@ -174,32 +197,14 @@
                             $('#use').val(each.use);
                             $('#detail').append(each.detail).summernote();
 
-                            $('#selected-data').val(val);
+                    $('#selected-data').val(val);
                 },
                 error: function (response) {
                 }
 
             })
 
-            $.ajax({
-                url: '{{ route('api.category.min') }}',
-                dataType: 'json',
-                success: function (response) {
 
-                    response.data.data.forEach(function (each) {
-
-                        let html = "<option value='id'>"
-                        html = html.replace('id', each.id);
-
-                        let option = each.name;
-
-                        $('#selected-data').append(html + option + '</option>')
-                    });
-                },
-                error: function (response) {
-                }
-
-            })
         })
     </script>
 @endpush
