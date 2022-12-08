@@ -48,62 +48,8 @@ class ApiProductController extends Controller
 
     public function ajaxSearch()
     {
-        $data = Product::search()->limit(5)->get();
+        $data = Product::query()->search()->limit(5)->get();
         return $this->successResponse($data);
-    }
-
-    public function ram($key)
-    {
-        $data = Product::query()->where('ram',$key)->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
-    }
-
-    public function ssd($key)
-    {
-        $data = Product::query()->where('ssd',$key)->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
-    }
-
-    public function cpu($key)
-    {
-        $data = Product::query()->where('cpu',$key)->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
-    }
-
-    public function use($key)
-    {
-        $data = Product::query()->where('use',$key)->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
-    }
-
-    public function up()
-    {
-        $data = Product::query()->orderBy('price')->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
-    }
-
-    public function down()
-    {
-        $data = Product::query()->orderBy('price','DESC')->with('category')->latest()->paginate(5);
-
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
     }
 
 }

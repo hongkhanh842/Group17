@@ -33,7 +33,7 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function scopeSearch($query)
+    public function scopeName($query)
     {
         if (request('key')){
             $key = request('key');
@@ -48,4 +48,47 @@ class Product extends Model
             set: fn ($value) => number_format($value),
         );
     }*/
+
+    public function scopeSearch($query)
+    {
+        if (request('name')){
+            $key = request('name');
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+
+        if (request('ram')){
+            $key = request('ram');
+            $query = $query->where('ram', $key);
+        }
+
+        if (request('ssd')){
+            $key = request('ssd');
+            $query = $query->where('ssd', $key);
+        }
+
+        if (request('cpu')){
+            $key = request('cpu');
+            $query = $query->where('cpu', $key);
+        }
+
+        if (request('use')){
+            $key = request('use');
+            $query = $query->where('use', $key);
+        }
+
+        if (request('sort')){
+            $key = request('sort');
+            if ($key === "up")
+            {
+                $query = $query->orderBy('price');
+            }
+            else   $query = $query->orderBy('price', 'DESC');
+        }
+        if (request('new')){
+            $key = request('new');
+            $query = $query->latest();
+        }
+
+        return $query;
+    }
 }

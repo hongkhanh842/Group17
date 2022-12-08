@@ -29,20 +29,15 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/search','ajaxSearch')->name('search');
-        Route::get('/ram/{key}','ram')->name('ram');
-        Route::get('/cpu/{key}','cpu')->name('cpu');
-        Route::get('/ssd/{key}','ssd')->name('ssd');
-        Route::get('/use/{key}','use')->name('use');
-        Route::get('/up','up')->name('up');
-        Route::get('/down','down')->name('down');
+
     });
 
 Route::prefix('user')
-    ->middleware('manager')
     ->controller(ApiUserController::class)->name('api.user.')
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
+        Route::get('/infor', 'infor')->name('infor');
         Route::get('/one/{id}', 'one')->name('one');
     });
 
