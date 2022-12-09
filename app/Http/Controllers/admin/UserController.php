@@ -12,10 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data = User::all();
-        return view('admin.user.index',[
-            'data' => $data,
-        ]);
+        return view('admin.user.index');
     }
 
     public function create()
