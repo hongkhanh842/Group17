@@ -78,7 +78,7 @@
                                                 <small>&euro;</small>2,346
                                             </td>
                                             <td colspan="3" class="text-right">
-                                                <button type="button" class="btn btn-info btn-round">Complete Purchase
+                                                <button type="button" class="btn btn-info btn-round">Đặt hàng
                                                     <i class="material-icons">keyboard_arrow_right</i></button>
                                             </td>
 

@@ -4,7 +4,9 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\home\CartController;
 use App\Http\Controllers\home\HomeController;
+use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
+use App\Http\Controllers\home\UserController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -37,6 +39,7 @@ Route::prefix('product')
     ->controller(ProductController::class)->name('product.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/show', 'show')->name('show');
     });
 
 
@@ -44,4 +47,14 @@ Route::prefix('cart')->controller(CartController::class)->name('cart.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
+
+Route::prefix('order')->controller(OrderController::class)->name('order.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
+Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function () {
+    Route::get('/', 'index')->name('index');
+    Route::get('/orders', 'orders')->name('orders');
+});
 //___

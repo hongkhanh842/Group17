@@ -63,10 +63,10 @@
                         </a>
                         <ul class="dropdown-menu dropdown-with-icons">
                             <li>
-                                <a href="#">
+                                <a href="{{route('user.index')}}">
                                     <i class="material-icons">manage_accounts</i> Tài khoản
                                 </a>
-                                <a href="#">
+                                <a href="{{route('user.orders')}}">
                                     <i class="material-icons">inventory_2</i> Đơn hàng
                                 </a>
                                 <a href="{{route('logout')}}">

@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="main main-raised">
-
         <div class="section">
             <div class="container">
                 <h2 class="section-title">Tìm sản phẩm bạn muốn</h2>
