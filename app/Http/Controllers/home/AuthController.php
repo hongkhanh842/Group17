@@ -15,11 +15,6 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-    public function login()
-    {
-        return view('home.auth.login');
-    }
-
     public function logging(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
@@ -27,11 +22,6 @@ class AuthController extends Controller
             return redirect()->route("home");
         }
         return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng');
-    }
-
-    public function register()
-    {
-        return view('home.auth.register');
     }
 
     public function registering(RegisterRequest $request)

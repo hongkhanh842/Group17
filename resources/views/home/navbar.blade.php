@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">LAPTOP HOUSE</a>
+            <a class="navbar-brand" href="{{route('home')}}">LAPTOP HOUSE</a>
         </div>
 
         <div class="collapse navbar-collapse">
@@ -21,14 +21,14 @@
                     </a>
                     <ul class="dropdown-menu dropdown-with-icons">
                         <li>
-                            <a href="#">
+                            <a href="">
                                 <i class="material-icons">label</i> Tên danh mục
                             </a>
                         </li>
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('product.index')}}">
                         <i class="material-icons">laptop</i> Sản phẩm
                     </a>
                 </li>
@@ -45,12 +45,12 @@
             <ul class="nav navbar-nav navbar-right">
                 @guest
                     <li>
-                        <a href="{{--{{route('register')}}--}}" data-toggle="modal" data-target="#signupModal">
+                        <a href="" data-toggle="modal" data-target="#signupModal">
                             <i class="material-icons">person_add</i>Đăng ký
                         </a>
                     </li>
                     <li>
-                        <a href="{{--{{route('login')}}--}}" data-toggle="modal" data-target="#loginModal">
+                        <a href="" data-toggle="modal" data-target="#loginModal">
                             <i class="material-icons">login</i> Đăng Nhập
                         </a>
                     </li>
@@ -76,7 +76,7 @@
                         </ul>
                     </li>
                     <li class="button-container ">
-                        <a href="" target="_blank" class="btn btn-rose btn-round">
+                        <a href="{{route('cart.index')}}" {{--target="_blank"--}} class="btn btn-success btn-round">
                             <i class="material-icons">shopping_cart</i> Giỏ hàng:
                             <span>
                                1
@@ -138,7 +138,7 @@
                         </form>
                     </div>
                     <div class="modal-footer text-center">
-                        <button onclick="form_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng nhập</button>
+                        <button onclick="form_login_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng nhập</button>
                     </div>
                 </div>
             </div>
@@ -194,20 +194,11 @@
 								</span>
                                     <input type="password" placeholder="Mật khẩu" class="form-control" name="password">
                                 </div>
-
-                                <!-- If you want to add a checkbox to this form, uncomment this code
-
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="optionsCheckboxes" checked>
-                                        Subscribe to newsletter
-                                    </label>
-                                </div> -->
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer text-center">
-                        <button onclick="form_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng ký</button>
+                        <button onclick="form_register_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng ký</button>
                     </div>
                 </div>
             </div>
@@ -216,9 +207,11 @@
     <!--  End Modal -->
     @push('js')
         <script type="text/javascript">
-            function form_submit() {
+            function form_register_submit() {
+                document.getElementById("register").submit();
+            }
+            function form_login_submit() {
                 document.getElementById("login").submit();
-             /*   document.getElementById("register").submit();*/
             }
         </script>
     @endpush

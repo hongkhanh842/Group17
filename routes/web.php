@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
+use App\Http\Controllers\home\CartController;
 use App\Http\Controllers\home\HomeController;
+use App\Http\Controllers\home\ProductController;
 use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
@@ -16,10 +18,8 @@ Route::get('/auth/callback/{provider}', [AuthController::class, 'callback'])->na
 //___
 
 //AUTH ROUTES
-Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'logging'])->name('logging');
 
-Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/register', [AuthController::class, 'registering'])->name('registering');
 Route::get('/mail/{email}', [MailController::class, 'index'])->name('mail');
 
@@ -32,4 +32,16 @@ Route::post('admin/login', [\App\Http\Controllers\admin\AuthController::class, '
 
 //HOME ROUTES
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::prefix('product')
+    ->controller(ProductController::class)->name('product.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
+
+
+Route::prefix('cart')->controller(CartController::class)->name('cart.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+    });
 //___
