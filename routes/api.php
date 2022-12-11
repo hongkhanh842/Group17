@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\api\ApiCategoryController;
 use App\Http\Controllers\api\ApiDashboardController;
+use App\Http\Controllers\api\ApiImageController;
 use App\Http\Controllers\api\ApiOrderController;
 use App\Http\Controllers\api\ApiOrderDetailController;
 use App\Http\Controllers\api\ApiProductController;
@@ -31,6 +32,11 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/edit/{id}', 'edit')->name('edit');
         Route::get('/search','ajaxSearch')->name('search');
 
+    });
+
+Route::prefix('image')->controller(ApiImageController::class)->name('api.image.')
+    ->group(function () {
+        Route::get('/{id}', 'full')->name('full');
     });
 
 Route::prefix('user')

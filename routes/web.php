@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\home\AuthController;
 use App\Http\Controllers\home\CartController;
+use App\Http\Controllers\home\CategoryController;
 use App\Http\Controllers\home\HomeController;
 use App\Http\Controllers\home\OrderController;
 use App\Http\Controllers\home\ProductController;
@@ -38,10 +39,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('product')
     ->controller(ProductController::class)->name('product.')
     ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/show', 'show')->name('show');
+        Route::get('/{cate_id?}', 'index')->name('index');
+        Route::get('/show/{id}', 'show')->name('show');
     });
-
 
 Route::prefix('cart')->controller(CartController::class)->name('cart.')
     ->group(function () {

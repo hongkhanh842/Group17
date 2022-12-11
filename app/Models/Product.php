@@ -42,13 +42,6 @@ class Product extends Model
         return $query;
     }
 
-   /* public function getPriceAttribute()
-    {
-        return Attribute::make(
-            set: fn ($value) => number_format($value),
-        );
-    }*/
-
     public function scopeSearch($query)
     {
         if (request('name')){
@@ -86,6 +79,11 @@ class Product extends Model
         }
         if (request('new')){
             $key = request('new');
+            $query = $query->latest();
+        }
+
+        if (request('cate')){
+            $key = request('cate');
             $query = $query->latest();
         }
 

@@ -55,13 +55,13 @@
                 success: function (response) {
                     let count=0;
                     response.data.data.forEach(function (each) {
-                        let image = '<img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px">';
                         let html_ = '';
                         if (each.parent_id !== 0) {
                             if (count === 0 ) {
                                 $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>');
                                 html_ = '<div class="item active">'
-                                html_ +=  image
+                                html_ += '<a href="{{route('product.index',['cate_id'])}}"><img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px"></a>'
+                                html_ =html_.replace('cate_id', each.id);
                                 html_ += '<div class="carousel-caption">'
                                 html_ += '<h4>'+each.name+'</h4>'
                                 html_ += '</div></div>'
@@ -69,7 +69,8 @@
                             } else {
                                 $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="'+count+'" class=""></li>');
                                 html_ = '<div class="item">'
-                                html_ += image
+                                html_ += '<a href="{{route('product.index',['cate_id'])}}"><img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px"></a>'
+                                html_ =html_.replace('cate_id', each.id);
                                 html_ += '<div class="carousel-caption">'
                                 html_ += '<h4>'+each.name+'</h4>'
                                 html_ += '</div></div>'
@@ -96,13 +97,13 @@
                             html_ = '<div class="col-md-4">  ' +
                                 '<div class="card card-product card-plain">' +
                                 '<div class="card-image">' +
-                                ' <a href="#pablo">' +
+                                ' <a href="{{route('product.show',['each.id'])}}">' +
                                 image +
                                 '  </a>' +
                                 '</div>' +
                                 ' <div class="card-content">' +
                                 '  <h4 class="card-title">' +
-                                '  <a href="#pablo">'+each.name+'</a>' +
+                                '  <a href="{{route('product.show',['each.id'])}}">'+each.name+'</a>' +
                                 '   </h4>' +
                                 '  <p class="card-description">' +
                                 getDetailByKey(each.use,each.cpu,each.ram,each.ssd)+
@@ -111,6 +112,7 @@
                                 '    <div class="price-container">' +
                                 ' <span class="price price-new">'+getPrice(each.price)+'</span>' +
                                 '   </div></div></div></div></div>';
+                                html_ = html_.replaceAll('each.id',each.id);
                             $('#product').append(html_);
                         }
                         count++;
