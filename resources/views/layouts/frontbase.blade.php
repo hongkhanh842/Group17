@@ -32,5 +32,4 @@
 @include('home.footer')
 
 @stack('js')
-
 </body>

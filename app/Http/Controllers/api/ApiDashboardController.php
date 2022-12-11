@@ -29,4 +29,8 @@ class ApiDashboardController extends Controller
 
         return $this->successResponse($arr);
     }
+
+    public function index() {
+
+    }
 }

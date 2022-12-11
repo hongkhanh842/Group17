@@ -3,7 +3,7 @@
     <div class="main main-raised">
         <div class="section">
             <div class="container">
-                <h2 class="section-title">Danh mục bán chạy</h2>
+                <h2 class="section-title">Các dòng sản phẩm nổi bật</h2>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
 
@@ -13,36 +13,11 @@
                                 <div class="carousel slide" data-ride="carousel">
 
                                     <!-- Indicators -->
-                                    <ol class="carousel-indicators">
-                                        <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
-                                        <li data-target="#carousel-example-generic" data-slide-to="2"
-                                            class="active"></li>
+                                    <ol class="carousel-indicators" id="indicator">
                                     </ol>
 
                                     <!-- Wrapper for slides -->
-                                    <div class="carousel-inner">
-                                        <div class="item">
-                                            <img src="{{asset('assets')}}/home/img/bg2.jpg" alt="Awesome Image">
-                                            <div class="carousel-caption">
-                                                <h4><i class="material-icons">location_on</i> Yellowstone National Park,
-                                                    United States</h4>
-                                            </div>
-                                        </div>
-                                        <div class="item">
-                                            <img src="{{asset('assets')}}/home/img/bg3.jpg" alt="Awesome Image">
-                                            <div class="carousel-caption">
-                                                <h4><i class="material-icons">location_on</i> Somewhere Beyond, United
-                                                    States</h4>
-                                            </div>
-                                        </div>
-                                        <div class="item active">
-                                            <img src="{{asset('assets')}}/home/img/bg.jpg" alt="Awesome Image">
-                                            <div class="carousel-caption">
-                                                <h4><i class="material-icons">location_on</i> Yellowstone National Park,
-                                                    United States</h4>
-                                            </div>
-                                        </div>
+                                    <div class="carousel-inner" id="slider">
                                     </div>
 
                                     <!-- Controls -->
@@ -61,117 +36,89 @@
                     </div>
                 </div>
             </div>
-             <div class="container tim-container">
-                 <div id="contentAreas" class="cd-section">
-                     Trang chủ
-                 </div>
-             </div>
             <div class="container">
                 <h2 class="section-title">Sản phẩm mới</h2>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card card-product card-plain">
-                            <div class="card-image">
-                                <a href="#pablo">
-                                    <img src="../assets/img/examples/gucci.jpg" alt="">
-                                </a>
-                                <div class="colored-shadow"
-                                     style="background-image: url(&quot;../assets/img/examples/gucci.jpg&quot;); opacity: 1;"></div>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                    <a href="#pablo">Gucci</a>
-                                </h4>
-                                <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
-                                    silhouette. Team it with a silk pocket square and leather loafers.</p>
-                                <div class="footer">
-                                    <div class="price-container">
-                                        <span class="price price-old"> €1,430</span>
-                                        <span class="price price-new"> €743</span>
-                                    </div>
-                                    <div class="stats">
-                                        <button type="button" rel="tooltip" title=""
-                                                class="btn btn-just-icon btn-simple btn-rose"
-                                                data-original-title="Saved to Wishlist">
-                                            <i class="material-icons">favorite</i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="card card-product card-plain">
-                            <div class="card-image">
-                                <a href="#pablo">
-                                    <img src="../assets/img/examples/dolce.jpg" alt="">
-                                </a>
-                                <div class="colored-shadow"
-                                     style="background-image: url(&quot;../assets/img/examples/dolce.jpg&quot;); opacity: 1;"></div>
-                            </div>
-
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                </h4><h4 class="card-title">Dolce &amp; Gabbana</h4>
-
-                                <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
-                                    silhouette. Team it with a silk pocket square and leather loafers.</p>
-                                <div class="footer">
-                                    <div class="price-container">
-                                        <span class="price price-old"> €1,430</span>
-                                        <span class="price price-new">€743</span>
-                                    </div>
-                                    <div class="stats">
-                                        <button type="button" rel="tooltip" title=""
-                                                class="btn btn-just-icon btn-simple btn-rose"
-                                                data-original-title="Saved to Wishlist">
-                                            <i class="material-icons">favorite</i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-4">
-
-                        <div class="card card-product card-plain">
-                            <div class="card-image">
-                                <a href="#pablo">
-                                    <img src="../assets/img/examples/tom-ford.jpg" alt="">
-                                </a>
-                                <div class="colored-shadow"
-                                     style="background-image: url(&quot;../assets/img/examples/tom-ford.jpg&quot;); opacity: 1;"></div>
-                            </div>
-
-                            <div class="card-content">
-                                <h4 class="card-title">
-                                </h4><h4 class="card-title">Dolce &amp; Gabbana</h4>
-
-                                <p class="card-description">The structured shoulders and sleek detailing ensure a sharp
-                                    silhouette. Team it with a silk pocket square and leather loafers.</p>
-                                <div class="footer">
-                                    <div class="price-container">
-                                        <span class="price price-old"> €1,430</span>
-                                        <span class="price price-new">€743</span>
-                                    </div>
-                                    <div class="stats">
-                                        <button type="button" rel="tooltip" title=""
-                                                class="btn btn-just-icon btn-simple btn-rose"
-                                                data-original-title="Saved to Wishlist">
-                                            <i class="material-icons">favorite</i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                <div class="row" id="product">
 
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('api.category.full') }}',
+                dataType: 'json',
+                success: function (response) {
+                    let count=0;
+                    response.data.data.forEach(function (each) {
+                        let image = '<img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px">';
+                        let html_ = '';
+                        if (each.parent_id !== 0) {
+                            if (count === 0 ) {
+                                $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>');
+                                html_ = '<div class="item active">'
+                                html_ +=  image
+                                html_ += '<div class="carousel-caption">'
+                                html_ += '<h4>'+each.name+'</h4>'
+                                html_ += '</div></div>'
+                                $('#slider').html(html_);
+                            } else {
+                                $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="'+count+'" class=""></li>');
+                                html_ = '<div class="item">'
+                                html_ += image
+                                html_ += '<div class="carousel-caption">'
+                                html_ += '<h4>'+each.name+'</h4>'
+                                html_ += '</div></div>'
+                                $('#slider').append(html_);
+                            }
+                            count++;
+                        }
+                    });
+                },
+                error: function (response) {
+                }
+            })
+
+            $.ajax({
+                url: '{{ route('api.product.full') }}',
+                dataType: 'json',
+                success: function (response) {
+                    let count=0;
+                    response.data.data.forEach(function (each) {
+                        let image = '<img src="' + '/storage/' + each.image + '" alt="">';
+                        let html_ = '';
+
+                        if (count < 3) {
+                            html_ = '<div class="col-md-4">  ' +
+                                '<div class="card card-product card-plain">' +
+                                '<div class="card-image">' +
+                                ' <a href="#pablo">' +
+                                image +
+                                '  </a>' +
+                                '</div>' +
+                                ' <div class="card-content">' +
+                                '  <h4 class="card-title">' +
+                                '  <a href="#pablo">'+each.name+'</a>' +
+                                '   </h4>' +
+                                '  <p class="card-description">' +
+                                getDetailByKey(each.use,each.cpu,each.ram,each.ssd)+
+                                '</p>' +
+                                '  <div class="footer">' +
+                                '    <div class="price-container">' +
+                                ' <span class="price price-new">'+getPrice(each.price)+'</span>' +
+                                '   </div></div></div></div></div>';
+                            $('#product').append(html_);
+                        }
+                        count++;
+                    });
+                },
+                error: function (response) {
+                }
+            })
+        });
+    </script>
+@endpush

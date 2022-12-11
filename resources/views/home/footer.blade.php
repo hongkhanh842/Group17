@@ -42,3 +42,5 @@
 
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="{{asset('assets')}}/home/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
+
+<script src="{{asset('assets/admin')}}/js/helper.js"></script>

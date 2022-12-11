@@ -79,7 +79,7 @@
                             .append($('<td>').append(each.id))
                             .append($('<td>').append(each.category.name))
                             .append($('<td>').append(each.name))
-                            .append($('<td>').append(each.price))
+                            .append($('<td>').append(getPrice(each.price)))
                             .append($('<td>').append(each.quantity))
                             .append($('<td>').append(image))
                             .append($('<td>').append(gallery))

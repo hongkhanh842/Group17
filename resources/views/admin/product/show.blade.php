@@ -54,7 +54,7 @@
                                 .append($('<tr>').append($('<th style="width: 200px">').append('ID')).append($('<td>').append(each.id)))
                                 .append($('<tr>').append($('<th>').append('Danh mục'))     .append($('<td>').append(each.category.name)))
                                 .append($('<tr>').append($('<th>').append('Tên'))     .append($('<td>').append(each.name)))
-                                .append($('<tr>').append($('<th>').append('Giá'))  .append($('<td>').append(each.price)))
+                                .append($('<tr>').append($('<th>').append('Giá'))  .append($('<td>').append(getPrice(each.price))))
                                 .append($('<tr>').append($('<th>').append('Số lượng'))  .append($('<td>').append(each.quantity)))
                                 .append($('<tr>').append($('<th>').append('RAM'))  .append($('<td>').append(each.ram)))
                                 .append($('<tr>').append($('<th>').append('CPU'))  .append($('<td>').append(each.cpu)))

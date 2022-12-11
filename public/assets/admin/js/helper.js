@@ -44,8 +44,6 @@ function getRoleByKey(key){
 
 }
 
-
-
 function notifySuccess(message = '') {
     $.toast({
         heading: 'Success',
@@ -66,4 +64,30 @@ function notifyError(message = '') {
     });
 }
 
+function getPrice(x)
+{
+    return x.toLocaleString('it-IT', {style : 'currency', currency : 'VND'});
+}
+
+function getDetailByKey(use,cpu,ram,ssd)
+{
+    let detail = '';
+
+    if (use == 1) detail += 'Laptop văn phòng: '
+    else detail += 'Laptop gaming: '
+
+    if (cpu == 0) detail += 'I5/'
+    else if (cpu == 1) detail += 'I7/'
+    else if (cpu == 2) detail += 'R5/'
+    else if (cpu == 3) detail += 'R7/'
+    else if (cpu == 4) detail += 'R9/'
+
+    if (ram == 0) detail += '8GB/'
+    else detail += '16GB/'
+
+    if (ssd == 0) detail += '256GB'
+    else if (ssd == 1) detail += '512GB'
+    else if (ssd == 2) detail += '1TB'
+    return detail;
+}
 

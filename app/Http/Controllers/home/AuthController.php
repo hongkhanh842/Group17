@@ -49,7 +49,6 @@ class AuthController extends Controller
             $user->email = $data->getEmail();
         }
         $user->name = $data->getName();
-        $user->avatar = $data->getAvatar();
         $user->save();
 
         Auth::login($user);

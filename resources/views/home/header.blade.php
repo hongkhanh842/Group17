@@ -1,4 +1,4 @@
-<div class="page-header {{--header-filter--}} clear-filter" data-parallax="true" style="background-image: url('{{asset('assets')}}/home/img/bg0.jpg');">
+<div class="page-header {{--header-filter--}} clear-filter" data-parallax="true" style="background-image: url('{{asset('assets')}}/home/img/peakpx.jpg');">
     <div class="container">
       {{--  <div class="row">
             <div class="col-md-8 col-md-offset-2">

@@ -57,4 +57,5 @@ Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.'
 Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')
     ->group(function () {
         Route::get('/', 'all')->name('all');
+        Route::get('/home', 'index')->name('index');
     });
