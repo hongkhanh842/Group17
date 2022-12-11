@@ -84,8 +84,8 @@
                         </div>
                     </div>
                     <div class="row text-right">
-                        <button class="btn btn-success btn-round">Thêm vào giỏ hàng &nbsp;<i class="material-icons">shopping_cart</i>
-                        </button>
+                        <a href="{{route('cart.add',[$id])}}" class="btn btn-success btn-round">Thêm vào giỏ hàng &nbsp;<i class="material-icons">shopping_cart</i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -195,31 +195,6 @@
 
     });
 </script>
-
-{{--<script type="text/javascript">
-    $(document).ready(function () {
-        $("#flexiselDemo1").flexisel({
-            visibleItems: 4,
-            itemsToScroll: 1,
-            animationSpeed: 400,
-            enableResponsiveBreakpoints: true,
-            responsiveBreakpoints: {
-                portrait: {
-                    changePoint: 480,
-                    visibleItems: 3
-                },
-                landscape: {
-                    changePoint: 640,
-                    visibleItems: 3
-                },
-                tablet: {
-                    changePoint: 768,
-                    visibleItems: 3
-                }
-            }
-        });
-    });
-</script>--}}
 
 <script src="{{asset('assets')}}/home/js/jquery.flexisel.js"></script>
 </body>

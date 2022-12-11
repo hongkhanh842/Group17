@@ -41,6 +41,7 @@
                                 class="material-icons">search</i></button>
                     </form>
                 </li>
+
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @guest
@@ -78,8 +79,7 @@
                     <li class="button-container ">
                         <a href="{{route('cart.index')}}" {{--target="_blank"--}} class="btn btn-success btn-round">
                             <i class="material-icons">shopping_cart</i> Giỏ hàng:
-                            <span>
-                               1
+                            <span id="cart" style=" font-weight: bold; font-size: x-large">
                            </span>
                         </a>
                     </li>

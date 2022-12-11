@@ -44,3 +44,16 @@
 <script src="{{asset('assets')}}/home/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
 
 <script src="{{asset('assets/admin')}}/js/helper.js"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '{{ route('api.cart.count')}}',
+            dataType: 'json',
+            success: function (response) {
+                $('#cart').append(response.data);
+            },
+            error: function (response) {
+            }
+        })
+    });
+</script>

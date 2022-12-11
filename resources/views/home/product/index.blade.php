@@ -29,9 +29,9 @@
                                          aria-labelledby="headingOne">
                                         <div class="panel-body panel-refine">
                                             <span id="price-left" class="price-left pull-left"
-                                                  data-currency="€">€42</span>
+                                                  data-currency="€"></span>
                                             <span id="price-right" class="price-right pull-right"
-                                                  data-currency="€">€880</span>
+                                                  data-currency="€"></span>
                                             <div class="clearfix"></div>
                                             <div id="sliderRefine"
                                                  class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>
@@ -55,7 +55,17 @@
                                                 <label>
                                                     <input type="checkbox" value="" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
-                                                    Trousers
+                                                    ACER
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    ASUS
+                                                </label>
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    APPLE
                                                 </label>
                                             </div>
                                         </div>
@@ -74,21 +84,39 @@
                                     <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel"
                                          aria-labelledby="headingThree">
                                         <div class="panel-body">
-
-
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" value="" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
-                                                    Loro Piana
+                                                    Intel Core I5
                                                 </label>
                                             </div>
-
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" value="" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
-                                                    Massimo Alba
+                                                    Intel Core I7
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    AMD Ryzen 5
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    AMD Ryzen 7
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    AMD Ryzen 9
                                                 </label>
                                             </div>
                                         </div>
@@ -111,7 +139,14 @@
                                                 <label>
                                                     <input type="checkbox" value="" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
-                                                    Purple
+                                                    8GB
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    16GB
                                                 </label>
                                             </div>
                                         </div>
@@ -134,7 +169,21 @@
                                                 <label>
                                                     <input type="checkbox" value="" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
-                                                    Purple
+                                                    256GB
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    512GB
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    1TB
                                                 </label>
                                             </div>
                                         </div>
@@ -158,7 +207,15 @@
                                                     <input type="checkbox" value="" data-toggle="checkbox"
                                                            checked=""><span class="checkbox-material"><span
                                                             class="check"></span></span>
-                                                    All
+                                                    Gaming
+                                                </label>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" value="" data-toggle="checkbox"
+                                                           checked=""><span class="checkbox-material"><span
+                                                            class="check"></span></span>
+                                                    Văn phòng - Học tập
                                                 </label>
                                             </div>
                                         </div>

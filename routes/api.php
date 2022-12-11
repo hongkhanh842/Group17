@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\api\ApiCartController;
 use App\Http\Controllers\api\ApiCategoryController;
 use App\Http\Controllers\api\ApiDashboardController;
 use App\Http\Controllers\api\ApiImageController;
@@ -59,6 +60,12 @@ Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.'
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/full', 'full')->name('full');
         Route::get('/slug/{slug}', 'slug')->name('slug');
+    });
+
+Route::prefix('cart')->controller(ApiCartController::class)->name('api.cart.')
+    ->group(function () {
+        Route::get('/count', 'count')->name('count');
+        Route::get('/', 'full')->name('full');
     });
 
 Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')

@@ -46,6 +46,10 @@ Route::prefix('product')
 Route::prefix('cart')->controller(CartController::class)->name('cart.')
     ->group(function () {
         Route::get('/', 'index')->name('index');
+        Route::get('/add/{id}', 'add')->name('add');
+        Route::get('/sub/{id}', 'sub')->name('sub');
+        Route::get('/plus/{id}', 'plus')->name('plus');
+        Route::get('/destroy/{id}', 'destroy')->name('destroy');
     });
 
 Route::prefix('order')->controller(OrderController::class)->name('order.')
