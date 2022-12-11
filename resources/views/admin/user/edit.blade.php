@@ -28,22 +28,12 @@
                       enctype="multipart/form-data" id="form-edit">
                     @csrf
                     <div class="card-body">
-                       {{-- <div class="form-group">
-                            <label>Thuộc danh mục</label>
-                            <select class="form-control select2" name="parent_id" style="width: 100%;" id="select-data">
-                            </select>
-                        </div>--}}
                         <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Tên</label>
                         </div>
                         <div class="form-group" id="email">
                             <label for="exampleInputEmail1">Email</label>
                         </div>
-              {{--          @if ($errors->has('title'))
-                            <span class="alert alert-danger">
-                                {{ $errors->first('title') }}
-                            </span>
-                        @endif--}}
                         <div class="form-group">
                             <label for="exampleInputFile">Ảnh đại diện</label>
                             <div class="input-group" id="show_avt">
@@ -53,13 +43,17 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group" id="phone">
+                            <label for="exampleInputEmail1">Số điện thoại</label>
+                        </div>
                         <div class="form-group" id="address">
                             <label for="exampleInputEmail1">Địa chỉ</label>
                         </div>
                         <div class="form-group">
                             <label>Quyền</label>
                             <select class="form-control" name="role" id="role">
-                                <option value="2" selected="selected">Quản lí</option>
+                                <option value="1">Khách hàng</option>
+                                <option value="2">Quản lí</option>
                                 <option value="3">Shipper</option>
                             </select>
                         </div>
@@ -106,12 +100,6 @@
                 success: function (response) {
                     let each= response.data;
 
-                    /*let show_avt = '<img src="each.avatar " style="height: 150px" >';*/
-
-                        let html = "<option value='id'>"
-                        html = html.replace('id', each.id);
-                        let option = 1;
-
                         let status = '<option selected>' + 'each.status' + '</option>'
                         status = status.replace('each.status', each.status);
 
@@ -121,18 +109,18 @@
                         let email = '<input type="email" class="form-control" name="email" value="each.email">'
                         email = email.replace('each.email', each.email);
 
+                        let phone = '<input type="text" class="form-control" name="phone" value="each.phone">'
+                        phone = phone.replace('each.phone', each.phone);
+
                         let address = '<input type="text" class="form-control" name="address" value="each.address">'
                         address = address.replace('each.address', each.address);
 
-                        $('#select-data').append(html + option + '</option>')
-
-                        if (each.id === {{$id}}) {
                             $('#name').html('SỬA TÀI KHOẢN: ').append(each.name);
                             $('#title1').append(title1);
                             $('#email').append(email);
+                            $('#phone').append(phone);
                             $('#address').append(address);
-                            /*$('#show_avt').append(show_avt);*/
-                        }
+                            $('#role').val(each.role);
 
 
                 },

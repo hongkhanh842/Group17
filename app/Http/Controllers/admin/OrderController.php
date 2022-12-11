@@ -9,22 +9,15 @@ use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
-    public function index($slug)
+    public function index()
     {
-        $slug = getStatusByKey($slug);
-
-        return view('admin.order.index',[
-            'slug' => $slug,
-        ]);
+        return view('admin.order.index');
     }
 
     public function show($id)
     {
-        $slug = Order::find($id)->status;
-
         return view('admin.order.show',[
             'id' => $id,
-            'slug' => $slug,
         ]);
     }
 
@@ -34,11 +27,6 @@ class OrderController extends Controller
         $data->status = $request->status;
         $data->note = $request->note;
         $data->save();
-        $slug = getStatusByValue($data->status);
-        return redirect()->route('admin.order.index',['slug' => $slug])->with('success','Cập nhật trọng thái đơn hàng thành công');
-    }
-
-    public function destroy($id)
-    {
+        return redirect()->route('admin.order.index')->with('success','Cập nhật trọng thái đơn hàng thành công');
     }
 }

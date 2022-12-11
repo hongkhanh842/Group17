@@ -17,6 +17,14 @@ class ApiOrderController extends Controller
         return $this->successResponse($data);
     }
 
+    public function full()
+    {
+        $data = Order::with('user')->latest()->paginate(5);
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
     public function slug($slug)
     {
         $data = Order::with('user')->where('status', $slug)->latest()->paginate(5);

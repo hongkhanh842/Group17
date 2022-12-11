@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\home;
 
-use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\home\Auth\LoggingRequest;
-use App\Http\Requests\home\Auth\RegisteringRequest;
+use App\Http\Requests\home\Auth\LoginRequest;
+use App\Http\Requests\home\Auth\RegisterRequest;
 use App\Mail\MailNotify;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,45 +15,27 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthController extends Controller
 {
-    public function login()
-    {
-        return view('home.auth.login');
-    }
-
-    public function logging(LoggingRequest $request)
+    public function logging(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->route("home");
         }
-        return redirect()->route("login")->with('error', 'Email hoặc mật khẩu không đúng');
+        return redirect()->back()->with('error', 'Email hoặc mật khẩu không đúng');
     }
 
-    public function register()
-    {
-        return view('home.auth.register');
-    }
-
-    public function registering(RegisteringRequest $request)
+    public function registering(RegisterRequest $request)
     {
         $password = Hash::make($request->password);
-        if (auth()->check()) {
-            User::where('id', auth()->user()->id)
-                ->update([
-                    'password' => $password,
-                ]);
-        } else {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'avatar' => $request->avatar,
-                'password' => $password,
-            ]);
-            Auth::login($user);
-            Mail::to($request->email)->send(new MailNotify());
-            return redirect()->route('home')->with('success', 'Đăng ký thành công, kiểm tra thư của bạn');
-        }
-        return redirect()->route("home");
+
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $password,
+        ]);
+        Auth::login($user);
+        Mail::to($request->email)->send(new MailNotify());
+        return redirect()->route('home')->with('success', 'Đăng ký thành công, kiểm tra email của bạn');
     }
 
     public function callback($provider)
@@ -63,23 +44,15 @@ class AuthController extends Controller
 
         $user = User::query()->where('email', $data->getEmail())->first();
 
-        $checkExists = true;
-
         if (is_null($user)) {
             $user = new User();
             $user->email = $data->getEmail();
-            $checkExists = false;
         }
         $user->name = $data->getName();
-        $user->avatar = $data->getAvatar();
         $user->save();
 
         Auth::login($user);
-
-        if($checkExists){
-            return redirect()->route("home");
-        }
-        return redirect()->route('register');
+        return redirect()->route("home");
     }
 
     public function logout(Request $request)

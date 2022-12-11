@@ -2,6 +2,10 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\ManagerMiddleware;
+use App\Http\Middleware\ShipperMiddleware;
+use App\Http\Middleware\SuperMiddleware;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -55,11 +59,11 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
-        /*'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,*/
-        'super' => \App\Http\Middleware\SuperMiddleware::class,
-        'admin' => \App\Http\Middleware\AdminMiddleware::class,
-        'manager' => \App\Http\Middleware\ManagerMiddleware::class,
-        'shipper' => \App\Http\Middleware\ShipperMiddleware::class,
+       /* 'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,*/
+        'super' => SuperMiddleware::class,
+        'admin' => AdminMiddleware::class,
+        'manager' => ManagerMiddleware::class,
+        'shipper' => ShipperMiddleware::class,
         'auth.session' => \Illuminate\Session\Middleware\AuthenticateSession::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

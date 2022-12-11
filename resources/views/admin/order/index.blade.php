@@ -35,7 +35,7 @@
                             <th>Địa chỉ</th>
                             <th>Tổng tiền</th>
                             <th>Ghi chú</th>
-                            <th>Trang thái</th>
+                            <th>Trạng thái</th>
                             <th style="width: 40px">Xem</th>
                         </tr>
                         </thead>
@@ -54,7 +54,7 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: '{{ route('api.order.slug',[$slug]) }}',
+                url: '{{ route('api.order.full') }}',
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
 

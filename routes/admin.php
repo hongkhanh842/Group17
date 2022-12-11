@@ -3,7 +3,6 @@
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\CategoryController;
-use App\Http\Controllers\admin\CommentController;
 use App\Http\Controllers\admin\ImageController;
 use App\Http\Controllers\admin\OrderController;
 use App\Http\Controllers\admin\ProductController;
@@ -65,22 +64,7 @@ Route::prefix('user')
 Route::prefix('order')
     ->controller(OrderController::class)->name('order.')
     ->group(function () {
-        Route::get('/{slug}', 'index')->name('index');
-        Route::get('/create', 'create')->name('create');
-        Route::post('/store', 'store')->name('store');
-        Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
-        Route::get('/show/{id}', 'show')->name('show');
-    });
-
-Route::prefix('comment')
-    ->middleware('manager')
-    ->controller(CommentController::class)->name('comment.')
-    ->group(function () {
         Route::get('/', 'index')->name('index');
         Route::post('/update/{id}', 'update')->name('update');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
         Route::get('/show/{id}', 'show')->name('show');
     });
-

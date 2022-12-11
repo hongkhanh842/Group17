@@ -9,7 +9,6 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <a href="{{route('admin.product.create')}}" class="btn btn-block bg-gradient-info" style="width: 200px">Thêm sản phẩm</a>
-
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -36,7 +35,6 @@
                             <th>Số lượng</th>
                             <th>Hình ảnh</th>
                             <th>Các hình ảnh khác</th>
-                            <th>Trạng thái</th>
                             <th style="width: 40px">Xem</th>
                             <th style="width: 40px">Sửa</th>
                             <th style="width: 40px">Xoá</th>
@@ -81,11 +79,10 @@
                             .append($('<td>').append(each.id))
                             .append($('<td>').append(each.category.name))
                             .append($('<td>').append(each.name))
-                            .append($('<td>').append(each.price))
+                            .append($('<td>').append(getPrice(each.price)))
                             .append($('<td>').append(each.quantity))
                             .append($('<td>').append(image))
                             .append($('<td>').append(gallery))
-                            .append($('<td>').append(each.status))
                             .append($('<td>').append(show))
                             .append($('<td>').append(edit))
                             .append($('<td>').append(del))

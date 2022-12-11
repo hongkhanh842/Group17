@@ -1,74 +1,79 @@
 @extends('layouts.frontbase')
 
-@section('title', 'ĐẶT HÀNG')
-
 @section('content')
-    <div id="breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="{{route('home')}}">Trang chủ</a></li>
-                <li class="active">Đặt hàng</li>
-            </ul>
-        </div>
-    </div>
+    <div class="main main-raised">
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul class="nav nav-pills nav-pills-icons nav-stacked nav-pills-success" role="tablist">
+                            <!--
+                                color-classes: "nav-pills-primary", "nav-pills-info", "nav-pills-success", "nav-pills-warning","nav-pills-danger"
+                            -->
+                            <li class="">
+                                <a href="#dashboard-2" role="tab" data-toggle="tab" aria-expanded="false">
+                                    <i class="material-icons">paid</i>
+                                    Thanh toán khi nhận hàng
+                                </a>
+                            </li>
+                            <li class="active">
+                                <a href="#schedule-2" role="tab" data-toggle="tab" aria-expanded="true">
+                                    <i class="material-icons">credit_card</i>
+                                    Thanh toán Online
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content">
+                            <div class="tab-pane" id="dashboard-2">
+                                <form role="form" id="contact-form" method="post">
+                                    <div class="header header-raised header-primary text-center">
+                                        <h4 class="card-title">Contact Us</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">First name</label>
+                                                    <input type="text" name="name" class="form-control">
+                                                    <span class="material-input"></span></div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label">Last name</label>
+                                                    <input type="text" name="name" class="form-control">
+                                                    <span class="material-input"></span></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Email address</label>
+                                            <input type="email" name="email" class="form-control">
+                                            <span class="material-input"></span></div>
+                                        <div class="form-group label-floating is-empty">
+                                            <label class="control-label">Your message</label>
+                                            <textarea name="message" class="form-control" id="message"
+                                                      rows="6"></textarea>
+                                            <span class="material-input"></span></div>
 
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                {{--@include('home.messages')--}}
-                <form id="checkout-form" action="{{route("order.store")}}" class="clearfix" method="post">
-                    @csrf
-                    <div class="col-md-6">
-                        <div class="billing-details">
-                            <div class="section-title">
-                                <h4 class="title">Thông tin giao hàng</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <button type="submit" class="btn btn-success pull-right">Xác nhận đặt hàng
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="name" value="{{Auth::user()->name}}" placeholder="Nhập tên người nhận" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="tel" name="phone" value="{{Auth::user()->phone}}" placeholder="Nhập số điện thoại người nhận" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="email" name="email" value="{{Auth::user()->email}}" placeholder="Nhập email người nhận">
-                            </div>
-                            <div class="form-group">
-                                <input class="input" type="text" name="address" value="{{Auth::user()->address}}" placeholder="Nhập địa chỉ người nhận" required>
-                            </div>
-                            <div class="pull-right">
-                                <button type="submit" class="primary-btn">Thanh toán khi nhận hàng</button>
+                            <div class="tab-pane active" id="schedule-2">
+                                Trống
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-6">
-                        <div class="shiping-methods">
-                            <div class="section-title">
-                                <h4 class="title">Thông tin thanh toán [ {{$total}}000 VND ]</h4>
-                            </div>
-                            <div class="input-checkbox">
-                                <div class="form-group">
-                                    <input class="input"  type="hidden" name="total" value="{{$total}}">
-                                </div>
-                                <div class="form-group">
-                                    <input class="input" type="tel" name="holder" placeholder="Card Holder">
-                                </div>
-                                <div class="form-group">
-                                    <input class="input" type="number" name="number" placeholder="Card Number">
-                                </div>
-                                <div class="form-group">
-                                    <input class="input" type="text" name="date" placeholder="Exp. Date">
-                                </div>
-                                <div class="form-group">
-                                    <input class="input" type="text" name="code" placeholder="Security Code">
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="primary-btn">Thanh toán PayPal</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
             </div>
         </div>
     </div>

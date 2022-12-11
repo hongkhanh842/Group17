@@ -34,7 +34,6 @@
                             <th>Thuộc danh mục</th>
                             <th>Tên danh mục</th>
                             <th>Hình ảnh</th>
-                            <th>Trạng thái</th>
                             <th style="width: 40px">Xem</th>
                             <th style="width: 40px">Sửa</th>
                             <th style="width: 40px">Xoá</th>
@@ -60,6 +59,8 @@
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
                 success: async function (response) {
+                    let parents = response.data.parent_data;
+
                     response.data.data.forEach(function (each) {
 
                         let image = '<img src="' + '/storage/' + each.image + '" style="height: 40px" ></img>';
@@ -70,12 +71,12 @@
                         del = del.replace('id', each.id);
                         let show = '<a href="{{route('admin.category.show',    ['id'])}}" class="btn btn-block btn-info btn-sm">Xem</a>';
                         show = show.replace('id', each.id);
+
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(each.id))
-                            .append($('<td>').append(getParentsTree(each, each.name, response.data.data)))
+                            .append($('<td>').append(getParentName(each.parent_id,parents)))
                             .append($('<td>').append(each.name))
                             .append($('<td>').append(image))
-                            .append($('<td>').append(each.status))
                             .append($('<td>').append(show))
                             .append($('<td>').append(edit))
                             .append($('<td>').append(del))

@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\api\ApiCartController;
 use App\Http\Controllers\api\ApiCategoryController;
-use App\Http\Controllers\api\ApiCommentController;
 use App\Http\Controllers\api\ApiDashboardController;
+use App\Http\Controllers\api\ApiImageController;
 use App\Http\Controllers\api\ApiOrderController;
 use App\Http\Controllers\api\ApiOrderDetailController;
 use App\Http\Controllers\api\ApiProductController;
@@ -16,9 +17,12 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
+        Route::get('/product', 'product')->name('product');
+        Route::get('/edit', 'edit')->name('edit');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
         Route::get('/search/{id}','ajaxSearch')->name('search');
+        Route::get('/data','data')->name('data');
     });
 
 Route::prefix('product')->controller(ApiProductController::class)->name('api.product.')
@@ -26,15 +30,23 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
-        Route::get('/search','ajaxSearch')->name('search');
+        Route::get('/edit/{id}', 'edit')->name('edit');
+        Route::get('/search1','ajaxSearch')->name('search1');
+        Route::get('/search2','ajaxSearchAll')->name('search2');
+
+    });
+
+Route::prefix('image')->controller(ApiImageController::class)->name('api.image.')
+    ->group(function () {
+        Route::get('/{id}', 'full')->name('full');
     });
 
 Route::prefix('user')
-    ->middleware('manager')
     ->controller(ApiUserController::class)->name('api.user.')
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
+        Route::get('/infor', 'infor')->name('infor');
         Route::get('/one/{id}', 'one')->name('one');
     });
 
@@ -46,19 +58,18 @@ Route::prefix('orderdetail')->controller(ApiOrderDetailController::class)->name(
 Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.')
     ->group(function () {
         Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/full', 'full')->name('full');
         Route::get('/slug/{slug}', 'slug')->name('slug');
+    });
+
+Route::prefix('cart')->controller(ApiCartController::class)->name('api.cart.')
+    ->group(function () {
+        Route::get('/count', 'count')->name('count');
+        Route::get('/', 'full')->name('full');
     });
 
 Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api.dashboard.')
     ->group(function () {
-        Route::get('/all', 'all')->name('all');
-    });
-
-Route::prefix('comment')
-    ->middleware('manager')
-    ->controller(ApiCommentController::class)->name('api.comment.')
-    ->group(function () {
-        Route::get('/full', 'full')->name('full');
-        Route::get('/min', 'min')->name('min');
-        Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/', 'all')->name('all');
+        Route::get('/home', 'index')->name('index');
     });

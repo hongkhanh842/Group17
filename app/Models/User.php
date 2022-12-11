@@ -2,32 +2,26 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 class User extends Model implements Authenticatable
 {
     use \Illuminate\Auth\Authenticatable;
     use HasFactory;
 
+    protected $hidden = ['password'];
+
     protected $fillable = [
         'name',
         'email',
-        'avatar',
         'password',
-        'address',
-        /*'role',*/
     ];
 
-    public function reviews()
+    public function cart()
     {
-        return $this->hasMany(Comment::class);
-    }
-
-    public function shopcart()
-    {
-        return $this->hasMany(ShopCart::class);
+        return $this->hasMany(Cart::class);
     }
 
     public function order()

@@ -1,63 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta charset="utf-8"/>
+   {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets')}}/home/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="{{asset('assets')}}/home/img/favicon.png">--}}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>@yield("title")</title>
-    <meta name="description" content="@yield("description")">
-    <meta name="keywords" content="@yield("keywords")">
-    <meta name="author" content="Yuksel CELIK">
-    <link rel="icon" type="image/x-icon" href="@yield("icon")">
+    @yield('title')
 
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Hind:400,700" rel="stylesheet">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
-    <!-- Bootstrap -->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/bootstrap.min.css" />
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
 
-    <!-- Slick -->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/slick.css" />
-    <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/slick-theme.css" />
+    <!-- CSS Files -->
+    <link href="{{asset('assets')}}/home/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{asset('assets')}}/home/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
 
-    <!-- nouislider -->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/nouislider.min.css" />
-
-    <!-- Font Awesome Icon -->
-    <link rel="stylesheet" href="{{asset('assets')}}/css/font-awesome.min.css">
-
-    <!-- Custom stlylesheet -->
-    <link type="text/css" rel="stylesheet" href="{{asset('assets')}}/css/style.css" />
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
-    <![endif]-->
-    @yield("head")
 </head>
 
-<body>
-@include("home.header")
+<body class="index-page">
 
-@section('sidebar')
-    @include("home.sidebar")
-@show
+@include('home.navbar')
 
-@section('slider')
-@show
+@include('home.header')
 
 @yield('content')
 
-@include("home.footer")
-@yield('foot')
+@include('home.footer')
 
 @stack('js')
-
 </body>
-</html>

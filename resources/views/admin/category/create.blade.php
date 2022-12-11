@@ -38,11 +38,6 @@
                             <label for="exampleInputEmail1">Tên</label>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên" value="{{old('name')}}">
                         </div>
-                 {{--       @if ($errors->has('title'))
-                            <span class="alert alert-danger">
-                                {{ $errors->first('title') }}
-                            </span>
-                        @endif--}}
                         <div class="form-group">
                             <label for="exampleInputFile">Hình ảnh</label>
                             <div class="input-group">
@@ -51,13 +46,6 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Trang thái</label>
-                            <select class="form-control" name="status">
-                                <option>Hiển thị</option>
-                                <option>Không hiển thị</option>
-                            </select>
                         </div>
                     </div>
                     <div class="card-footer">
@@ -105,7 +93,7 @@
 
                         let html = "<option value='id'>"
                         html =html.replace('id',each.id);
-                        let option = getParentsTree(each, each.name, response.data.data);
+                        let option = each.name;
                         $('#select-data').append(html + option + '</option>' )
                     });
                 },

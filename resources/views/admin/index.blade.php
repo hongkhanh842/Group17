@@ -3,9 +3,7 @@
 @section('title', 'TRANG CHỦ')
 
 @section('content')
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -20,14 +18,10 @@
                 </div>
             </div>
         </section>
-
-        <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
-                <!-- Small boxes (Stat box) -->
                 <div class="row">
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
                         <div class="small-box bg-info">
                             <div class="inner">
                                 <h3 id="new"></h3>
@@ -38,9 +32,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
                         <div class="small-box bg-success">
                             <div class="inner">
                                 <h3 id="categories"></h3>
@@ -51,9 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3 id="products"></h3>
@@ -64,39 +54,27 @@
                             </div>
                         </div>
                     </div>
-                    <!-- ./col -->
                     <div class="col-lg-3 col-6">
-                        <!-- small box -->
                         <div class="small-box bg-danger">
                             <div class="inner">
                                 <h3 id="users"></h3>
-                                <p>Tài khoản</p>
+                                <p>Tài khoản khách</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-person-add"></i>
                             </div>
                         </div>
                     </div>
-                    <!-- ./col -->
                 </div>
-                <!-- /.row -->
-                <!-- Main row -->
                 <div class="row">
-                    <!-- Left col -->
-
-                    <!-- /.Left col -->
-                    <!-- right col (We are only adding the ID to make the widgets sortable)-->
-
-                    <!-- right col -->
                 </div>
-                <!-- /.row (main row) -->
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <section class="content">
-        <div class="card card-info">
+        <div class="card card-blue">
             <div class="card-header">
-                <h3 class="card-title">Thống kê đơn hàng</h3>
+                <h3 class="card-title" id="month">Thống kê đơn hàng trong tháng </h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
                     </button>
@@ -116,7 +94,6 @@ let all;
     $.ajax({
         url: '{{ route('api.dashboard.all') }}',
         dataType: 'json',
-        data: {page: {{ request()->get('page') ?? 1 }}},
         success: async function (response) {
             all = response.data;
 
@@ -131,7 +108,7 @@ let all;
                 datasets: [
                     {
                         data: [all.new,all.accepted,all.shipping,all.shipped,all.cancel],
-                        backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc'],
+                        backgroundColor : ['#00c0ef', '#00a65a', '#f39c12', '#3c8dbc', '#f56954'],
                     }
                 ]
             }
@@ -151,6 +128,7 @@ let all;
             $('#categories').append(all.categories)
             $('#products').append(all.products)
             $('#users').append(all.users)
+            $('#month').append(all.month).append(":   ").append(all.total).append(" đơn hàng")
         },
         error: function (response) {
         }

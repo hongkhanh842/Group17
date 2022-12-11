@@ -50,13 +50,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Trạng thái</label>
-                            <select class="form-control" name="status" id="status">
-                                <option>Hiển thị</option>
-                                <option>Không hiển thị</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -95,35 +88,32 @@
 
         $(document).ready(async function () {
             $.ajax({
-                url: '{{ route('api.category.min') }}',
+                url: '{{ route('api.category.edit') }}',
                 dataType: 'json',
                 success: function (response) {
-                    let val;
                     $('#select-data').html('<option value="0" selected="selected">Danh mục chính</option>');
+                    let val=0;
                     response.data.data.forEach(function (each) {
-
-
                         let html = "<option value='id'>"
                         html = html.replace('id', each.id);
-                        let option = getParentsTree(each, each.name, response.data.data);
 
-                        let status = '<option selected>' + 'each.status' + '</option>'
-                        status = status.replace('each.status', each.status);
+                        let option = each.name;
 
                         let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
                         title1 = title1.replace('each.name', each.name);
 
-                        $('#select-data').append(html + option + '</option>')
+                        if(each.parent_id === 0)
+                        {
+                            $('#select-data').append(html + option + '</option>')
+                        }
+
                         if (each.id === {{$id}}) {
                             $('#name').html('Sửa danh mục: ').append(each.name);
                             $('#title1').append(title1);
-                            $('#status').append(status);
-                            val=each.id.toString();
-                            console.log(val);
+                            val = each.parent_id;
                         }
-
-                        $('#select-data').val(val)
                     });
+                    $('#select-data').val(val);
 
                 },
                 error: function (response) {

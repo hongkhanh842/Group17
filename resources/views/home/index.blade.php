@@ -1,72 +1,126 @@
 @extends('layouts.frontbase')
-
-{{--@section('title', $setting->title)
-@section('description', $setting->description)
-@section('icon', \Illuminate\Support\Facades\Storage::url($setting->icon))--}}
-
-@section('slider')
-    @include('home.slider')
-@endsection
-
 @section('content')
-    <div class="section">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-title">
-                        <h2 class="title">Sản phẩm mới</h2>
-                        <div class="pull-right">
-                            <div class="product-slick-dots-1 custom-dots"></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="main main-raised">
+        <div class="section">
+            <div class="container">
+                <h2 class="section-title">Các dòng sản phẩm nổi bật</h2>
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
 
-                <div class="col-md-3 col-sm-6 col-xs-6">
-                    <div class="banner banner-2">
-                        <img src="{{asset('assets')}}/img/banner14.jpg" alt="">
-                    </div>
-                </div>
+                        <!-- Carousel Card -->
+                        <div class="card card-raised card-carousel">
+                            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                                <div class="carousel slide" data-ride="carousel">
 
-                <div class="col-md-9 col-sm-6 col-xs-6">
-                    <div class="row">
-                        <div id="product-slick-1" class="product-slick">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators" id="indicator">
+                                    </ol>
 
-                            @foreach($productlist1 as $rs)
-                            <div class="product product-single">
-                                <div class="product-thumb">
-                                    <div class="product-label">
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" id="slider">
                                     </div>
-                                    <ul class="product-countdown">
-                                    </ul>
-                                    <a href="{{route('product.show',['id'=>$rs->id])}}" class="main-btn quick-view"><i class="fa fa-search-plus"></i> Xem</a>
-                                    <img src="{{Storage::url($rs->image)}}" style="width:270px; height:360px">
-                                </div>
-                                <div class="product-body">
-                                    <h3 class="product-price">{{$rs->price}}.000 VND</h3>
 
-                                    @php
-                                        $average = $rs->comment->average('rate');
-                                    @endphp
-                                    <div class="product-rating">
-                                        <i class="fa fa-star @if ($average<1) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($average<2) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($average<3) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
-                                        <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
-                                    </div>
-                                    <h2 class="product-name"><a href="{{route('product.show',['id'=>$rs->id])}}">{{$rs->name}}</a></h2>
-                                    <div class="product-btn">
-                                        <a class="primary-btn add-to-cart" href="{{route('shopcart.add',['id'=>$rs->id])}}">
-                                            <i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng
-                                        </a>
-                                    </div>
+                                    <!-- Controls -->
+                                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                        <i class="material-icons">keyboard_arrow_left</i>
+                                    </a>
+                                    <a class="right carousel-control" href="#carousel-example-generic"
+                                       data-slide="next">
+                                        <i class="material-icons">keyboard_arrow_right</i>
+                                    </a>
                                 </div>
                             </div>
-                            @endforeach
                         </div>
+                        <!-- End Carousel Card -->
+
                     </div>
+                </div>
+            </div>
+            <div class="container">
+                <h2 class="section-title">Sản phẩm mới</h2>
+                <div class="row" id="product">
+
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('api.category.full') }}',
+                dataType: 'json',
+                success: function (response) {
+                    let count=0;
+                    response.data.data.forEach(function (each) {
+                        let html_ = '';
+                        if (each.parent_id !== 0) {
+                            if (count === 0 ) {
+                                $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>');
+                                html_ = '<div class="item active">'
+                                html_ += '<a href="{{route('product.index',['cate_id'])}}"><img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px"></a>'
+                                html_ =html_.replace('cate_id', each.id);
+                                html_ += '<div class="carousel-caption">'
+                                html_ += '<h4>'+each.name+'</h4>'
+                                html_ += '</div></div>'
+                                $('#slider').html(html_);
+                            } else {
+                                $('#indicator').append('<li data-target="#carousel-example-generic" data-slide-to="'+count+'" class=""></li>');
+                                html_ = '<div class="item">'
+                                html_ += '<a href="{{route('product.index',['cate_id'])}}"><img src="' + '/storage/' + each.image + '" alt="Awesome Image" style="height: 475px"></a>'
+                                html_ =html_.replace('cate_id', each.id);
+                                html_ += '<div class="carousel-caption">'
+                                html_ += '<h4>'+each.name+'</h4>'
+                                html_ += '</div></div>'
+                                $('#slider').append(html_);
+                            }
+                            count++;
+                        }
+                    });
+                },
+                error: function (response) {
+                }
+            })
+
+            $.ajax({
+                url: '{{ route('api.product.full') }}',
+                dataType: 'json',
+                success: function (response) {
+                    let count=0;
+                    response.data.data.forEach(function (each) {
+                        let image = '<img src="' + '/storage/' + each.image + '" alt="">';
+                        let html_ = '';
+
+                        if (count < 3) {
+                            html_ = '<div class="col-md-4">  ' +
+                                '<div class="card card-product card-plain">' +
+                                '<div class="card-image">' +
+                                ' <a href="{{route('product.show',['each.id'])}}">' +
+                                image +
+                                '  </a>' +
+                                '</div>' +
+                                ' <div class="card-content">' +
+                                '  <h4 class="card-title">' +
+                                '  <a href="{{route('product.show',['each.id'])}}">'+each.name+'</a>' +
+                                '   </h4>' +
+                                '  <p class="card-description">' +
+                                getDetailByKey(each.use,each.cpu,each.ram,each.ssd)+
+                                '</p>' +
+                                '  <div class="footer">' +
+                                '    <div class="price-container">' +
+                                ' <span class="price price-new">'+getPrice(each.price)+'</span>' +
+                                '   </div></div></div></div></div>';
+                                html_ = html_.replaceAll('each.id',each.id);
+                            $('#product').append(html_);
+                        }
+                        count++;
+                    });
+                },
+                error: function (response) {
+                }
+            })
+        });
+    </script>
+@endpush

@@ -1,196 +1,201 @@
-@extends('layouts.frontbase')
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets')}}/home/img/apple-icon.png">
+    <link rel="icon" type="image/png" href="{{asset('assets')}}/home/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-@section('title', $data->name)
+    <title>Product Page - Material Kit PRO by Creative Tim</title>
 
-@section('content')
-    <div id="breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Product</a></li>
-                <li><a href="#" >{{$data->category->name}}</a></li>
-            </ul>
-        </div>
-    </div>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
 
-    <div class="section">
-        <div class="container">
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"/>
+
+    <!-- CSS Files -->
+    <link href="{{asset('assets')}}/home/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="{{asset('assets')}}/home/css/material-kit.css?v=1.2.1" rel="stylesheet"/>
+</head>
+
+<body class="product-page">
+@include('home.navbar')
+
+@include('home.header')
+
+<div class="section section-gray">
+    <div class="container">
+        <div class="main main-raised main-product">
             <div class="row">
-                <div class="product product-details clearfix">
-                    <div class="col-md-6">
-                        <div id="product-main-view">
-                            <div class="product-view">
-                                <img src="{{Storage::url($data->image)}}" alt="">
-                            </div>
-                            @foreach($images as $rs)
-                                <div class="product-view">
-                                    <img src="{{Storage::url($rs->image)}}" alt="">
-                                </div>
-                            @endforeach
-                        </div>
-                        <div id="product-view">
-                            <div class="product-view">
-                                <img src="{{Storage::url($data->image)}}" alt="">
-                            </div>
-                            @foreach($images as $rs)
-                                <div class="product-view">
-                                    <img src="{{Storage::url($rs->image)}}" alt="">
-                                </div>
-                            @endforeach
-                        </div>
+                <div class="col-md-6 col-sm-6">
+
+                    <div class="tab-content" id="product_image">
                     </div>
-
-                    <div class="col-md-6">
-                        <div class="product-body">
-                            <div class="product-label">
-                            </div>
-                            <h2 class="product-name">{{$data->name}}</h2>
-                            <h3 class="product-price">{{$data->price}}.000 VND</h3>
-                            <div>
-                                @php
-                                    $average = $data->comment->average('rate');
-                                @endphp
-                                <div class="product-rating">
-                                    <i class="fa fa-star @if ($average<1) -o empty @endif"></i>
-                                    <i class="fa fa-star @if ($average<2) -o empty @endif"></i>
-                                    <i class="fa fa-star @if ($average<3) -o empty @endif"></i>
-                                    <i class="fa fa-star @if ($average<4) -o empty @endif"></i>
-                                    <i class="fa fa-star @if ($average<5) -o empty @endif"></i>
+                    <ul class="nav flexi-nav" role="tablist" id="flexiselDemo1">
+                    </ul>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <h2 class="title" id="product_name"></h2>
+                    <h3 class="main-price" id="product_price"></h3>
+                    <div id="acordeon">
+                        <div class="panel-group" id="accordion">
+                            <div class="panel panel-border panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="true" aria-controls="collapseOne">
+                                        <h4 class="panel-title">
+                                            Mô tả
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </h4>
+                                    </a>
                                 </div>
-                                <a> {{$data->comment->count('id')}} Lượt đánh giá || {{number_format($average,1)}}  Sao</a>
-                            </div>
-                            <p><strong>Thương hiệu:</strong> {{$data->category->name}}</p>
-                            <p>{{$data->description}}</p>
-
-                            <div class="product-options">
-                                {{-- <ul class="size-option">
-                                     <li><span class="text-uppercase">Size:</span></li>
-                                     <li class="active"><a href="#">S</a></li>
-                                     <li><a href="#">XL</a></li>
-                                     <li><a href="#">SL</a></li>
-                                 </ul>--}}
-                                {{-- <ul class="color-option">
-                                     <li><span class="text-uppercase">Color:</span></li>
-                                     <li class="active"><a href="#" style="background-color:#475984;"></a></li>
-                                     <li><a href="#" style="background-color:#8A2454;"></a></li>
-                                     <li><a href="#" style="background-color:#BF6989;"></a></li>
-                                     <li><a href="#" style="background-color:#9A54D8;"></a></li>
-                                 </ul>--}}
-                            </div>
-
-                            <div class="product-btns">
-                                <form action="{{route('shopcart.store')}}" method="post">
-                                    @csrf
-                                    <div class="qty-input">
-                                        <span class="text-uppercase">Số lượng: </span>
-                                        <input class="input" name="quantity" type="number" value="1" min="1" max="{{$data->quantity}}" >
-                                        <input class="input" name="id" value="{{$data->id}}" type="hidden">
-                                    </div>
-
-                                    {{--@if ($errors->has('quantity'))
-                                        <span class="alert alert-danger">
-                                            {{ $errors->first('quantity') }}
-                                        </span>
-                                    @endif--}}
-
-                                    <button type="submit" class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Thêm vào giỏ hàng</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12">
-                        <div class="product-tab">
-                            <ul class="tab-nav">
-                                <li class="active"><a data-toggle="tab" href="#tab1">Chi tiết</a></li>
-                                <li><a data-toggle="tab" href="#tab2">Đánh giá ({{$data->comment->count('id')}})</a></li>
-                            </ul>
-                            <div class="tab-content">
-                                <div id="tab1" class="tab-pane fade in active">
-                                    <p>{!!$data->detail!!}</p>
-                                </div>
-
-                                <div id="tab2" class="tab-pane fade in">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="product-reviews">
-                                                @foreach($reviews as $rs)
-                                                    <div class="single-review">
-                                                        <div class="review-heading">
-                                                            <div><a href="#"> <i class="fa fa-user-o"></i> {{$rs->user->name}}</a> </div>
-                                                            <div><a href="#"><i class="fa fa-clock-o"></i> {{$rs->created_at}}</a></div>
-                                                            <div class="review-rating pull-right">
-                                                                <i class="fa fa-star @if ($rs->rate<1) -o empty @endif"></i>
-                                                                <i class="fa fa-star @if ($rs->rate<2) -o empty @endif"></i>
-                                                                <i class="fa fa-star @if ($rs->rate<3) -o empty @endif"></i>
-                                                                <i class="fa fa-star @if ($rs->rate<4) -o empty @endif"></i>
-                                                                <i class="fa fa-star @if ($rs->rate<5) -o empty @endif"></i>
-                                                            </div>
-                                                        </div>
-                                                        <div class="review-body">
-                                                            <strong>{{$rs->subject}}</strong>
-                                                            <p>{{$rs->review}}</p>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
-                                                <ul class="reviews-pages">
-                                                    <li class="active">1</li>
-                                                    <li><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#"><i class="fa fa-caret-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <h4 class="text-uppercase">Gửi đánh giá</h4>
-                                            <p>Email sẽ không được hiển thị</p>
-
-                                            <form class="review-form" action="{{route('comment.store')}}" method="post">
-                                                @csrf
-                                                <input class="input" type="hidden" name="product_id" value="{{$data->id}}" />
-                                                <div class="form-group">
-                                                    <input class="input" type="text" name="subject" placeholder="Chủ đề" />
-                                                </div>
-                                                <div class="form-group">
-                                                    <textarea class="input" name="review" placeholder="Đánh giá của bạn"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="input-rating">
-                                                        <strong class="text-uppercase">Đánh giá của bạn: </strong>
-                                                        <div class="stars">
-                                                            <input type="radio" id="star5" name="rate" value="5" /><label for="star5"></label>
-                                                            <input type="radio" id="star4" name="rate" value="4" /><label for="star4"></label>
-                                                            <input type="radio" id="star3" name="rate" value="3" /><label for="star3"></label>
-                                                            <input type="radio" id="star2" name="rate" value="2" /><label for="star2"></label>
-                                                            <input type="radio" id="star1" name="rate" value="1" /><label for="star1"></label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                @auth
-                                                    <button class="primary-btn">Gửi</button>
-                                                @else
-                                                    <a href="/login" class="primary-btn"> Bạn cần đăng nhập để đánh giá sản phẩm  </a>
-                                                @endauth
-                                            </form>
-                                        </div>
+                                <div id="collapseOne" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                        <p id="product_des"></p>
                                     </div>
                                 </div>
                             </div>
+                            <div class="panel panel-border panel-default">
+                                <div class="panel-heading" role="tab" id="headingOne">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                                       aria-controls="collapseOne">
+                                        <h4 class="panel-title">
+                                            Thông số chi tiết
+                                            <i class="material-icons">keyboard_arrow_down</i>
+                                        </h4>
+                                    </a>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse">
+                                    <div class="panel-body" id="detail">
+
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+                    </div><!--  end acordeon -->
+
+                    <div class="row pick-size">
+                        <div class="col-md-6 col-sm-6">
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                        </div>
+                    </div>
+                    <div class="row text-right">
+                        <a href="{{route('cart.add',[$id])}}" class="btn btn-success btn-round">Thêm vào giỏ hàng &nbsp;<i class="material-icons">shopping_cart</i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
 
-{{--@push('js')
-    <script>
-        /* $.get('http://group17.love/api/product/{id}', function(res){
-             console.log(res);
-             let data = res.data;
-             $('#abc').html(data.title);
-         });*/
-    </script>
-@endpush--}}
+        <div class="features text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="icon icon-info">
+                            <i class="material-icons">local_shipping</i>
+                        </div>
+                        <h4 class="info-title">Giao hàng trong 2 ngày khu vực nội thành</h4>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="info">
+                        <div class="icon icon-success">
+                            <i class="material-icons">verified_user</i>
+                        </div>
+                        <h4 class="info-title">Hỗ trợ đổi sản phẩm khác trong vòng 7 ngày nếu có lỗi từ nhà sản
+                            xuất</h4>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+@include('home.footer')
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: '{{ route('api.product.one',[$id]) }}',
+            dataType: 'json',
+            success: function (response) {
+                let _des= response.data.use +': '+response.data.cpu+'/'+response.data.ram+'/'+response.data.ssd;
+                $('#detail').append(response.data.detail);
+                $('#product_name').append(response.data.name);
+                $('#product_des').html(_des);
+                $('#product_price').append(getPrice(response.data.price));
+            },
+            error: function (response) {
+            }
+        })
+
+        $.ajax({
+            url: '{{ route('api.image.full',[$id]) }}',
+            dataType: 'json',
+            success: function (response) {
+                let count = 1;
+                let _html = '';
+                let _html2 = '';
+                response.data.forEach(function (each) {
+                    let image = '<img src="' + '/storage/' + each.image + '">'
+                    if (count == 1) {
+                        _html = '<div class="tab-pane active" id="product-page' + count + '">' +
+                            image +
+                            '</div>';
+                        _html2 = '<li class="active">' +
+                            '<a href="#product-page' + count + '" role="tab" data-toggle="tab" aria-expanded="false">' +
+                            image +
+                            '</a></li>'
+                    } else {
+                        _html = '<div class="tab-pane" id="product-page' + count + '">' +
+                            image +
+                            '</div>';
+                        _html2 = '<li>' +
+                            '<a href="#product-page' + count + '" role="tab" data-toggle="tab" aria-expanded="false">' +
+                            image +
+                            '</a></li>'
+                    }
+                    $('#product_image').append(_html);
+                    $('#flexiselDemo1').append(_html2);
+                    count++;
+                });
+
+                $("#flexiselDemo1").flexisel({
+                    visibleItems: 3,
+                    itemsToScroll: 1,
+                    animationSpeed: 400,
+                    enableResponsiveBreakpoints: true,
+                    responsiveBreakpoints: {
+                        portrait: {
+                            changePoint: 480,
+                            visibleItems: 3
+                        },
+                        landscape: {
+                            changePoint: 640,
+                            visibleItems: 3
+                        },
+                        tablet: {
+                            changePoint: 768,
+                            visibleItems: 3
+                        }
+                    }
+                });
+            },
+            error: function (response) {
+            }
+        })
+
+
+    });
+</script>
+
+<script src="{{asset('assets')}}/home/js/jquery.flexisel.js"></script>
+</body>
+</html>

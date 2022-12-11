@@ -16,11 +16,11 @@ class Category extends Model
 
     public function parent()
     {
-        return $this->belongsTo(Category::class,'parent_id');
+        return $this->belongsTo(Category::class,'parent_id')->select('id','name');
     }
 
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id')->select('parent_id','name','image');
     }
 }

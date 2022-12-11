@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Enums\UserRoleEnum;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\admin\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -14,10 +12,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $data = User::all();
-        return view('admin.user.index',[
-            'data' => $data,
-        ]);
+        return view('admin.user.index');
     }
 
     public function create()
@@ -25,7 +20,7 @@ class UserController extends Controller
         return view('admin.user.create');
     }
 
-    public function store(StoreUserRequest $request)
+    public function store(Request $request)
     {
 
         $password = Hash::make($request->password);
@@ -34,6 +29,7 @@ class UserController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $password;
+        $data->phone = $request->phone;
         $data->address = $request->address;
         $data->role = $request->role;
         if ($request->file('avatar')) {
@@ -46,10 +42,8 @@ class UserController extends Controller
 
     public function show(User $user, $id)
     {
-        $data = User::find($id);
         return view('admin.user.show', [
             'id' => $id,
-            'data' => $data,
         ]);
     }
 
@@ -68,6 +62,7 @@ class UserController extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->password = $password;
+        $data->phone = $request->phone;
         $data->address = $request->address;
         $data->role = $request->role;
         if ($request->file('avatar')) {
