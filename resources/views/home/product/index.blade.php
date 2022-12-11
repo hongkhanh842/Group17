@@ -243,7 +243,7 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: '{{ route('api.product.search2') }}',
+                url: '{{ route('api.product.search2') }}'+ '?cate={{$cate_id}}',
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
                 success: function (response) {
