@@ -169,104 +169,80 @@
                     </div>
 
                     <div class="col-md-9">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                    <div class="card-image">
-                                        <a href="#">
-                                            <img src="{{asset('assets')}}/home/img/examples/suit-1.jpg" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-content">
-                                        <a href="#">
-                                            <h4 class="card-title">Polo Ralph Lauren</h4>
-                                        </a>
-                                        <p class="description">
-                                            Impeccably tailored in Italy from lightweight navy wool.
-                                        </p>
-                                        <div class="footer">
-                                            <div class="price-container">
-                                                <span class="price"> € 800</span>
-                                            </div>
-
-                                            <button
-                                                class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                                rel="tooltip" title="" data-placement="left"
-                                                data-original-title="Remove from wishlist">
-                                                <i class="material-icons">favorite</i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> <!-- end card -->
-                            </div>
-                            <div class="col-md-4">
-                                <div class="card card-product card-plain no-shadow" data-colored-shadow="false">
-                                    <div class="card-image">
-                                        <a href="#">
-                                            <img src="{{asset('assets')}}/home/img/examples/suit-1.jpg" alt="...">
-                                        </a>
-                                    </div>
-                                    <div class="card-content">
-                                        <a href="#">
-                                            <h4 class="card-title">Polo Ralph Lauren</h4>
-                                        </a>
-                                        <p class="description">
-                                            Impeccably tailored in Italy from lightweight navy wool.
-                                        </p>
-                                        <div class="footer">
-                                            <div class="price-container">
-                                                <span class="price"> € 800</span>
-                                            </div>
-
-                                            <button
-                                                class="btn btn-rose btn-simple btn-fab btn-fab-mini btn-round pull-right"
-                                                rel="tooltip" title="" data-placement="left"
-                                                data-original-title="Remove from wishlist">
-                                                <i class="material-icons">favorite_border</i>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div> <!-- end card -->
-                            </div>
-
-
+                        <div class="row" id="product_show">
                         </div>
                     </div>
                 </div>
+                <div>
+                    <ul class="pagination pagination-success" id="pagination">
+                    </ul>
+                </div>
             </div>
         </div>
-
-        {{--  <div class="section">
-              <div class="container">
-                  ABC
-              </div>
-          </div>--}}
     </div>
 @endsection
 
 @push('js')
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '{{ route('api.product.search2') }}',
+                dataType: 'json',
+                data: {page: {{ request()->get('page') ?? 1 }}},
+                success: function (response) {
+                    let _html = '';
+                    response.data.data.forEach(function (each) {
+                        _html = '<div class="col-md-4">' +
+                            '<div class="card card-product card-plain no-shadow" data-colored-shadow="false">' +
+                            '<div class="card-image">' +
+                            '  <a href="{{route('product.show',['each.id'])}}">' +
+                            '<img src="' + '/storage/' + each.image + '" alt="">' +
+                            ' </a></div>' +
+                            ' <div class="card-content">' +
+                            '   <a href="{{route('product.show',['each.id'])}}">' +
+                            '  <h4 class="card-title">' + each.name + '</h4></a>' +
+                            ' <p class="description">' + getDetailByKey(each.use, each.cpu, each.ram, each.ssd) + '</p>' +
+                            ' <div class="footer">' +
+                            '  <div class="price-container">' +
+                            '  <span class="price price-new">' + getPrice(each.price) + '</span>' +
+                            '</div></div></div></div>'
+                        _html = _html.replaceAll('each.id',each.id);
+                        $('#product_show').append(_html);
+                    })
+                    renderPagination(response.data.pagination);
+                },
+                error: function (response) {
+                }
+            })
+            $(document).on('click', '#pagination > li > a', function (event) {
+                event.preventDefault();
+                let page = $(this).text();
+                let urlParams = new URLSearchParams(window.location.search);
+                urlParams.set('page', page);
+                window.location.search = urlParams;
+            });
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
-
             var slider2 = document.getElementById('sliderRefine');
-
             noUiSlider.create(slider2, {
-                start: [42, 880],
+                start: [10, 30],
                 connect: true,
                 range: {
-                    'min': [30],
-                    'max': [900]
+                    'min': [0],
+                    'max': [100]
                 }
             });
-
             var limitFieldMin = document.getElementById('price-left');
             var limitFieldMax = document.getElementById('price-right');
 
             slider2.noUiSlider.on('update', function (values, handle) {
                 if (handle) {
-                    limitFieldMax.innerHTML = $('#price-right').data('currency') + Math.round(values[handle]);
+                    limitFieldMax.innerHTML =  Math.round(values[handle]);
                 } else {
-                    limitFieldMin.innerHTML = $('#price-left').data('currency') + Math.round(values[handle]);
+                    limitFieldMin.innerHTML = Math.round(values[handle]);
                 }
             });
         });

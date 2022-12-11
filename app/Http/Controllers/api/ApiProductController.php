@@ -52,4 +52,13 @@ class ApiProductController extends Controller
         return $this->successResponse($data);
     }
 
+    public function ajaxSearchAll()
+    {
+        $data = Product::query()->search()->latest()->paginate(9);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
 }

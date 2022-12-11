@@ -30,7 +30,8 @@ Route::prefix('product')->controller(ApiProductController::class)->name('api.pro
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::get('/search','ajaxSearch')->name('search');
+        Route::get('/search1','ajaxSearch')->name('search1');
+        Route::get('/search2','ajaxSearchAll')->name('search2');
 
     });
 
