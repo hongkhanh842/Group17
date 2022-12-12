@@ -2980,6 +2980,12 @@ fieldset[disabled] .navbar .btn-link:focus {
     background-color: inherit;
 }
 
+.search-ajax-result {
+    background-color: white;
+    position: absolute;
+    z-index: 99;
+}
+
 .navbar .navbar-form .form-group .form-control,
 .navbar .navbar-form .form-control {
     border-color: inherit;

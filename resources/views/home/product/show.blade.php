@@ -39,6 +39,7 @@
                 <div class="col-md-6 col-sm-6">
                     <h2 class="title" id="product_name"></h2>
                     <h3 class="main-price" id="product_price"></h3>
+                    <h3 class="main-price" id="product_quantity"></h3>
                     <div id="acordeon">
                         <div class="panel-group" id="accordion">
                             <div class="panel panel-border panel-default">
@@ -131,6 +132,7 @@
                 $('#product_name').append(response.data.name);
                 $('#product_des').html(_des);
                 $('#product_price').append(getPrice(response.data.price));
+                $('#product_quantity').append('Còn lại: '+response.data.quantity + ' sản phẩm');
             },
             error: function (response) {
             }

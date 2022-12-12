@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,6 +44,9 @@ class OrderController extends Controller
                 $data2->total = $rs->quantity * $rs->product->price;
                 $data->total += $data2->total;
                 $data2->save();
+                $product = Product::find($data2->product_id);
+                $product->quantity = $product->quantity - $data2->quantity;
+                $product->save();
             }
 
             $data->save();

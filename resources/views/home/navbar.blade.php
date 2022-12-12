@@ -35,8 +35,13 @@
                 <li>
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group form-white is-empty">
-                            <input type="text" class="form-control" placeholder="Tìm kiếm">
-                            <span class="material-input"></span></div>
+
+                            <input type="text" class="form-control" style="width: 500px" placeholder="Tìm kiếm">
+                            <span class="material-input"></span>
+                            <div class="search-ajax-result" style="width: 500px"></div>
+
+                        </div>
+
                         <button type="submit" class="btn btn-white btn-raised btn-fab btn-fab-mini"><i
                                 class="material-icons">search</i></button>
                     </form>
@@ -216,4 +221,31 @@
         </script>
     @endpush
 @endguest
+@push('js')
+    <script>
+        $('.form-control').keyup(function () {
+            let _text = $(this).val();
+            $.ajax({
+                url: "{{route('api.product.search1')}}?name=" + _text,
+                type: 'GET',
+                success: function (response) {
+                    let _html = '';
 
+                    for (let each of response.data) {
+                        _html += '<div class="" >'
+                        _html += '<a class="pull-left" href="{{route('product.show',['pid'])}}">'
+                        _html += '<img class="" width="60" src = "/storage/' + each.image + '">'
+                        _html += '</a>'
+                        _html += '<div class="">'
+                        _html += '<h4 class=""><a href="{{route('product.show',['pid'])}}">' + each.name + '</a></h4>'
+                        _html += '<p>' + getDetailByKey(each.use,each.cpu,each.ram,each.ssd) + '</p>'
+                        _html += '</div>'
+                        _html += '</div>'
+                        _html = _html.replaceAll('pid', each.id)
+                        $('.search-ajax-result').html(_html)
+                    }
+                }
+            })
+        })
+    </script>
+@endpush
