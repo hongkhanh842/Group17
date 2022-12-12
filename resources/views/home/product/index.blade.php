@@ -18,7 +18,7 @@
                                 </h4>
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingOne">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseOne" aria-expanded="false"
                                            aria-controls="collapseOne">
                                             <h4 class="panel-title">Khoảng giá (triệu VND)</h4>
@@ -41,7 +41,7 @@
 
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingTwo">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
                                            aria-controls="collapseTwo">
                                             <h4 class="panel-title">Hãng</h4>
@@ -53,18 +53,15 @@
                                         <div class="panel-body">
                                             <div class="checkbox" id="brand">
                                                 <label>
-                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="brand1"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="brand1">
                                                     ACER
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" value="5" data-toggle="checkbox" id="brand2"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="5" data-toggle="checkbox" id="brand2">
                                                     ASUS
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" value="6" data-toggle="checkbox" id="brand3"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="6" data-toggle="checkbox" id="brand3">
                                                     APPLE
                                                 </label>
                                             </div>
@@ -74,7 +71,7 @@
 
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingThree">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseThree" aria-expanded="false"
                                            aria-controls="collapseThree">
                                             <h4 class="panel-title">CPU</h4>
@@ -86,36 +83,31 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox" id="cpu1"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="0" data-toggle="checkbox" id="cpu1">
                                                     Intel Core I5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox" id="cpu2"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="1" data-toggle="checkbox" id="cpu2">
                                                     Intel Core I7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="2" data-toggle="checkbox" id="cpu3"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="2" data-toggle="checkbox" id="cpu3">
                                                     AMD Ryzen 5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="3" data-toggle="checkbox" id="cpu4"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="3" data-toggle="checkbox" id="cpu4">
                                                     AMD Ryzen 7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="cpu5"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="cpu5">
                                                     AMD Ryzen 9
                                                 </label>
                                             </div>
@@ -125,7 +117,7 @@
 
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingFour">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseFour" aria-expanded="false"
                                            aria-controls="collapseFour">
                                             <h4 class="panel-title">RAM</h4>
@@ -137,15 +129,13 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="0" data-toggle="checkbox">
                                                     8GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="1" data-toggle="checkbox">
                                                     16GB
                                                 </label>
                                             </div>
@@ -155,7 +145,7 @@
 
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingFive">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseFive" aria-expanded="false"
                                            aria-controls="collapseFive">
                                             <h4 class="panel-title">SSD</h4>
@@ -167,22 +157,19 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="0" data-toggle="checkbox">
                                                     256GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="1" data-toggle="checkbox">
                                                     512GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="2" data-toggle="checkbox"><span
-                                                        class="checkbox-material"><span class="check"></span></span>
+                                                    <input type="checkbox" value="2" data-toggle="checkbox">
                                                     1TB
                                                 </label>
                                             </div>
@@ -192,7 +179,7 @@
 
                                 <div class="panel panel-default panel-rose">
                                     <div class="panel-heading" role="tab" id="headingSix">
-                                        <a class="collapsed" role="button" data-toggle="collapse"
+                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
                                            data-parent="#accordion" href="#collapseSix" aria-expanded="false"
                                            aria-controls="collapseSix">
                                             <h4 class="panel-title">Nhu cầu</h4>
@@ -205,16 +192,14 @@
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" value="0" data-toggle="checkbox"
-                                                           checked=""><span class="checkbox-material"><span
-                                                            class="check"></span></span>
+                                                           >
                                                     Gaming
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
                                                     <input type="checkbox" value="1" data-toggle="checkbox"
-                                                           checked=""><span class="checkbox-material"><span
-                                                            class="check"></span></span>
+                                                           >
                                                     Văn phòng - Học tập
                                                 </label>
                                             </div>

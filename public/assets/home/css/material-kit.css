@@ -9600,3 +9600,29 @@ select.selectpicker {
         width: 920px;
     }
 }
+
+
+/* HOANG CHINH SUA */
+.panel .panel-heading h4{
+    display: inline-block;
+}
+.panel .panel-heading i{
+    float: none;
+    text-align: right;
+    display: inline-block;
+}
+.panel .panel-heading .text-panel{
+    display: flex;
+    justify-content: space-between;
+}
+.pagination {
+    position: absolute;
+    right: 10%;
+}
+.description, .card-product .footer{
+    text-align: center;
+}
+.carousel-caption h4{
+    background-color: black;
+    border-radius: 20%;
+}

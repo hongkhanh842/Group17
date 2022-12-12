@@ -1,13 +1,8 @@
-<footer class="footer">
+<footer class="footer bg-dark">
     <div class="container">
+        
         <nav class="pull-left">
-            <ul>
-                <li>
-                    <a href="#">
-                        Nhóm 17
-                    </a>
-                </li>
-            </ul>
+            
         </nav>
         <div class="copyright pull-right">
             &copy; <script>document.write(new Date().getFullYear())</script>
