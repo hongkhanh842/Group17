@@ -60,5 +60,4 @@ class ApiProductController extends Controller
         $arr['pagination'] = $data->linkCollection();
         return $this->successResponse($arr);
     }
-
 }

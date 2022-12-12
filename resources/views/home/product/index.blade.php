@@ -8,7 +8,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card card-refine card-plain">
-                            <div class="card-content">
+                            <div class="card-content" id="master">
                                 <h4 class="card-title">
                                     Xoá bộ lọc
                                     <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right"
@@ -51,19 +51,19 @@
                                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                                          aria-labelledby="headingTwo">
                                         <div class="panel-body">
-                                            <div class="checkbox">
+                                            <div class="checkbox" id="brand">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="brand1"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     ACER
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="5" data-toggle="checkbox" id="brand2"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     ASUS
                                                 </label>
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="6" data-toggle="checkbox" id="brand3"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     APPLE
                                                 </label>
@@ -86,35 +86,35 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="0" data-toggle="checkbox" id="cpu1"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     Intel Core I5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="1" data-toggle="checkbox" id="cpu2"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     Intel Core I7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="2" data-toggle="checkbox" id="cpu3"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="3" data-toggle="checkbox" id="cpu4"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="cpu5"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 9
                                                 </label>
@@ -137,14 +137,14 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="0" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     8GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="1" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     16GB
                                                 </label>
@@ -167,21 +167,21 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="0" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     256GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="1" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     512GB
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"><span
+                                                    <input type="checkbox" value="2" data-toggle="checkbox"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     1TB
                                                 </label>
@@ -204,7 +204,7 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"
+                                                    <input type="checkbox" value="0" data-toggle="checkbox"
                                                            checked=""><span class="checkbox-material"><span
                                                             class="check"></span></span>
                                                     Gaming
@@ -212,7 +212,7 @@
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="" data-toggle="checkbox"
+                                                    <input type="checkbox" value="1" data-toggle="checkbox"
                                                            checked=""><span class="checkbox-material"><span
                                                             class="check"></span></span>
                                                     Văn phòng - Học tập
@@ -241,14 +241,43 @@
 
 @push('js')
     <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: '{{ route('api.product.search2') }}'+ '?cate={{$cate_id}}',
+          $(document).ready(function () {
+       /* $('#master').change(function () {
+            var _text = ""
+
+           /!* if ($('#brand1').is(":checked")) {
+                _text += '?cate=' + $('#brand1:checked').val();
+            }
+            if ($('#brand2').is(":checked")) {
+                _text += '?cate=' + $('#brand2:checked').val();
+            }
+            if ($('#brand3').is(":checked")) {
+                _text += '?cate=' + $('#brand3:checked').val();
+            }*!/
+            if ($('#cpu1').is(":checked")) {
+                _text += '?cpu=' + $('#cpu1:checked').val();
+            }
+            if ($('#cpu2').is(":checked")) {
+                _text += '?cpu=' + $('#cpu2:checked').val();
+            }
+            if ($('#cpu3').is(":checked")) {
+                _text += '?cpu=' + $('#cpu3:checked').val();
+            }
+            if ($('#cpu4').is(":checked")) {
+                _text += '?cpu=' + $('#cpu4:checked').val();
+            }
+            if ($('#cpu5').is(":checked")) {
+                _text += '?cpu=' + $('#cpu5:checked').val();
+            }
+*/
+       $.ajax({
+           url: '{{ route('api.product.search2') }}'/*+ _text*/ + '?cate={{$cate_id}}' ,
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
                 success: function (response) {
                     let _html = '';
                     response.data.data.forEach(function (each) {
+
                         _html = '<div class="col-md-4">' +
                             '<div class="card card-product card-plain no-shadow" data-colored-shadow="false">' +
                             '<div class="card-image">' +
@@ -263,7 +292,7 @@
                             '  <div class="price-container">' +
                             '  <span class="price price-new">' + getPrice(each.price) + '</span>' +
                             '</div></div></div></div>'
-                        _html = _html.replaceAll('each.id',each.id);
+                        _html = _html.replaceAll('each.id', each.id);
                         $('#product_show').append(_html);
                     })
                     renderPagination(response.data.pagination);
@@ -297,7 +326,7 @@
 
             slider2.noUiSlider.on('update', function (values, handle) {
                 if (handle) {
-                    limitFieldMax.innerHTML =  Math.round(values[handle]);
+                    limitFieldMax.innerHTML = Math.round(values[handle]);
                 } else {
                     limitFieldMin.innerHTML = Math.round(values[handle]);
                 }

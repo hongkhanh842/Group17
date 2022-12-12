@@ -33,15 +33,6 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
-    public function scopeName($query)
-    {
-        if (request('key')){
-            $key = request('key');
-            $query = $query->where('name', 'like', '%'.$key.'%');
-        }
-        return $query;
-    }
-
     public function scopeSearch($query)
     {
         if (request('name')){
