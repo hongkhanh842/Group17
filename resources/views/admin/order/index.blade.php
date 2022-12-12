@@ -75,7 +75,7 @@
                             .append($('<td>').append(each.phone))
                             .append($('<td>').append(each.email))
                             .append($('<td>').append(each.address))
-                            .append($('<td>').append(each.total))
+                            .append($('<td class="text-right">').append(getPrice(each.total)))
                             .append($('<td>').append(each.note))
                             .append($('<td>').append(each.status))
                             .append($('<td>').append(show))
