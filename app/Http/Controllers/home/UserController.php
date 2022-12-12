@@ -26,10 +26,11 @@ class UserController extends Controller
         {
             $request->password = Hash::make($request->password);
         }
-
         $data = User::find(Auth::id());
         $data->name = $request->name;
-        $data->avatar = $request->avatar;
+        if ($request->file('avatar')) {
+            $data->avatar=$request->file('avatar')->store('avatar');
+        }
         $data->password = $request->password;
         $data->phone = $request->phone;
         $data->address = $request->address;
