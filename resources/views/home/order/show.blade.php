@@ -12,7 +12,7 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Giỏ hàng</h4>
+                                <h4>Chi tiết đơn hàng</h4>
                             </div>
                             <div class="col-md-10 col-md-offset-1">
                                 <div class="table-responsive">
@@ -24,7 +24,6 @@
                                             <th class="text-right">Giá</th>
                                             <th class="text-right">Số lượng</th>
                                             <th class="text-right">Tổng</th>
-                                            <th></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -43,44 +42,30 @@
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: '{{ route('api.cart.full') }}',
+                url: '{{ route('api.order.show',[$id]) }}',
                 dataType: 'json',
                 success: function (response) {
-                    let total = 0;
-                    response.data.forEach(function (each) {
+                    response.data.product.forEach(function (each) {
                         let image = '<div class="img-container">' +
                             '<img src="' + '/storage/' + each.product.image + '" alt=""></div>'
                         let name = '<a href="{{route('product.show',['id'])}}">' + each.product.name + '</a>'
                         name = name.replace('id', each.product.id)
-                        let number = '<div class="text-center" style="font-weight: bold" >' + each.quantity + '</div>' + '<div class="btn-group">' +
-                            '  <a href="{{route('cart.sub',['pid'])}}" class="btn btn-round btn-info btn-xs"><i' +
-                            '  class="material-icons">remove</i></a>' +
-                            ' <a href="{{route('cart.plus',['pid'])}}" class="btn btn-round btn-info btn-xs"><i' +
-                            '  class="material-icons">add</i></a>' +
-                            '  </div>';
-                        number = number.replaceAll('pid', each.product.id);
-                        let action = '<a href="{{route('cart.destroy',['pid'])}}"  type="button" rel="tooltip" data-placement="left"' +
-                            ' title="Xoá sản phẩm" class="btn btn-simple">' +
-                            ' <i class="material-icons">close</i></a>'
-                        action = action.replace('pid', each.id);
-                        total += each.product.price * each.quantity;
+
+                        let number = '<div class="text-center" style="font-weight: bold" >' + each.quantity + '</div>'
 
                         $('#table-data').append($('<tr>')
                             .append($('<td>').append(image))
                             .append($('<td class="td-name">').append(name))
-                            .append($('<td class="price price-new">').append(getPrice(each.product.price)))
-                            .append($('<td class="td-number">').append(number))
-                            .append($('<td class="price price-new">').append(getPrice(each.product.price * each.quantity)))
-                            .append($('<td class="td-actions">').append(action))
+                            .append($('<td class="price price-new">').append(getPrice(each.price)))
+                            .append($('<td class="td-number text-right">').append(number))
+                            .append($('<td class="price price-new text-right">').append(getPrice(each.total)))
                         )
                     });
-                    let order = '<a href="{{route('order.index',['total'])}}" type="button" class="btn btn-success btn-round">Đặt hàng' +
-                        '<i class="material-icons">keyboard_arrow_right</i></a>';
-                    order = order.replace('total',getPrice(total));
+                    let order = '<a type="button" class="btn btn-info btn-round">Trạng thái: '+response.data.data.status+'</a>';
                     $('#table-data').append($('<tr>')
                         .append($('<td colspan="2">').append())
                         .append($('<td class="td-total">').append("Tổng tiền"))
-                        .append($('<td class="td-price">').append(getPrice(total)))
+                        .append($('<td class="td-price">').append(getPrice(response.data.data.total)))
                         .append($('<td colspan="3" class="text-right">').append(order))
                     )
                 },

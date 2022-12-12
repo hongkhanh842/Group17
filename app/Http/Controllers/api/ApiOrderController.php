@@ -5,7 +5,9 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\ResponseTrait;
 use App\Models\Order;
+use App\Models\OrderDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ApiOrderController extends Controller
 {
@@ -31,6 +33,16 @@ class ApiOrderController extends Controller
 
         $arr['data'] = $data->getCollection();
         $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
+
+    public function show($id)
+    {
+        $data = Order::find($id);
+        $product = OrderDetail::where('order_id', '=', $id)->with('product')->get();
+
+        $arr['data'] = $data;
+        $arr['product'] = $product;
         return $this->successResponse($arr);
     }
 }
