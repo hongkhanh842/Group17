@@ -84,7 +84,7 @@ class Product extends Model
 
         if (request('cate')){
             $key = request('cate');
-            $query = $query->latest();
+            $query = $query->where('category_id',$key)->latest();
         }
 
         return $query;

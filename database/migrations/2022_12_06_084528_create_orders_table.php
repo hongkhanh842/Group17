@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('address');
             $table->string('phone');
-            $table->float('total');
+            $table->bigInteger('total');
             $table->string('note')->nullable();
             $table->string('status')->default('Mới');
             $table->timestamps();

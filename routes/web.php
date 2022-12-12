@@ -43,22 +43,28 @@ Route::prefix('product')
         Route::get('/show/{id}', 'show')->name('show');
     });
 
-Route::prefix('cart')->controller(CartController::class)->name('cart.')
-    ->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/add/{id}', 'add')->name('add');
-        Route::get('/sub/{id}', 'sub')->name('sub');
-        Route::get('/plus/{id}', 'plus')->name('plus');
-        Route::get('/destroy/{id}', 'destroy')->name('destroy');
-    });
+/*Route::middleware('auth')->group(function () {*/
+    Route::prefix('cart')->controller(CartController::class)->name('cart.')
+        ->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/add/{id}', 'add')->name('add');
+            Route::get('/sub/{id}', 'sub')->name('sub');
+            Route::get('/plus/{id}', 'plus')->name('plus');
+            Route::get('/destroy/{id}', 'destroy')->name('destroy');
+        });
 
-Route::prefix('order')->controller(OrderController::class)->name('order.')
-    ->group(function () {
-        Route::get('/', 'index')->name('index');
-    });
+    Route::prefix('order')->controller(OrderController::class)->name('order.')
+        ->group(function () {
+            Route::get('/{total?}', 'index')->name('index');
+            Route::post('/store', 'store')->name('store');
+            Route::get('/show/{id}', 'show')->name('show');
+            Route::get('/update/{id}', 'update')->name('update');
+        });
 
-Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function () {
-    Route::get('/', 'index')->name('index');
-    Route::get('/orders', 'orders')->name('orders');
-});
+    Route::prefix('user')->prefix('user')->controller(UserController::class)->name('user.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::post('/update', 'update')->name('update');
+        Route::get('/orders', 'orders')->name('orders');
+    });
+/*});*/
 //___

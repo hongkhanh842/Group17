@@ -9,13 +9,9 @@ class ProductController extends Controller
 {
     public function index($cate_id = null)
     {
-        if(!empty($cate_id))
-        {
             return view('home.product.index',[
                 'cate_id' => $cate_id,
             ]);
-        }
-        return view('home.product.index');
     }
 
     public function show($id)

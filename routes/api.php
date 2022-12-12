@@ -46,8 +46,9 @@ Route::prefix('user')
     ->group(function () {
         Route::get('/full', 'full')->name('full');
         Route::get('/min', 'min')->name('min');
-        Route::get('/infor', 'infor')->name('infor');
+        Route::get('/info', 'info')->name('info');
         Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/orders', 'orders')->name('orders');
     });
 
 Route::prefix('orderdetail')->controller(ApiOrderDetailController::class)->name('api.orderdetail.')
@@ -58,6 +59,7 @@ Route::prefix('orderdetail')->controller(ApiOrderDetailController::class)->name(
 Route::prefix('order')->controller(ApiOrderController::class)->name('api.order.')
     ->group(function () {
         Route::get('/one/{id}', 'one')->name('one');
+        Route::get('/show/{id}', 'show')->name('show');
         Route::get('/full', 'full')->name('full');
         Route::get('/slug/{slug}', 'slug')->name('slug');
     });
