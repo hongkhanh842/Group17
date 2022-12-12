@@ -36,7 +36,7 @@
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group form-white is-empty">
 
-                            <input type="text" class="form-control" style="width: 500px" placeholder="Tìm kiếm">
+                            <input type="text" class="form-control ajax-k" style="width: 500px" placeholder="Tìm kiếm">
                             <span class="material-input"></span>
                             <div class="search-ajax-result" style="width: 500px"></div>
 
@@ -223,7 +223,7 @@
 @endguest
 @push('js')
     <script>
-        $('.form-control').keyup(function () {
+        $('.ajax-k').keyup(function () {
             let _text = $(this).val();
             $.ajax({
                 url: "{{route('api.product.search1')}}?name=" + _text,

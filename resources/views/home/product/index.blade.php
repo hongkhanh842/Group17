@@ -86,35 +86,40 @@
                                         <div class="panel-body">
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox" id="cpu1"><span
+                                                    <input type="checkbox" value="0" data-toggle="checkbox"
+                                                           id="cpu1"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     Intel Core I5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox" id="cpu2"><span
+                                                    <input type="checkbox" value="1" data-toggle="checkbox"
+                                                           id="cpu2"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     Intel Core I7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="2" data-toggle="checkbox" id="cpu3"><span
+                                                    <input type="checkbox" value="2" data-toggle="checkbox"
+                                                           id="cpu3"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 5
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="3" data-toggle="checkbox" id="cpu4"><span
+                                                    <input type="checkbox" value="3" data-toggle="checkbox"
+                                                           id="cpu4"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 7
                                                 </label>
                                             </div>
                                             <div class="checkbox">
                                                 <label>
-                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="cpu5"><span
+                                                    <input type="checkbox" value="4" data-toggle="checkbox"
+                                                           id="cpu5"><span
                                                         class="checkbox-material"><span class="check"></span></span>
                                                     AMD Ryzen 9
                                                 </label>
@@ -241,37 +246,37 @@
 
 @push('js')
     <script>
-          $(document).ready(function () {
-       /* $('#master').change(function () {
-            var _text = ""
+        $(document).ready(function () {
+            /* $('#master').change(function () {
+                 var _text = ""
 
-           /!* if ($('#brand1').is(":checked")) {
-                _text += '?cate=' + $('#brand1:checked').val();
-            }
-            if ($('#brand2').is(":checked")) {
-                _text += '?cate=' + $('#brand2:checked').val();
-            }
-            if ($('#brand3').is(":checked")) {
-                _text += '?cate=' + $('#brand3:checked').val();
-            }*!/
-            if ($('#cpu1').is(":checked")) {
-                _text += '?cpu=' + $('#cpu1:checked').val();
-            }
-            if ($('#cpu2').is(":checked")) {
-                _text += '?cpu=' + $('#cpu2:checked').val();
-            }
-            if ($('#cpu3').is(":checked")) {
-                _text += '?cpu=' + $('#cpu3:checked').val();
-            }
-            if ($('#cpu4').is(":checked")) {
-                _text += '?cpu=' + $('#cpu4:checked').val();
-            }
-            if ($('#cpu5').is(":checked")) {
-                _text += '?cpu=' + $('#cpu5:checked').val();
-            }
-*/
-       $.ajax({
-           url: '{{ route('api.product.search2') }}'/*+ _text*/ + '?cate={{$cate_id}}' ,
+                /!* if ($('#brand1').is(":checked")) {
+                     _text += '&cate=' + $('#brand1:checked').val();
+                 }
+                 if ($('#brand2').is(":checked")) {
+                     _text += '&cate=' + $('#brand2:checked').val();
+                 }
+                 if ($('#brand3').is(":checked")) {
+                     _text += '&cate=' + $('#brand3:checked').val();
+                 }*!/
+                 if ($('#cpu1').is(":checked")) {
+                     _text += '&cpu=' + $('#cpu1:checked').val();
+                 }
+                 if ($('#cpu2').is(":checked")) {
+                     _text += '&cpu=' + $('#cpu2:checked').val();
+                 }
+                 if ($('#cpu3').is(":checked")) {
+                     _text += '&cpu=' + $('#cpu3:checked').val();
+                 }
+                 if ($('#cpu4').is(":checked")) {
+                     _text += '&cpu=' + $('#cpu4:checked').val();
+                 }
+                 if ($('#cpu5').is(":checked")) {
+                     _text += '&cpu=' + $('#cpu5:checked').val();
+                 }
+     */
+            $.ajax({
+                url: '{{ route('api.product.search2') }}'+ '?cate={{$cate_id}}' /*+ _text*/ ,
                 dataType: 'json',
                 data: {page: {{ request()->get('page') ?? 1 }}},
                 success: function (response) {
