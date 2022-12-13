@@ -1,12 +1,22 @@
 <footer class="footer bg-dark">
     <div class="container">
-        
-        <nav class="pull-left">
-            
-        </nav>
-        <div class="copyright pull-right">
-            &copy; <script>document.write(new Date().getFullYear())</script>
+        <div class="row">
+            <div class="col-xs-4">
+                <h5 class="font-weight-bolder">LAPTOP HOUSE</h5>
+                <p>Chất lượng tạo uy tín</p>
+            </div>
+            <div class="col-xs-4">
+                <p><a class="visible-lg-block mb-2">Liên hệ hỗ trợ</a></p>
+                <p><a class="visible-lg-block">Chính sách giao hàng</a></p>
+                <p><a class="visible-lg-block">Chính sách đổi trả</a></p>
+            </div>
+            <div class="col-xs-4">
+                <p class="visible-lg-inline-block">Bản quyền thuộc về LAPTOP HOUSE </p>
+                &copy; <script>document.write(new Date().getFullYear())</script>
+            </div>
         </div>
+
+
     </div>
 </footer>
 

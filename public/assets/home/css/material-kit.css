@@ -9626,3 +9626,12 @@ select.selectpicker {
     background-color: black;
     border-radius: 20%;
 }
+
+.brand img{
+    width: 80%;
+}
+
+.section-title {
+    color: #3C4858;
+    text-align: left;
+}

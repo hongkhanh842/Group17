@@ -1,7 +1,7 @@
 @extends('layouts.frontbase')
 
 @section('content')
-    <div class="main main-raised">
+    <div class="main ">
         <div class="section">
             <div class="container">
                 <form action="{{route('user.update')}}" method="post" enctype="multipart/form-data">

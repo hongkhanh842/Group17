@@ -1,7 +1,7 @@
 @extends('layouts.frontbase')
 
 @section('content')
-    <div class="main main-raised">
+    <div class="main ">
         <div class="section">
             <div class="container">
                 <div class="row">
@@ -35,23 +35,23 @@
                                     <div class="card-content">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty">
+                                                <div class="form-group  is-empty">
                                                     <label class="control-label">Tên người nhận</label>
                                                     <input type="text" name="name" class="form-control" id="name">
                                                     <span class="material-input"></span></div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group label-floating is-empty">
+                                                <div class="form-group  is-empty">
                                                     <label class="control-label">Số đện thoại</label>
                                                     <input type="text" name="phone" class="form-control" id="phone">
                                                     <span class="material-input"></span></div>
                                             </div>
                                         </div>
-                                        <div class="form-group label-floating is-empty">
+                                        <div class="form-group  is-empty">
                                             <label class="control-label">Email</label>
                                             <input type="email" name="email" class="form-control" id="email">
                                             <span class="material-input"></span></div>
-                                        <div class="form-group label-floating is-empty">
+                                        <div class="form-group  is-empty">
                                             <label class="control-label">Địa chỉ nhận hàng</label>
                                             <input type="text" name="address" class="form-control" id="address">
                                             <span class="material-input"></span></div>
@@ -72,7 +72,7 @@
                                 </form>
                             </div>
                             <div class="tab-pane" id="schedule-2">
-                                Trống
+                                Chưa hỗ trợ
                             </div>
                         </div>
                     </div>
@@ -91,9 +91,13 @@
                 dataType: 'json',
                 success: function (response) {
                     document.getElementById("name").setAttribute('value', response.data.name);
-                    document.getElementById("phone").setAttribute('value', response.data.phone);
                     document.getElementById("email").setAttribute('value', response.data.email);
-                    document.getElementById("address").setAttribute('value', response.data.address);
+                    if(response.data.phone) {
+                        document.getElementById("phone").setAttribute('value', response.data.phone);
+                    }
+                    if(response.data.address) {
+                        document.getElementById("phone").setAttribute('value', response.data.address);
+                    }
                 },
                 error: function (response) {
                 }

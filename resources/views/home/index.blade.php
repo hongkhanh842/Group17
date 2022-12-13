@@ -1,6 +1,6 @@
 @extends('layouts.frontbase')
 @section('content')
-    <div class="main main-raised">
+    <div class="main ">
         <div class="section">
             <div class="container">
                 <h2 class="section-title">Các dòng sản phẩm nổi bật</h2>
@@ -40,6 +40,23 @@
                 <h2 class="section-title">Sản phẩm mới</h2>
                 <div class="row" id="product">
 
+                </div>
+            </div>
+            <div class="container brand">
+                <h2 class="section-title">Thương hiệu chúng tôi phân phối</h2>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <img src="{{asset('assets')}}/home/brand/dell.jpg">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{asset('assets')}}/home/brand/acer.jpg">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{asset('assets')}}/home/brand/asus.jpg">
+                    </div>
+                    <div class="col-lg-3">
+                        <img src="{{asset('assets')}}/home/brand/apple.jpg">
+                    </div>
                 </div>
             </div>
         </div>

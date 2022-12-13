@@ -34,18 +34,18 @@
                             Trạng thái :
                         </th>
                         <td>
-                            <form role="form" action="{{route('admin.order.update',['id'=>$id])}}" method="post" id="form-edit">
+                            <form class="mt-2" role="form" action="{{route('admin.order.update',['id'=>$id])}}" method="post" id="form-edit">
                                 @csrf
                                 <textarea name="note" cols="80" id="note"></textarea>
                                 <br>
-                                <select name="status" id="status">
+                                <select class="mt-2" name="status" id="status">
                                     <option>Mới</option>
                                     <option>Đã xác nhận</option>
                                     <option>Đang giao</option>
                                     <option>Đã giao</option>
                                     <option>Huỷ</option>
                                 </select>
-                                <div class="card-footer">
+                                <div class="mt-4 mb-3">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
                                 </div>
                             </form>

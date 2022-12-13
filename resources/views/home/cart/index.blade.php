@@ -1,7 +1,7 @@
 @extends('layouts.frontbase')
 
 @section('content')
-    <div class="main main-raised">
+    <div class="main ">
         <div class="section">
             <div class="container tim-container">
                 <div id="contentAreas" class="cd-section">
@@ -52,9 +52,10 @@
                             '<img src="' + '/storage/' + each.product.image + '" alt=""></div>'
                         let name = '<a href="{{route('product.show',['id'])}}">' + each.product.name + '</a>'
                         name = name.replace('id', each.product.id)
-                        let number = '<div class="text-center" style="font-weight: bold" >' + each.quantity + '</div>' + '<div class="btn-group">' +
+                        let number =  '<div class="btn-group">' +
                             '  <a href="{{route('cart.sub',['pid'])}}" class="btn btn-round btn-info btn-xs"><i' +
                             '  class="material-icons">remove</i></a>' +
+                            '<div class="text-center btn btn-info btn-xs" style="font-weight: bold" >' + each.quantity + '</div>' +
                             ' <a href="{{route('cart.plus',['pid'])}}" class="btn btn-round btn-info btn-xs"><i' +
                             '  class="material-icons">add</i></a>' +
                             '  </div>';
