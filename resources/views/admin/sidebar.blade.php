@@ -37,7 +37,7 @@
                             class="nav-icon fas fa-box-open text-cyan"></i>
                         <p>Đơn hàng</p></a>
                 </li>
-                @if(Auth::user()->role == "0")
+                @if(isAdmin() || isManager())
                     <li class="nav-item">
                         <a href="{{route('admin.category.index')}}" class="nav-link"><i
                                 class="nav-icon fas fa-th text-green"></i>

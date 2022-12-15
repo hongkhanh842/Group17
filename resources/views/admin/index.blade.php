@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
-                            @if(isAdmin())
+                            @if(isAdmin() || isManager())
                                 <div class="inner">
                                     <h3 id="new"></h3>
                                     <p>Đơn hàng chờ xác nhận</p>
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    @if(isAdmin())
+                    @if(isAdmin() || isManager())
                         <div class="col-lg-3 col-6">
                             <div class="small-box bg-success">
                                 <div class="inner">
@@ -132,7 +132,7 @@
                     ],
                     datasets: [
                         {
-                            data: [all.new, all.accepted,8, all.shipping, all.shipped, all.cancel],
+                            data: [all.new, all.accepted, all.taking, all.shipping, all.shipped, all.cancel],
                             backgroundColor: ['#00c0ef','#00a65a' ,'#3', '#f39c12', '#3c8dbc', '#f56954'],
                         }
                     ]

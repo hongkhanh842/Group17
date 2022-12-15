@@ -39,11 +39,12 @@
                                 <textarea name="note" cols="80" id="note"></textarea>
                                 <br>
                                 <select class="mt-2" name="status" id="status">
-                                    <option>Mới</option>
-                                    <option>Đã xác nhận</option>
-                                    <option>Đang giao</option>
-                                    <option>Đã giao</option>
-                                    <option>Huỷ</option>
+                                    <option class="d-none">Chờ xác nhận</option>
+                                    <option class="d-none">Đã xác nhận</option>
+                                    <option class="d-none">Đang lấy hàng</option>
+                                    <option class="d-none">Đang giao hàng</option>
+                                    <option class="d-none">Đã giao hàng</option>
+                                    <option class="d-none">Huỷ</option>
                                 </select>
                                 <div class="mt-4 mb-3">
                                     <button type="submit" class="btn btn-primary">Cập nhật</button>
@@ -101,16 +102,22 @@
                 dataType: 'json',
                 success: function (response) {
 
-
-
                     let each = response.data;
                     let theText = each.status;
+                    var temp=0;
 
                     $("#status option").each(function () {
-                        if ($(this).text() == theText) {
+                        if ($(this).text() === theText) {
                             $(this).attr('selected', 'selected');
+                            $(this).removeClass("d-none");
+                            temp=$(this).val();
+                        }
+                        if (temp!== 0 ) {
+                            $(this).removeClass("d-none");
                         }
                     });
+                    /*$("#status").find(":selected").removeClass("d-none");*/
+
                     $('#note').append(each.note)
 
                     $('#table-order')
