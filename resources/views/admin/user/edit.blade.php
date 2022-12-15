@@ -100,20 +100,21 @@
                 success: function (response) {
                     let each= response.data;
 
-                        let status = '<option selected>' + 'each.status' + '</option>'
-                        status = status.replace('each.status', each.status);
-
                         let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
-                        title1 = title1.replace('each.name', each.name);
+                        title1 = title1.replace('each.name', each.name) +
+                            '@error('name')<div class="error">{{ $message }}</div>@enderror';
 
                         let email = '<input type="email" class="form-control" name="email" value="each.email">'
-                        email = email.replace('each.email', each.email);
+                        email = email.replace('each.email', each.email) +
+                            '@error('email')<div class="error">{{ $message }}</div>@enderror';
 
                         let phone = '<input type="text" class="form-control" name="phone" value="each.phone">'
-                        phone = phone.replace('each.phone', each.phone);
+                        phone = phone.replace('each.phone', each.phone)+
+                            '@error('phone')<div class="error">{{ $message }}</div>@enderror';
 
                         let address = '<input type="text" class="form-control" name="address" value="each.address">'
-                        address = address.replace('each.address', each.address);
+                        address = address.replace('each.address', each.address)+
+                            '@error('address')<div class="error">{{ $message }}</div>@enderror';
 
                             $('#name').html('SỬA TÀI KHOẢN: ').append(each.name);
                             $('#title1').append(title1);

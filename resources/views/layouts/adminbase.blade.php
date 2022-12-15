@@ -24,6 +24,7 @@
 
 <body class="hold-transition sidebar-mini">
 @include('admin.header')
+@stack('css')
 
 @section('sidebar')
     @include('admin.sidebar')

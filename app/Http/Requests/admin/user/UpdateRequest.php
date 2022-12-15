@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\admin\category;
+namespace App\Http\Requests\admin\user;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -28,9 +28,20 @@ class UpdateRequest extends FormRequest
             'name' =>[
                 'required',
                 'string',
-                Rule::unique('categories','name')->ignore($this->id),
             ],
-            'image' =>[
+            'email' =>[
+                'required',
+                'email:rfc,dns',
+            ],
+            'phone' =>[
+                'required',
+                'regex:((09|03|07|08|05)+([0-9]{8})\b)',
+                Rule::unique('users','phone')->ignore($this->id),
+            ],
+            'address' =>[
+                'string',
+            ],
+            'avatar' =>[
                 'image',
             ],
         ];

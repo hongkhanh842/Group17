@@ -35,12 +35,8 @@
                         </div>
                         <div class="form-group" id="title1">
                             <label for="exampleInputEmail1">Tên</label>
+
                         </div>
-              {{--          @if ($errors->has('title'))
-                            <span class="alert alert-danger">
-                                {{ $errors->first('title') }}
-                            </span>
-                        @endif--}}
                         <div class="form-group">
                             <label for="exampleInputFile">Hình ảnh</label>
                             <div class="input-group">
@@ -49,6 +45,9 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                 </div>
                             </div>
+                            @error('image')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">
@@ -101,6 +100,9 @@
 
                         let title1 = '<input type="text" class="form-control" name="name" value="each.name">'
                         title1 = title1.replace('each.name', each.name);
+                        title1 += '@error('name')' +
+                       ' <div class="error">{{ $message }}</div>'+
+                     '   @enderror'
 
                         if(each.parent_id === 0)
                         {

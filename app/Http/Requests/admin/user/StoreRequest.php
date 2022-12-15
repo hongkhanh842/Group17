@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\admin\product;
+namespace App\Http\Requests\admin\user;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,31 +27,27 @@ class UpdateRequest extends FormRequest
             'name' =>[
                 'required',
                 'string',
-                Rule::unique('products','name')->ignore($this->id),
             ],
-            'image' =>[
+            'email' =>[
+                'required',
+                'email',
+            ],
+            'password' =>[
+                'required',
+                'string',
+                'min:6',
+                'max:255',
+            ],
+            'phone' =>[
+                'required',
+                'regex:((09|03|07|08|05)+([0-9]{8})\b)',
+                'unique:App\Models\User,phone',
+            ],
+            'address' =>[
+                'string',
+            ],
+            'avatar' =>[
                 'image',
-            ],
-            'quantity' =>[
-                'required',
-                'integer',
-                'min:0',
-            ],
-            'price' =>[
-                'required',
-                'min:0',
-            ],
-            'ram' =>[
-                'required',
-            ],
-            'ssd' =>[
-                'required',
-            ],
-            'cpu' =>[
-                'required',
-            ],
-            'use' =>[
-                'required',
             ],
         ];
     }

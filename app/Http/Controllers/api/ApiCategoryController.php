@@ -31,7 +31,7 @@ class ApiCategoryController extends Controller
 
     public function min()
     {
-        $data = Category::query()->select('id','name')->get();
+        $data = Category::query()->select('id','name','parent_id')->get();
 
         $arr['data'] = $data;
         return $this->successResponse($arr);

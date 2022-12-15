@@ -13,3 +13,10 @@
         </ul>
     </nav>
 </div>
+@push('css')
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+@endpush

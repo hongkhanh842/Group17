@@ -16,4 +16,5 @@ final class ProductCPUEnum extends Enum
     public const R5 = 2;
     public const R7 = 3;
     public const R9 = 4;
+    public const I9 = 5;
 }

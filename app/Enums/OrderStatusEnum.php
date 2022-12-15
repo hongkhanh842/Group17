@@ -11,9 +11,10 @@ use BenSampo\Enum\Enum;
  */
 final class OrderStatusEnum extends Enum
 {
-    public const new = "Mới";
+    public const new = "Chờ xác nhận";
     public const accepted = "Đã xác nhận";
-    public const shipping = "Đang giao";
+    public const moving = "Đang lấy hàng";
+    public const taking = "Đã lấy hàng";
     public const shipped = "Đã giao";
     public const cancel = "Huỷ";
 }

@@ -1,9 +1,8 @@
 <footer class="main-footer">
-    {{--<div class="float-right d-none d-sm-block">
-        <b>Version</b> 3.0.5
+    <div class="float-right d-none d-sm-block">
+        <b>@2022</b>
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.--}}
+    <strong>Group 17</strong>
 </footer>
 
 <!-- Control Sidebar -->
@@ -28,3 +27,4 @@
 
 
 <script src="{{asset('assets/admin')}}/js/helper.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.js"></script>

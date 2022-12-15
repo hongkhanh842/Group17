@@ -33,10 +33,13 @@
                             <select class="form-control select2" name="parent_id" style="width: 100%;" id=select-data>
                             </select>
                         </div>
-
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên</label>
-                            <input type="text" class="form-control" name="name" placeholder="Nhập tên" value="{{old('name')}}">
+                            <input type="text" class="form-control" name="name" placeholder="Nhập tên"
+                                   value="{{old('name')}}">
+                            @error('name')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Hình ảnh</label>
@@ -46,6 +49,9 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                 </div>
                             </div>
+                            @error('image')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">
@@ -82,25 +88,34 @@
             });
         }
 
-
-        $(document).ready(async function () {
-            $.ajax({
-                url: '{{ route('api.category.min') }}',
-                dataType: 'json',
-                success: function (response) {
-                    $('#select-data').html('<option value="0" selected="selected">Danh mục chính</option>');
-                    response.data.data.forEach(function (each) {
-
+        $.ajax({
+            url: '{{ route('api.category.min') }}',
+            dataType: 'json',
+            success: function (response) {
+                $('#select-data').html('<option value="0" selected="selected">Danh mục chính</option>');
+                response.data.data.forEach(function (each) {
+                    if (each.parent_id == 0) {
                         let html = "<option value='id'>"
-                        html =html.replace('id',each.id);
+                        html = html.replace('id', each.id);
                         let option = each.name;
-                        $('#select-data').append(html + option + '</option>' )
-                    });
+                        $('#select-data').append(html + option + '</option>')
+                    }
+                });
+            },
+            error: function (response) {
+            }
+        });
+        $("#form-create").validate({
+          /*  rules: {
+                name: {
+                    required: true,
                 },
-                error: function (response) {
+            },
+            messages: {
+                name: {
+                    required: "Tên bắt buộc phải điền"
                 }
-
-            })
-        })
+            },*/
+        });
     </script>
 @endpush

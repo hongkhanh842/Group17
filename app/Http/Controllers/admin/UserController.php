@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\admin\user\StoreRequest;
+use App\Http\Requests\admin\user\UpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,7 +22,7 @@ class UserController extends Controller
         return view('admin.user.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
 
         $password = Hash::make($request->password);
@@ -54,7 +56,7 @@ class UserController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         $password = Hash::make($request->password);
 

@@ -30,6 +30,7 @@ class OrderController extends Controller
             $data->email = $request->input('email');
             $data->phone = $request->input('phone');
             $data->total = 0;
+            $data->status = "Chờ xác nhận";
             $data->user_id = Auth::id();
             $data->save();
 
@@ -62,7 +63,7 @@ class OrderController extends Controller
     public function update($id)
     {
         $order = Order::find($id);
-        if ($order->status === "Mới")
+        if ($order->status === "Chờ xác nhận")
         {
             $order->status = "Huỷ";
             $order->save();

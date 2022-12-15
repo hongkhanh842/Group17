@@ -39,22 +39,37 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên</label>
                             <input type="text" class="form-control" name="name" placeholder="Nhập tên" value="{{old('name')}}">
+                            @error('name')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
                             <input type="text" class="form-control" name="email" placeholder="Nhập email" value="{{old('email')}}">
+                            @error('email')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mật khẩu</label>
                             <input type="password" class="form-control" name="password" placeholder="Nhập mật khẩu">
+                            @error('password')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Số điện thoại</label>
                             <input type="text" class="form-control" name="phone" placeholder="Nhập số diện thoại" value="{{old('phone')}}">
+                            @error('phone')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Địa chỉ</label>
                             <input type="text" class="form-control" name="address" placeholder="Nhập địa chỉ" value="{{old('address')}}">
+                            @error('address')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputFile">Ảnh đại diện</label>
@@ -64,6 +79,9 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn hình ảnh</label>
                                 </div>
                             </div>
+                            @error('avatar')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">

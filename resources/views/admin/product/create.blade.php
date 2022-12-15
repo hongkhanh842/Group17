@@ -49,6 +49,7 @@
                             <select class="form-control select2" name="cpu" style="width: 100%;">
                                 <option value=0 >Intel Core i5</option>
                                 <option value=1 >Intel Core i7</option>
+                                <option value=5 >Intel Core i9</option>
                                 <option value=2 >Ryzen 5</option>
                                 <option value=3 >Ryzen 7</option>
                                 <option value=4 >Ryzen 9</option>
@@ -73,14 +74,23 @@
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên</label>
                             <input type="text" class="form-control" name="name" placeholder="Tên">
+                            @error('name')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá</label>
                             <input type="number" class="form-control" name="price" value="0">
+                            @error('price')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Số lượng</label>
                             <input type="number" class="form-control" name="quantity" value="0">
+                            @error('quantity')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Chi tiết</label>
@@ -95,6 +105,9 @@
                                     <label class="custom-file-label" for="exampleInputFile">Chọn ảnh</label>
                                 </div>
                             </div>
+                            @error('image')
+                            <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="card-footer">
