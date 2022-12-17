@@ -8,204 +8,225 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="card card-refine card-plain">
-                            <div class="card-content" id="master">
-                                <h4 class="card-title">
-                                    Xoá bộ lọc
-                                    <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right"
-                                            rel="tooltip" title="" data-original-title="Reset Filter">
-                                        <i class="material-icons">cached</i>
-                                    </button>
-                                </h4>
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingOne">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseOne" aria-expanded="false"
-                                           aria-controls="collapseOne">
-                                            <h4 class="panel-title">Khoảng giá (triệu VND)</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
-                                         aria-labelledby="headingOne">
-                                        <div class="panel-body panel-refine">
+                            <div class="card-content">
+                                <form id="filter-master">
+                                    <h4 class="card-title">
+                                        Xoá bộ lọc
+                                        <button class="btn btn-default btn-fab btn-fab-mini btn-simple pull-right"
+                                                rel="tooltip" title="" data-original-title="Reset Filter">
+                                            <i class="material-icons">cached</i>
+                                        </button>
+                                    </h4>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingOne">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseOne" aria-expanded="false"
+                                               aria-controls="collapseOne">
+                                                <h4 class="panel-title">Khoảng giá (triệu VND)</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                             aria-labelledby="headingOne">
+                                            <div class="panel-body panel-refine">
                                             <span id="price-left" class="price-left pull-left"
                                                   data-currency="€"></span>
-                                            <span id="price-right" class="price-right pull-right"
-                                                  data-currency="€"></span>
-                                            <div class="clearfix"></div>
-                                            <div id="sliderRefine"
-                                                 class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>
+                                                <span id="price-right" class="price-right pull-right"
+                                                      data-currency="€"></span>
+                                                <div class="clearfix"></div>
+                                                <div id="sliderRefine"
+                                                     class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingTwo">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
-                                           aria-controls="collapseTwo">
-                                            <h4 class="panel-title">Hãng</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
-                                         aria-labelledby="headingTwo">
-                                        <div class="panel-body">
-                                            <div class="checkbox" id="brand">
-                                                <label>
-                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="brand1">
-                                                    ACER
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" value="5" data-toggle="checkbox" id="brand2">
-                                                    ASUS
-                                                </label>
-                                                <label>
-                                                    <input type="checkbox" value="6" data-toggle="checkbox" id="brand3">
-                                                    APPLE
-                                                </label>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingTwo">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseTwo" aria-expanded="false"
+                                               aria-controls="collapseTwo">
+                                                <h4 class="panel-title">Hãng</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                             aria-labelledby="headingTwo">
+                                            <div class="panel-body">
+                                                <div class="checkbox" id="brand">
+                                                    <label>
+                                                        <input type="checkbox" value="4" data-toggle="checkbox"
+                                                               id="brand1" name="brand[]">
+                                                        ACER
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" value="5" data-toggle="checkbox"
+                                                               id="brand2" name="brand[]">
+                                                        ASUS
+                                                    </label>
+                                                    <label>
+                                                        <input type="checkbox" value="6" data-toggle="checkbox"
+                                                               id="brand3" name="brand[]">
+                                                        APPLE
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingThree">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseThree" aria-expanded="false"
-                                           aria-controls="collapseThree">
-                                            <h4 class="panel-title">CPU</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel"
-                                         aria-labelledby="headingThree">
-                                        <div class="panel-body">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox" id="cpu1">
-                                                    Intel Core I5
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox" id="cpu2">
-                                                    Intel Core I7
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="2" data-toggle="checkbox" id="cpu3">
-                                                    AMD Ryzen 5
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="3" data-toggle="checkbox" id="cpu4">
-                                                    AMD Ryzen 7
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="4" data-toggle="checkbox" id="cpu5">
-                                                    AMD Ryzen 9
-                                                </label>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingThree">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseThree" aria-expanded="false"
+                                               aria-controls="collapseThree">
+                                                <h4 class="panel-title">CPU</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel"
+                                             aria-labelledby="headingThree">
+                                            <div class="panel-body">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="0" data-toggle="checkbox"
+                                                               id="cpu1" name="cpu[]">
+                                                        Intel Core I5
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="1" data-toggle="checkbox"
+                                                               id="cpu2" name="cpu[]">
+                                                        Intel Core I7
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="2" data-toggle="checkbox"
+                                                               id="cpu3" name="cpu[]">
+                                                        AMD Ryzen 5
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="3" data-toggle="checkbox"
+                                                               id="cpu4" name="cpu[]">
+                                                        AMD Ryzen 7
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="4" data-toggle="checkbox"
+                                                               id="cpu5" name="cpu[]">
+                                                        AMD Ryzen 9
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingFour">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseFour" aria-expanded="false"
-                                           aria-controls="collapseFour">
-                                            <h4 class="panel-title">RAM</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
-                                         aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox">
-                                                    8GB
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox">
-                                                    16GB
-                                                </label>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingFour">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseFour" aria-expanded="false"
+                                               aria-controls="collapseFour">
+                                                <h4 class="panel-title">RAM</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                                             aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="0" data-toggle="checkbox"
+                                                               name="ram[]">
+                                                        8GB
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="1" data-toggle="checkbox"
+                                                               name="ram[]">
+                                                        16GB
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingFive">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseFive" aria-expanded="false"
-                                           aria-controls="collapseFive">
-                                            <h4 class="panel-title">SSD</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
-                                         aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox">
-                                                    256GB
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox">
-                                                    512GB
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="2" data-toggle="checkbox">
-                                                    1TB
-                                                </label>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingFive">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseFive" aria-expanded="false"
+                                               aria-controls="collapseFive">
+                                                <h4 class="panel-title">SSD</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                                             aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="0" data-toggle="checkbox"
+                                                               name="ssd[]">
+                                                        256GB
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="1" data-toggle="checkbox"
+                                                               name="ssd[]">
+                                                        512GB
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="2" data-toggle="checkbox"
+                                                               name="ssd[]">
+                                                        1TB
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="panel panel-default panel-rose">
-                                    <div class="panel-heading" role="tab" id="headingSix">
-                                        <a class="text-panel collapsed" role="button" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapseSix" aria-expanded="false"
-                                           aria-controls="collapseSix">
-                                            <h4 class="panel-title">Nhu cầu</h4>
-                                            <i class="material-icons">keyboard_arrow_down</i>
-                                        </a>
-                                    </div>
-                                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
-                                         aria-labelledby="headingOne">
-                                        <div class="panel-body">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="0" data-toggle="checkbox"
-                                                           >
-                                                    Gaming
-                                                </label>
-                                            </div>
-                                            <div class="checkbox">
-                                                <label>
-                                                    <input type="checkbox" value="1" data-toggle="checkbox"
-                                                           >
-                                                    Văn phòng - Học tập
-                                                </label>
+                                    <div class="panel panel-default panel-rose">
+                                        <div class="panel-heading" role="tab" id="headingSix">
+                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapseSix" aria-expanded="false"
+                                               aria-controls="collapseSix">
+                                                <h4 class="panel-title">Nhu cầu</h4>
+                                                <i class="material-icons">keyboard_arrow_down</i>
+                                            </a>
+                                        </div>
+                                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
+                                             aria-labelledby="headingOne">
+                                            <div class="panel-body">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="0" data-toggle="checkbox "
+                                                               name="use[]"
+                                                        >
+                                                        Gaming
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" value="1" data-toggle="checkbox"
+                                                               name="use[]"
+                                                        >
+                                                        Văn phòng - Học tập
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <button class="btn btn-info btn-round" id="filter">
+                                        <i class="material-icons">search</i>
+                                        Lọc sản phẩm
+                                    </button>
+                                </form>
                             </div>
                         </div><!-- end card -->
                     </div>
@@ -227,42 +248,23 @@
 @push('js')
     <script>
         $(document).ready(function () {
-            /* $('#master').change(function () {
-                 var _text = ""
+            let _url = '?cate=' + window.location.toString();
+            @if($cate_id===null)
+                _url = window.location.toString();
+            @endif
+                _url = _url.replace('http://group17.love/product', '');
+                _url = _url.replace('/', '');
 
-                /!* if ($('#brand1').is(":checked")) {
-                     _text += '&cate=' + $('#brand1:checked').val();
-                 }
-                 if ($('#brand2').is(":checked")) {
-                     _text += '&cate=' + $('#brand2:checked').val();
-                 }
-                 if ($('#brand3').is(":checked")) {
-                     _text += '&cate=' + $('#brand3:checked').val();
-                 }*!/
-                 if ($('#cpu1').is(":checked")) {
-                     _text += '&cpu=' + $('#cpu1:checked').val();
-                 }
-                 if ($('#cpu2').is(":checked")) {
-                     _text += '&cpu=' + $('#cpu2:checked').val();
-                 }
-                 if ($('#cpu3').is(":checked")) {
-                     _text += '&cpu=' + $('#cpu3:checked').val();
-                 }
-                 if ($('#cpu4').is(":checked")) {
-                     _text += '&cpu=' + $('#cpu4:checked').val();
-                 }
-                 if ($('#cpu5').is(":checked")) {
-                     _text += '&cpu=' + $('#cpu5:checked').val();
-                 }
-     */
             $.ajax({
-                url: '{{ route('api.product.search2') }}'+ '?cate={{$cate_id}}' /*+ _text*/ ,
+                url: '{{ route('api.product.search2') }}' + _url,
                 dataType: 'json',
-                data: {page: {{ request()->get('page') ?? 1 }}},
+                data: {
+                    page: {{ request()->get('page') ?? 1 }},
+                },
                 success: function (response) {
                     let _html = '';
+                    console.log('{{ route('api.product.search2') }}' + _url)
                     response.data.data.forEach(function (each) {
-
                         _html = '<div class="col-md-4">' +
                             '<div class="card card-product card-plain no-shadow" data-colored-shadow="false">' +
                             '<div class="card-image">' +
@@ -283,6 +285,7 @@
                     renderPagination(response.data.pagination);
                 },
                 error: function (response) {
+                    console.log(1)
                 }
             })
             $(document).on('click', '#pagination > li > a', function (event) {

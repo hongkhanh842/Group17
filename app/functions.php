@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\BrandEnum;
 use App\Enums\OrderStatusEnum;
 use App\Enums\ProductCPUEnum;
 use App\Enums\ProductRAMEnum;
@@ -24,6 +25,13 @@ if (!function_exists('getUseByKey')) {
     function getUseByKey($key): string
     {
         return str(ProductUseEnum::getKeys((int) $key)[0]);
+    }
+}
+
+if (!function_exists('getBrandByKey')) {
+    function getBrandeByKey($key): string
+    {
+        return str(BrandEnum::getKeys((int) $key)[0]);
     }
 }
 

@@ -37,27 +37,62 @@ class Product extends Model
     {
         if (request('name')){
             $key = request('name');
-            $query = $query->where('name', 'like', '%'.$key.'%');
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('name', 'like', '%'.$each.'%');
+                }
+                $query = $q;
+            });
         }
 
         if (request('ram')){
             $key = request('ram');
-            $query = $query->where('ram', $key);
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('ram',$each);
+            }
+            $query = $q;
+            });
         }
 
         if (request('ssd')){
             $key = request('ssd');
-            $query = $query->where('ssd', $key);
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('ssd', $each);
+                }
+                $query = $q;
+            });
+        }
+
+        if (request('brand')){
+            $key = request('brand');
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('name', 'like', '%'.getBrandeByKey($each).'%');
+                }
+                $query = $q;
+            });
         }
 
         if (request('cpu')){
             $key = request('cpu');
-            $query = $query->where('cpu', $key);
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('cpu', $each);
+                }
+                $query = $q;
+            });
         }
 
         if (request('use')){
             $key = request('use');
-            $query = $query->where('use', $key);
+            $query->where(function ($q) use ($key) {
+                foreach ($key as $each) {
+                    $q->orWhere('use', $each);
+                }
+                $query = $q;
+            });
         }
 
         if (request('sort')){

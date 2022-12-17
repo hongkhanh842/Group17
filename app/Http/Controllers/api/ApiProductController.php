@@ -27,7 +27,6 @@ class ApiProductController extends Controller
         $data->cpu = getCPUByKey($data->cpu);
         $data->ssd = getSSDByKey($data->ssd);
         $data->use = getUseByKey($data->use);
-        /*$data->price = number_format($data->price);*/
         return $this->successResponse($data);
     }
 
@@ -54,10 +53,14 @@ class ApiProductController extends Controller
 
     public function ajaxSearchAll()
     {
-        $data = Product::query()->search()->latest()->paginate(9);
+        try {
+            $data = Product::query()->search()->latest()->paginate(9);
 
-        $arr['data'] = $data->getCollection();
-        $arr['pagination'] = $data->linkCollection();
-        return $this->successResponse($arr);
+            $arr['data'] = $data->getCollection();
+            $arr['pagination'] = $data->linkCollection();
+            return $this->successResponse($arr);
+        } catch (\Throwable $e) {
+            return $this->errorResponse($e->getMessage());
+        }
     }
 }

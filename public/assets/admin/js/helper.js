@@ -9,7 +9,7 @@ function convertDateToDateTime(date) {
 
 function renderPagination(links) {
     links.forEach(function (each) {
-        if (each.label != "&laquo; Previous" && each.label != "Next &raquo;")
+        if (each.label !== "&laquo; Previous" && each.label !== "Next &raquo;")
         {
             $('#pagination').append($('<li>').attr('class', `page-item ${each.active ? 'active' : ''}`)
                 .append(`<a class="page-link" >${each.label}</a>`));
