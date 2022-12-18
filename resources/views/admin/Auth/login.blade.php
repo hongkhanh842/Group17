@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>ĐĂNG NHẬP</title>
     {{-- BS4 --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
         {{-- MAIN CSS --}}
         <link rel="stylesheet" href="{{asset('assets')}}/admin/css/adminStyle.css">
 
-    
+
 </head>
 <body>
     <div class="loginAdmin">
@@ -20,21 +20,27 @@
             <form action="{{route('admin.logging')}}" method="post">
                 @csrf
                 <label class="text-dark font-weight-bold" for="email">Email: </label>
-                <input type="email" class="form-control" placeholder="Nhập email..." name="email">
+                <input  class="form-control" placeholder="Nhập email..." name="email">
+                @error('email')
+                <div class="error" style="color:red">{{ $message }}</div>
+                @enderror
                 <label class="text-dark font-weight-bold mt-3" for="password">Password: </label>
                 <input type="password" class="form-control" placeholder="Nhập Password..." name="password">
+                @error('password')
+                <div class="error" style="color:red">{{ $message }}</div>
+                @enderror
                 <button class="btn btn-success mt-4 d-block ml-auto mb-3" type="submit">Đăng nhập</button>
             </form>
-    
+
         </div>
         <div class="logo">
             <h1 class="text-danger font-weight-bolder">LAPTOP HOUSE</h1>
         </div>
     </div>
-    
 
-    
-    
+
+
+
 
 
     {{-- BS4 --}}
@@ -42,5 +48,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
 </body>
 </html>
-        
+
 

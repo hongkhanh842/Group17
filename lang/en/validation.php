@@ -181,6 +181,7 @@ return [
         'quantity' => 'Số lượng ',
         'price' => 'Giá ',
         'use' => 'Nhu cầu ',
+        'email' => 'Email '
         ],
 
 ];
