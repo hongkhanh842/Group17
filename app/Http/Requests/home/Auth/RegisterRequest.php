@@ -31,6 +31,7 @@ class RegisterRequest extends FormRequest
                 'max:100',
             ],
             'email' =>[
+                'unique:App\Models\User,email',
                 'required',
                 'email',
             ],
@@ -40,6 +41,15 @@ class RegisterRequest extends FormRequest
                 'min:6',
                 'max:255'
             ],
+
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'email.unique' => 'Email đã được sử dụng',
         ];
     }
 }
+
