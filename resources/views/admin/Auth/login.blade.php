@@ -13,12 +13,14 @@
 
 </head>
 <body>
+
     <div class="loginAdmin">
         <div class="loginContainer">
             <h3 class="text-success font-weight-bold text-center mt-3 mb-1" >ĐĂNG NHẬP</h3>
             <p class="text-danger font-weight-bold text-right mb-3">Admin</p>
             <form action="{{route('admin.logging')}}" method="post">
                 @csrf
+                @include('notify')
                 <label class="text-dark font-weight-bold" for="email">Email: </label>
                 <input  class="form-control" placeholder="Nhập email..." name="email">
                 @error('email')

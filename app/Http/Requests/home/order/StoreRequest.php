@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\home\Auth;
+namespace App\Http\Requests\home\order;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,11 +34,14 @@ class RegisterRequest extends FormRequest
                 'required',
                 'email',
             ],
-            'password' =>[
+            'phone' =>[
+                'required',
+                'regex:((09|03|07|08|05)+([0-9]{8})\b)',
+                'unique:App\Models\User,phone',
+            ],
+            'address' =>[
                 'required',
                 'string',
-                'min:6',
-                'max:255'
             ],
         ];
     }

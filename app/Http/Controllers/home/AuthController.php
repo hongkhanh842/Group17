@@ -18,6 +18,7 @@ class AuthController extends Controller
     public function logging(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
+        /*dd(Auth::attempt($credentials));*/
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             return redirect()->route("home");

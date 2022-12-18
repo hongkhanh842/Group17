@@ -38,22 +38,34 @@
                                                 <div class="form-group  is-empty">
                                                     <label class="control-label">Tên người nhận</label>
                                                     <input type="text" name="name" class="form-control" id="name">
+                                                    @error('name')
+                                                    <div class="error" style="color:red">{{ $message }}</div>
+                                                    @enderror
                                                     <span class="material-input"></span></div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group  is-empty">
                                                     <label class="control-label">Số đện thoại</label>
                                                     <input type="text" name="phone" class="form-control" id="phone">
+                                                    @error('phone')
+                                                    <div class="error" style="color:red">{{ $message }}</div>
+                                                    @enderror
                                                     <span class="material-input"></span></div>
                                             </div>
                                         </div>
                                         <div class="form-group  is-empty">
                                             <label class="control-label">Email</label>
                                             <input type="email" name="email" class="form-control" id="email">
+                                            @error('email')
+                                            <div class="error" style="color:red">{{ $message }}</div>
+                                            @enderror
                                             <span class="material-input"></span></div>
                                         <div class="form-group  is-empty">
                                             <label class="control-label">Địa chỉ nhận hàng</label>
                                             <input type="text" name="address" class="form-control" id="address">
+                                            @error('address')
+                                            <div class="error" style="color:red">{{ $message }}</div>
+                                            @enderror
                                             <span class="material-input"></span></div>
 
                                         <div class="row">

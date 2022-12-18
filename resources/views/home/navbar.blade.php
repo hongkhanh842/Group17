@@ -177,13 +177,16 @@
                     <div class="modal-body">
                         <form class="form" method="post" action="{{route('registering')}}" id="register">
                             @csrf
-                            <p class="description text-center">Hoặc đăng ký</p>
+                            <p class="description text-center">Hoặc</p>
                             <div class="card-content">
                                 <div class="input-group">
                                     <span class="input-group-addon">
 											<i class="material-icons">face</i>
                                     </span>
                                     <input type="text" class="form-control" placeholder="Tên tài khoản..." name="name">
+                                    @error('name')
+                                    <div class="error" style="color:red">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-group">
@@ -191,6 +194,9 @@
 									<i class="material-icons">email</i>
 								</span>
                                     <input type="text" class="form-control" placeholder="Email..." name="email">
+                                    @error('email')
+                                    <div class="error" style="color:red">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="input-group">
@@ -198,6 +204,9 @@
 									<i class="material-icons">lock_outline</i>
 								</span>
                                     <input type="password" placeholder="Mật khẩu" class="form-control" name="password">
+                                    @error('password')
+                                    <div class="error" style="color:red">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </form>
@@ -223,6 +232,18 @@
 @endguest
 @push('js')
     <script>
+        @if ($errors->any())
+        $('#signupModal').modal('show');
+        @endif
+
+        {{--@error('login')
+        $('#loginModal').modal('show');
+        @enderror--}}
+
+        @if ($message = Session::get('error'))
+        $('#loginModal').modal('show');
+        @endif
+
         $('.ajax-k').keyup(function () {
             let _text = $(this).val();
             $.ajax({

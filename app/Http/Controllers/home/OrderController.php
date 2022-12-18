@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\home;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\home\order\StoreRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderDetail;
@@ -19,7 +20,7 @@ class OrderController extends Controller
             ]);
     }
 
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
         $cardcheck = "True";
         if ($cardcheck == 'True') {
