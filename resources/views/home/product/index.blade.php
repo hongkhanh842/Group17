@@ -29,10 +29,10 @@
                                         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
                                              aria-labelledby="headingOne">
                                             <div class="panel-body panel-refine">
-                                            <span id="price-left" class="price-left pull-left"
-                                                  data-currency="€"></span>
-                                                <span id="price-right" class="price-right pull-right"
-                                                      data-currency="€"></span>
+                                                <input type="hidden" value="0" name="min" id="min">
+                                                <span id="price-left" class="price-left pull-left"></span>
+                                                <input type="hidden" value="100" name="max" id="max">
+                                                <span id="price-right" class="price-right pull-right"></span>
                                                 <div class="clearfix"></div>
                                                 <div id="sliderRefine"
                                                      class="slider slider-rose noUi-target noUi-ltr noUi-horizontal"></div>
@@ -285,7 +285,6 @@
                     renderPagination(response.data.pagination);
                 },
                 error: function (response) {
-                    console.log(1)
                 }
             })
             $(document).on('click', '#pagination > li > a', function (event) {
@@ -315,8 +314,10 @@
             slider2.noUiSlider.on('update', function (values, handle) {
                 if (handle) {
                     limitFieldMax.innerHTML = Math.round(values[handle]);
+                    $('#max').val(Math.round(values[handle]))
                 } else {
                     limitFieldMin.innerHTML = Math.round(values[handle]);
+                    $('#min').val(Math.round(values[handle]))
                 }
             });
         });

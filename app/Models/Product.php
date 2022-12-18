@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 class Product extends Model
 {
     use HasFactory;
-   /* protected $casts = [
-        'price' => 'number_format',
-    ];*/
+
+    /* protected $casts = [
+         'price' => 'number_format',
+     ];*/
 
     public function category()
     {
-        return  $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function cart()
@@ -33,9 +34,19 @@ class Product extends Model
         return $this->hasMany(Image::class);
     }
 
+    public function scopeSearch1($query)
+    {
+        if (request('name')) {
+            $key = request('name');
+            $query = $query->where('name', 'like', '%'.$key.'%');
+        }
+        return $query;
+    }
+
+
     public function scopeSearch($query)
     {
-        if (request('name')){
+        if (request('name')) {
             $key = request('name');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
@@ -45,17 +56,17 @@ class Product extends Model
             });
         }
 
-        if (request('ram')){
+        if (request('ram')) {
             $key = request('ram');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
-                    $q->orWhere('ram',$each);
-            }
-            $query = $q;
+                    $q->orWhere('ram', $each);
+                }
+                $query = $q;
             });
         }
 
-        if (request('ssd')){
+        if (request('ssd')) {
             $key = request('ssd');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
@@ -65,7 +76,7 @@ class Product extends Model
             });
         }
 
-        if (request('brand')){
+        if (request('brand')) {
             $key = request('brand');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
@@ -75,7 +86,7 @@ class Product extends Model
             });
         }
 
-        if (request('cpu')){
+        if (request('cpu')) {
             $key = request('cpu');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
@@ -85,7 +96,13 @@ class Product extends Model
             });
         }
 
-        if (request('use')){
+        if (request('min')) {
+            $max = request('max');
+            $min = request('min');
+            $query->whereBetween('price',[$min*1000000,$max*1000000])->latest();
+        }
+
+        if (request('use')) {
             $key = request('use');
             $query->where(function ($q) use ($key) {
                 foreach ($key as $each) {
@@ -95,24 +112,25 @@ class Product extends Model
             });
         }
 
-        if (request('sort')){
+        if (request('sort')) {
             $key = request('sort');
-            if ($key === "up")
-            {
+            if ($key === "up") {
                 $query = $query->orderBy('price');
+            } else {
+                $query = $query->orderBy('price', 'DESC');
             }
-            else   $query = $query->orderBy('price', 'DESC');
         }
-        if (request('new')){
+        if (request('new')) {
             $key = request('new');
             $query = $query->latest();
         }
 
-        if (request('cate')){
+        if (request('cate')) {
             $key = request('cate');
-            $query = $query->where('category_id',$key)->latest();
+            $query = $query->where('category_id', $key)->latest();
         }
 
         return $query;
     }
 }
+

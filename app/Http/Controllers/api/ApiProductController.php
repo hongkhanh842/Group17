@@ -47,7 +47,7 @@ class ApiProductController extends Controller
 
     public function ajaxSearch()
     {
-        $data = Product::query()->search()->limit(5)->get();
+        $data = Product::query()->search1()->limit(5)->get();
         return $this->successResponse($data);
     }
 
