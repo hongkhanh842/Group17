@@ -71,6 +71,7 @@ class CartController extends Controller
     public function destroy($id)
     {
         $data = Cart::find($id);
+        session()->forget(['cart']);
         $data->delete();
         return redirect()->back();
     }
