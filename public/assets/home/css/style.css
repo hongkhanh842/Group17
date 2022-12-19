@@ -4,10 +4,43 @@
     top: 0;
 }
 
+.navbar-brand {
+    font-weight: bold;
+}
 
+.section {
+    margin-top: 30px;
+}
+
+.gioHangIcon {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+
+/* HEADER */
+.navbar.navbar-default {
+    background-color: #555555;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.presentation-page .page-header,
+.index-page .page-header {
+    height: auto;
+}
+
+.page-header .container {
+    padding-top: 0;
+}
 
 
 /* FOOTER */
+
+.footerLaptop {
+    background-color: #eee;
+}
 
 .footerLaptop h5 {
     font-weight: bold;

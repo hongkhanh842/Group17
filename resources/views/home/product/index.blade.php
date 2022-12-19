@@ -278,7 +278,9 @@
                             ' <div class="footer">' +
                             '  <div class="price-container">' +
                             '  <span class="price price-new">' + getPrice(each.price) + '</span>' +
+                            '<a class="gioHangIcon" href="#"><i class="fa fa-cart-plus"></i></a>' +
                             '</div></div></div></div>'
+                            
                         _html = _html.replaceAll('each.id', each.id);
                         $('#product_show').append(_html);
                     })
