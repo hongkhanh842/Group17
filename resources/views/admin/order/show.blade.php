@@ -121,6 +121,7 @@
                     $('#note').append(each.note)
 
                     $('#table-order')
+                        .append($('<tr>').append($('<th style="width: 200px">').append('Thời gian')).append($('<td>').append(convertDateToDateTime(each.created_at))))
                         .append($('<tr>').append($('<th style="width: 200px">').append('Tổng hoá đơn')).append($('<td>').append(getPrice(each.total))))
                 },
                 error: function (response) {

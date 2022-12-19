@@ -4,6 +4,7 @@ namespace App\Http\Controllers\home;
 
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -19,6 +20,11 @@ class CartController extends Controller
     {
         if(auth()->check())
         {
+            $product = Product::find($id);
+            if ($product->quantity == 0)
+            {
+                return redirect()->back()->with('error','Sản phẩm hiện tại đã hết hàng');
+            }
             $data = Cart::where('product_id', $id)->where('user_id', Auth::id())->first();
             if($data)
             {
@@ -36,6 +42,11 @@ class CartController extends Controller
             return redirect()->back()->with('success','Đã thêm vào giỏ hàng');
         }
         else{
+            $product = Product::find($id);
+            if ($product->quantity == 0)
+            {
+                return redirect()->back()->with('error','Sản phẩm hiện tại đã hết hàng');
+            }
             Session::push('cart', $id);
             $data = array_unique($request->session()->pull('cart'));
             foreach($data as $each)

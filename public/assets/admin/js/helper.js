@@ -6,6 +6,15 @@ function convertDateToDateTime(date) {
         ("0" + m.getUTCHours()).slice(-2) + ":" +
         ("0" + m.getUTCMinutes()).slice(-2);
 }
+function convertDateToDateTimeAdd(date) {
+    let m = new Date(date);
+    m.setDate(m.getDate() + 3);
+    return ("0" + m.getUTCDate()).slice(-2) + "/" +
+        ("0" + (m.getUTCMonth() + 1)).slice(-2) + "/" +
+        m.getUTCFullYear() + " " +
+        ("0" + m.getUTCHours()).slice(-2) + ":" +
+        ("0" + m.getUTCMinutes()).slice(-2);
+}
 
 function renderPagination(links) {
     links.forEach(function (each) {

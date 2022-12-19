@@ -3,7 +3,7 @@
 @section('content')
     <div class="main ">
         <div class="section">
-            <div class="container tim-container">
+            <div class="container ">
                 <div id="contentAreas" class="cd-section">
                     <div id="tables">{{--
                         <div class="title">
@@ -11,10 +11,10 @@
                         </div>--}}
 
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-2">
                                 <h4>Quản lý đơn hàng</h4>
                             </div>
-                            <div class="col-md-8 col-md-offset-2">
+                            <div class="col-md-10 col-md-offset-2">
                                 {{--<h4><small>Simple With Actions</small></h4>--}}
                                 <div class="table-responsive">
                                     <table class="table" id="table-data">
@@ -22,11 +22,11 @@
                                         <tr>
                                             <th class="text-center">#</th>
                                             <th>Tên</th>
-                                            <th>Email</th>
                                             <th>Số điện thoại</th>
                                             <th>Địa chỉ</th>
                                             <th class="text-right">Tổng tiền</th>
                                             <th class="text-right">Trạng thái</th>
+                                            <th>Thời gian giao dự kiến</th>
                                             <th class="text-right">Xem/Huỷ</th>
                                         </tr>
                                         </thead>
@@ -65,11 +65,11 @@
                         $('#table-data').append($('<tr>')
                             .append($('<td class="text-center">').append(count))
                             .append($('<td>').append(each.name))
-                            .append($('<td>').append(each.email))
                             .append($('<td>').append(each.phone))
                             .append($('<td>').append(each.address))
                             .append($('<td class="text-right">').append(getPrice(each.total)))
-                            .append($('<td class="text-center">').append(each.status))
+                            .append($('<td class="text-right text-bold text-danger">').append(each.status))
+                            .append($('<td class="text-center">').append(convertDateToDateTimeAdd(each.created_at)))
                             .append($('<td class="td-actions text-center">').append(action))
                         )
                         count++;
