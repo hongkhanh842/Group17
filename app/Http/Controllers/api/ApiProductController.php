@@ -19,6 +19,14 @@ class ApiProductController extends Controller
         $arr['pagination'] = $data->linkCollection();
         return $this->successResponse($arr);
     }
+    public function full1()
+    {
+        $data = Product::query()->with('category')->latest()->paginate(500);
+
+        $arr['data'] = $data->getCollection();
+        $arr['pagination'] = $data->linkCollection();
+        return $this->successResponse($arr);
+    }
 
     public function one($id)
     {

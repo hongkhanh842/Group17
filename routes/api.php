@@ -7,6 +7,7 @@ use App\Http\Controllers\api\ApiImageController;
 use App\Http\Controllers\api\ApiOrderController;
 use App\Http\Controllers\api\ApiOrderDetailController;
 use App\Http\Controllers\api\ApiProductController;
+use App\Http\Controllers\api\ApiSessionController;
 use App\Http\Controllers\api\ApiUserController;
 use App\Models\OrderDetail;
 use Illuminate\Http\Request;
@@ -21,18 +22,19 @@ Route::prefix('category')->controller(ApiCategoryController::class)->name('api.c
         Route::get('/edit', 'edit')->name('edit');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/show/{id}', 'show')->name('show');
-        Route::get('/search/{id}','ajaxSearch')->name('search');
-        Route::get('/data','data')->name('data');
+        Route::get('/search/{id}', 'ajaxSearch')->name('search');
+        Route::get('/data', 'data')->name('data');
     });
 
 Route::prefix('product')->controller(ApiProductController::class)->name('api.product.')
     ->group(function () {
         Route::get('/full', 'full')->name('full');
+        Route::get('/full1', 'full1')->name('full1');
         Route::get('/min', 'min')->name('min');
         Route::get('/one/{id}', 'one')->name('one');
         Route::get('/edit/{id}', 'edit')->name('edit');
-        Route::get('/search1','ajaxSearch')->name('search1');
-        Route::get('/search2','ajaxSearchAll')->name('search2');
+        Route::get('/search1', 'ajaxSearch')->name('search1');
+        Route::get('/search2', 'ajaxSearchAll')->name('search2');
 
     });
 
@@ -74,4 +76,9 @@ Route::prefix('dashboard')->controller(ApiDashboardController::class)->name('api
     ->group(function () {
         Route::get('/', 'all')->name('all');
         Route::get('/home', 'index')->name('index');
+    });
+
+Route::prefix('session')->controller(ApiSessionController::class)->name('api.session.')
+    ->group(function () {
+        Route::get('/', 'all')->name('all');
     });

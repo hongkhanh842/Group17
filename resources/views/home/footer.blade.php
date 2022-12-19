@@ -1,3 +1,4 @@
+@php use Illuminate\Support\Facades\Session; @endphp
 <footer class="footer bg-dark">
     <div class="container">
         <div class="row">
@@ -12,7 +13,8 @@
             </div>
             <div class="col-xs-4">
                 <p class="visible-lg-inline-block">Bản quyền thuộc về LAPTOP HOUSE </p>
-                &copy; <script>document.write(new Date().getFullYear())</script>
+                &copy;
+                <script>document.write(new Date().getFullYear())</script>
             </div>
         </div>
 
@@ -44,13 +46,13 @@
 <script src="{{asset('assets')}}/home/js/jasny-bootstrap.min.js"></script>
 
 
-
 <!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
 <script src="{{asset('assets')}}/home/js/material-kit.js?v=1.2.1" type="text/javascript"></script>
 
 <script src="{{asset('assets/admin')}}/js/helper.js"></script>
 <script>
     $(document).ready(function () {
+        @auth
         $.ajax({
             url: '{{ route('api.cart.count')}}',
             dataType: 'json',
@@ -60,5 +62,19 @@
             error: function (response) {
             }
         })
+        @endauth
+        @if (Session::exists('cart'))
+        @guest
+        @php
+            $i=1;
+            foreach(Session::get('cart') as $each)
+            {
+                $i++;
+            }
+            $arr['count']=$i-1;
+        @endphp
+        $('#cart').append({{$arr['count']}});
+        @endguest
+        @endif
     });
 </script>

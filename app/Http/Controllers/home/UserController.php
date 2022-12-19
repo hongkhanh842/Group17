@@ -35,6 +35,13 @@ class UserController extends Controller
         $data->phone = $request->phone;
         $data->address = $request->address;
         $data->save();
+
+        /*Auth::logout();
+        $request->session()->invalidate();
+
+        Auth::login($data);
+        $request->session()->regenerate();*/
+
         return redirect()->route('user.index')->with('success','Cập nhật tài khoản thành công');
     }
 }

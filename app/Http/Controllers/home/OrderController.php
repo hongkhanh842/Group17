@@ -15,9 +15,13 @@ class OrderController extends Controller
 {
     public function index($total = null)
     {
-        return view('home.order.index',[
-            'total' => $total,
+        if (Auth::check())
+        {
+            return view('home.order.index',[
+                'total' => $total,
             ]);
+        }
+       return redirect()->back()->with('error','Bạn phải đăng nhập để tiếp tục');
     }
 
     public function store(StoreRequest $request)

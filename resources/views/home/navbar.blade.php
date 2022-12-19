@@ -14,19 +14,19 @@
 
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav navbar-left">
-              {{--  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="material-icons">apps</i> Danh mục
-                        <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu dropdown-with-icons">
-                        <li>
-                            <a href="">
-                                <i class="material-icons">label</i> Tên danh mục
-                            </a>
-                        </li>
-                    </ul>
-                </li>--}}
+                {{--  <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                          <i class="material-icons">apps</i> Danh mục
+                          <b class="caret"></b>
+                      </a>
+                      <ul class="dropdown-menu dropdown-with-icons">
+                          <li>
+                              <a href="">
+                                  <i class="material-icons">label</i> Tên danh mục
+                              </a>
+                          </li>
+                      </ul>
+                  </li>--}}
                 <li>
                     <a href="{{route('product.index')}}">
                         <i class="material-icons">laptop</i> Sản phẩm
@@ -36,7 +36,7 @@
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group form-white is-empty">
 
-                            <input type="text" class="form-control ajax-k" style="width: 500px" placeholder="Tìm kiếm">
+                            <input type="text" class="form-control ajax-k" style="width: 400px" placeholder="Tìm kiếm">
                             <span class="material-input"></span>
                             <div class="search-ajax-result" style="width: 500px"></div>
 
@@ -81,14 +81,14 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="button-container ">
-                        <a href="{{route('cart.index')}}" {{--target="_blank"--}} class="btn btn-success btn-round">
-                            <i class="material-icons">shopping_cart</i> Giỏ hàng:
-                            <span id="cart" style=" font-weight: bold; font-size: x-large">
-                           </span>
-                        </a>
-                    </li>
                 @endauth
+                <li class="button-container ">
+                    <a href="{{route('cart.index')}}" {{--target="_blank"--}} class="btn btn-success btn-round">
+                        <i class="material-icons">shopping_cart</i> Giỏ hàng:
+                        <span id="cart" style=" font-weight: bold; font-size: x-large">
+                           </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -143,7 +143,9 @@
                         </form>
                     </div>
                     <div class="modal-footer text-center">
-                        <button onclick="form_login_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng nhập</button>
+                        <button onclick="form_login_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng
+                            nhập
+                        </button>
                     </div>
                 </div>
             </div>
@@ -212,7 +214,9 @@
                         </form>
                     </div>
                     <div class="modal-footer text-center">
-                        <button onclick="form_register_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng ký</button>
+                        <button onclick="form_register_submit()" class="btn btn-primary btn-simple btn-wd btn-lg">Đăng
+                            ký
+                        </button>
                     </div>
                 </div>
             </div>
@@ -224,6 +228,7 @@
             function form_register_submit() {
                 document.getElementById("register").submit();
             }
+
             function form_login_submit() {
                 document.getElementById("login").submit();
             }
@@ -235,6 +240,10 @@
         @if ($errors->any())
         $('#signupModal').modal('show');
         @endif
+
+        {{--@error('email' || 'password')
+        $('#signupModal').modal('show');
+        @enderror--}}
 
         {{--@error('login')
         $('#loginModal').modal('show');
@@ -259,7 +268,7 @@
                         _html += '</a>'
                         _html += '<div class="">'
                         _html += '<h4 class=""><a href="{{route('product.show',['pid'])}}">' + each.name + '</a></h4>'
-                        _html += '<p>' + getDetailByKey(each.use,each.cpu,each.ram,each.ssd) + '</p>'
+                        _html += '<p>' + getDetailByKey(each.use, each.cpu, each.ram, each.ssd) + '</p>'
                         _html += '</div>'
                         _html += '</div>'
                         _html = _html.replaceAll('pid', each.id)
