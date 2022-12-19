@@ -1,6 +1,53 @@
-.panel.panel-default .panel-heading .collappsed i{
+.panel.panel-default .panel-heading .collappsed i {
     float: none;
     position: absolute;
     top: 0;
 }
 
+
+
+
+/* FOOTER */
+
+.footerLaptop h5 {
+    font-weight: bold;
+}
+
+.footerLaptop p {
+    font-weight: bolder;
+    font-style: italic;
+}
+
+.footerLaptop a {
+    color: #3C4858;
+    font-size: 16px;
+    margin: 5px 0;
+    font-weight: bolder;
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.footerLaptop a:hover {
+    color: black;
+}
+
+.footerLaptop a span {
+    color: blue;
+}
+
+.footerLaptop a i {
+    font-size: 25px;
+    margin: 10px 7px 0 0;
+}
+
+.footerLaptop a.facebook i {
+    color: blue;
+}
+
+.footerLaptop a.google i {
+    color: red;
+}
+
+.footerLaptop a.twitter i {
+    color: cyan;
+}

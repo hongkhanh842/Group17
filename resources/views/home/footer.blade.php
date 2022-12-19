@@ -1,21 +1,32 @@
 @php use Illuminate\Support\Facades\Session; @endphp
-<footer class="footer bg-dark">
-    <div class="container">
+<footer class="footerLaptop footer bg-dark">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-4">
+            <div class="col-xs-3">
                 <h5 class="font-weight-bolder">LAPTOP HOUSE</h5>
                 <p>Chất lượng tạo uy tín</p>
             </div>
-            <div class="col-xs-4">
-                <p><a class="visible-lg-block mb-2">Liên hệ hỗ trợ</a></p>
-                <p><a class="visible-lg-block">Chính sách giao hàng</a></p>
-                <p><a class="visible-lg-block">Chính sách đổi trả</a></p>
+            <div class="col-xs-3 text-left">
+                <a class="visible-lg-block mb-2">Quy định Bảo hành, Đổi, Trả</a>
+                <a class="visible-lg-block">Hướng dẫn mua online</a>
+                <a class="visible-lg-block">Giao hàng, thanh toán</a>
+                <a class="visible-lg-block">Chính sách trả góp</a>
             </div>
-            <div class="col-xs-4">
-                <p class="visible-lg-inline-block">Bản quyền thuộc về LAPTOP HOUSE </p>
-                &copy;
-                <script>document.write(new Date().getFullYear())</script>
+            <div class="col-xs-3 text-left">
+                <a class="visible-lg-block mb-2">Giới thiệu công ty</a>
+                <a class="visible-lg-block">Liên hệ</a>
+                <a class="visible-lg-block">Hợp tác kinh doanh</a>
+                <a class="visible-lg-block">Tuyển dụng</a>
             </div>
+            <div class="col-xs-3 text-left">
+                <a class="visible-lg-block mb-2" href="tel:0395806037">Gọi mua hàng: <span>039.580.6037</span></a>
+                <a class="visible-lg-block" href="tel:0378385092">Gọi bảo hành: <span>037.838.5092</span></a>
+                <a class="visible-lg-block" href="tel:0395806037">Gọi khiếu nại góp ý: <span>039.580.6037</span></a>
+                <a class="facebook" href="#"><i class="fab fa-facebook"></i></a>
+                <a class="google" href="#"><i class="fab fa-google-plus-g"></i></a>
+                <a class="twitter" href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+            
         </div>
 
 
