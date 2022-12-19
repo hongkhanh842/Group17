@@ -49,7 +49,7 @@
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </div>
-                                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                        <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel"
                                              aria-labelledby="headingTwo">
                                             <div class="panel-body">
                                                 <div class="checkbox" id="brand">
@@ -133,7 +133,7 @@
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </div>
-                                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel"
+                                        <div id="collapseFour" class="panel-collapse collapse in" role="tabpanel"
                                              aria-labelledby="headingOne">
                                             <div class="panel-body">
                                                 <div class="checkbox">
@@ -163,7 +163,7 @@
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </div>
-                                        <div id="collapseFive" class="panel-collapse collapse" role="tabpanel"
+                                        <div id="collapseFive" class="panel-collapse collapse in" role="tabpanel"
                                              aria-labelledby="headingOne">
                                             <div class="panel-body">
                                                 <div class="checkbox">
@@ -193,14 +193,14 @@
 
                                     <div class="panel panel-default panel-rose">
                                         <div class="panel-heading" role="tab" id="headingSix">
-                                            <a class="text-panel collapsed" role="button" data-toggle="collapse"
+                                            <a class="text-panel collapsed in" role="button" data-toggle="collapse"
                                                data-parent="#accordion" href="#collapseSix" aria-expanded="false"
                                                aria-controls="collapseSix">
                                                 <h4 class="panel-title">Nhu cầu</h4>
                                                 <i class="material-icons">keyboard_arrow_down</i>
                                             </a>
                                         </div>
-                                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel"
+                                        <div id="collapseSix" class="panel-collapse collapse in" role="tabpanel"
                                              aria-labelledby="headingOne">
                                             <div class="panel-body">
                                                 <div class="checkbox">
