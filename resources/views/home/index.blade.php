@@ -1,4 +1,5 @@
 @extends('layouts.frontbase')
+
 @section('content')
     <div class="main ">
         <div class="section">
@@ -6,20 +7,16 @@
                 <h2 class="section-title">Các dòng sản phẩm nổi bật</h2>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
-
                         <!-- Carousel Card -->
                         <div class="card card-raised card-carousel">
                             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                                 <div class="carousel slide" data-ride="carousel">
-
                                     <!-- Indicators -->
                                     <ol class="carousel-indicators" id="indicator">
                                     </ol>
-
                                     <!-- Wrapper for slides -->
                                     <div class="carousel-inner" id="slider">
                                     </div>
-
                                     <!-- Controls -->
                                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                                         <i class="material-icons">keyboard_arrow_left</i>
@@ -32,14 +29,12 @@
                             </div>
                         </div>
                         <!-- End Carousel Card -->
-
                     </div>
                 </div>
             </div>
             <div class="container">
                 <h2 class="section-title">Sản phẩm mới</h2>
                 <div class="row" id="product">
-
                 </div>
             </div>
             <div class="container brand">
@@ -102,7 +97,7 @@
             })
 
             $.ajax({
-                url: '{{ route('api.product.full') }}',
+                url: '{{ route('api.product.full1') }}',
                 dataType: 'json',
                 success: function (response) {
                     let count=0;
@@ -110,7 +105,7 @@
                         let image = '<img src="' + '/storage/' + each.image + '" alt="">';
                         let html_ = '';
 
-                        if (count < 3) {
+                        if (count < 6) {
                             html_ = '<div class="col-md-4">  ' +
                                 '<div class="card card-product card-plain">' +
                                 '<div class="card-image">' +
