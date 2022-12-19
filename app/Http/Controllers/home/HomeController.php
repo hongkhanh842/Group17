@@ -28,6 +28,7 @@ class HomeController extends Controller
                 }
 
                 $data->save();
+                session()->forget(['cart']);
             }
         };
         return view('home.index');
