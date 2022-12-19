@@ -123,9 +123,10 @@
                                     ' <a href="" class="btn btn-round btn-info btn-xs"><i' +
                                     '  class="material-icons">add</i></a>' +
                                     '  </div>';
-                                let action = '<a href=""  type="button" rel="tooltip" data-placement="left"' +
+                                let action = '<a href="{{route('cart.destroy',['pid'])}}"  type="button" rel="tooltip" data-placement="left"' +
                                     ' title="Xoá sản phẩm" class="btn btn-simple">' +
                                     ' <i class="material-icons">close</i></a>'
+                                action = action.replace('pid', each.id);
 
                                 total += each.price;
                                 $('#table-data').append($('<tr>')

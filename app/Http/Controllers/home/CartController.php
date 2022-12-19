@@ -68,10 +68,25 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function destroy($id)
+    public function destroy($id,Request $request)
     {
-        $data = Cart::find($id);
-        $data->delete();
+        if (auth()->check())
+        {
+            $data = Cart::find($id);
+            $data->delete();
+        }
+        else
+        {
+            $data = array_unique($request->session()->pull('cart'));
+            foreach($data as $each)
+            {
+                if ($each != $id)
+                {
+                    Session::push('cart', $each);
+                }
+            }
+        }
+
         return redirect()->back();
     }
 }
