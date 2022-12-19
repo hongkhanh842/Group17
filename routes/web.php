@@ -48,6 +48,7 @@ Route::prefix('product')
         ->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('/add/{id}', 'add')->name('add');
+            Route::post('/store/{id}', 'store')->name('store');
             Route::get('/sub/{id}', 'sub')->name('sub');
             Route::get('/plus/{id}', 'plus')->name('plus');
             Route::get('/destroy/{id}', 'destroy')->name('destroy');

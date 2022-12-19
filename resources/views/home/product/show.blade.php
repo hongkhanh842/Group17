@@ -74,24 +74,28 @@
                                 </div>
                                 <div id="collapseTwo" class="panel-collapse collapse">
                                     <div class="panel-body" id="detail">
-
                                     </div>
                                 </div>
+
                             </div>
+
 
                         </div>
                     </div><!--  end acordeon -->
-
+                    <form action="{{route('cart.store',[$id])}}" method="post" >
+                        @csrf
                     <div class="row pick-size">
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-6 col-sm-6" id="input_quantity">
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                        </div>
+                        @error('quantity')
+                        <div class="error" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="row text-right">
-                        <a href="{{route('cart.add',[$id])}}" class="btn btn-success btn-round">Thêm vào giỏ hàng &nbsp;<i class="material-icons">shopping_cart</i>
-                        </a>
+                        <button class="btn btn-success btn-round">Đặt hàng &nbsp;<i class="material-icons">payments</i>
+                        </button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -103,7 +107,7 @@
                         <div class="icon icon-info">
                             <i class="material-icons">local_shipping</i>
                         </div>
-                        <h4 class="info-title">Giao hàng trong 2 ngày khu vực nội thành</h4>
+                        <h4 class="info-title">Giao hàng trong 3 ngày khu vực nội thành</h4>
                     </div>
                 </div>
 
@@ -142,6 +146,9 @@
                 $('#product_des').html(_des);
                 $('#product_price').append(getPrice(response.data.price));
                 $('#product_quantity').append('Còn lại: '+response.data.quantity + ' sản phẩm');
+                let _html = 'Số lượng:' + '<input type="number" name="quantity" value="1" min="1" max="each.quantity">'
+                _html = _html.replace('each.quantity',response.data.quantity);
+                $('#input_quantity').append(_html);
                 parent = response.data.category.id;
             },
             error: function (response) {

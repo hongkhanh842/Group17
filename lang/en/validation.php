@@ -97,7 +97,7 @@ return [
     'min' => [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => ':attribute nhỏ nhất là :min.',
         'string' => ':attribute phải có tối thiểu :min ký tự.',
     ],
     'min_digits' => 'The :attribute must have at least :min digits.',
@@ -181,7 +181,8 @@ return [
         'quantity' => 'Số lượng ',
         'price' => 'Giá ',
         'use' => 'Nhu cầu ',
-        'email' => 'Email '
+        'email' => 'Email ',
+        'quantity' => 'Số lượng ',
         ],
 
 ];
