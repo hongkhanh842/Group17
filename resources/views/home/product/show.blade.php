@@ -120,12 +120,17 @@
             </div>
         </div>
 
-
+        <div class="container">
+            <h2 class="section-title">Sản phẩm tương tự</h2>
+            <div class="row" id="product">
+            </div>
+        </div>
     </div>
 </div>
 
 @include('home.footer')
 <script>
+    var parent;
     $(document).ready(function () {
         $.ajax({
             url: '{{ route('api.product.one',[$id]) }}',
@@ -137,6 +142,7 @@
                 $('#product_des').html(_des);
                 $('#product_price').append(getPrice(response.data.price));
                 $('#product_quantity').append('Còn lại: '+response.data.quantity + ' sản phẩm');
+                parent = response.data.category.id;
             },
             error: function (response) {
             }
@@ -198,7 +204,44 @@
             }
         })
 
+        $.ajax({
+            url: '{{ route('api.product.full1') }}',
+            dataType: 'json',
+            success: function (response) {
+                let count=0;
+                response.data.data.forEach(function (each) {
+                    let image = '<img src="' + '/storage/' + each.image + '" alt="">';
+                    let html_ = '';
+                    if (count < 3 && each.category_id === parent) {
+                        html_ = '<div class="col-md-4">  ' +
+                            '<div class="card card-product card-plain">' +
+                            '<div class="card-image">' +
+                            ' <a href="{{route('product.show',['each.id'])}}">' +
+                            image +
+                            '  </a>' +
+                            '</div>' +
+                            ' <div class="card-content">' +
+                            '  <h4 class="card-title">' +
+                            '  <a href="{{route('product.show',['each.id'])}}">'+each.name+'</a>' +
+                            '   </h4>' +
+                            '  <p class="card-description">' +
+                            getDetailByKey(each.use,each.cpu,each.ram,each.ssd)+
+                            '</p>' +
+                            '  <div class="footer">' +
+                            '    <div class="price-container">' +
+                            ' <span class="price price-new">'+getPrice(each.price)+'</span>' +
+                            '<a class="gioHangIcon" href="{{route('cart.add',['each.id'])}}"><i class="fa fa-cart-plus"></i></a>' +
+                            '   </div></div></div></div></div>';
+                        html_ = html_.replaceAll('each.id',each.id);
+                        $('#product').append(html_);
+                        count++;
+                    }
 
+                });
+            },
+            error: function (response) {
+            }
+        })
     });
 </script>
 

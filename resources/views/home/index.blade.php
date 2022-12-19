@@ -123,6 +123,7 @@
                                 '  <div class="footer">' +
                                 '    <div class="price-container">' +
                                 ' <span class="price price-new">'+getPrice(each.price)+'</span>' +
+                                '<a class="gioHangIcon" href="{{route('cart.add',['each.id'])}}"><i class="fa fa-cart-plus"></i></a>' +
                                 '   </div></div></div></div></div>';
                                 html_ = html_.replaceAll('each.id',each.id);
                             $('#product').append(html_);

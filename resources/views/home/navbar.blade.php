@@ -90,6 +90,7 @@
                     </a>
                 </li>
             </ul>
+            @include('notify')
         </div>
     </div>
 </nav>
@@ -101,21 +102,21 @@
         <div class="modal-dialog modal-login">
             <div class="modal-content">
                 <div class="card card-signup card-plain">
+
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                 class="material-icons">clear</i></button>
-
                         <div class="header header-primary text-center">
                             <h4 class="card-title">ĐĂNG NHẬP BẰNG:</h4>
                             <div class="social-line">
                                 <a href="{{ route('auth.redirect', 'facebook') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-facebook-square"></i>
+                                    <i class="fab fa-facebook-square"></i>
                                 </a>
                                 <a href="{{ route('auth.redirect', 'github') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-github"></i>
+                                    <i class="fab fa-github"></i>
                                 </a>
                                 <a href="{{ route('auth.redirect', 'google') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fab fa-google-plus"></i>
                                 </a>
                             </div>
                         </div>
@@ -123,6 +124,7 @@
                     <div class="modal-body">
                         <form class="form" method="post" action="{{route('logging')}}" id="login">
                             @csrf
+                            @include('notify')
                             <p class="description text-center">Hoặc</p>
                             <div class="card-content">
 
@@ -139,6 +141,7 @@
 								</span>
                                     <input type="password" placeholder="Mật khẩu" class="form-control" name="password">
                                 </div>
+
                             </div>
                         </form>
                     </div>
@@ -160,18 +163,17 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
                                 class="material-icons">clear</i></button>
-
                         <div class="header header-primary text-center">
                             <h4 class="card-title">ĐĂNG NHẬP BẰNG:</h4>
                             <div class="social-line">
                                 <a href="{{ route('auth.redirect', 'facebook') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-facebook-square"></i>
+                                    <i class="fab fa-facebook-square"></i>
                                 </a>
                                 <a href="{{ route('auth.redirect', 'github') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-github"></i>
+                                    <i class="fab fa-github"></i>
                                 </a>
                                 <a href="{{ route('auth.redirect', 'google') }}" class="btn btn-just-icon btn-simple">
-                                    <i class="fa fa-google-plus"></i>
+                                    <i class="fab fa-google-plus"></i>
                                 </a>
                             </div>
                         </div>
